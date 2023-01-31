@@ -4,7 +4,7 @@ Lorem ipsum...
 
 # Collaborators
 
-Vince Corradetti, Brian Campana, Anas Amir
+Vince Corradetti, Brian Campana, Anas Amir, Zachary Dilks
 
 ## Workflow
 
