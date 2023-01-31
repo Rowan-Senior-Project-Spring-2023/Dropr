@@ -1,11 +1,8 @@
 import Navbar from "../../Components/Navbar/Navbar";
+import Hero from "./Hero/Hero";
 
 const Landing = () => {
-  return (
-    <>
-      <Navbar links={["For companies", "Login", "Sign up"]} />
-    </>
-  );
+  return <Hero />;
 };
 
 export default Landing;

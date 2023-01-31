@@ -1,5 +1,5 @@
-@use "../../Styles/mixins" as *;
-@use "../../Styles/variables" as *;
+@use "../../../Styles/mixins" as *;
+@use "../../../Styles/variables" as *;
 
 main {
   @include flex-item(column, center, center);
@@ -8,7 +8,7 @@ main {
 
 h1 {
   color: $color-brand;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 400;
   color: black;
 }
