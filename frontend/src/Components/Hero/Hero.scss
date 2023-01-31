@@ -1,5 +1,27 @@
+@use "../../Styles/mixins" as *;
 @use "../../Styles/variables" as *;
+
+main {
+  @include flex-item(column, center, center);
+  text-align: center;
+}
 
 h1 {
   color: $color-brand;
+  font-size: 4rem;
+  font-weight: 400;
+  color: black;
+}
+
+:not(h1) {
+  font-size: 1.125rem;
+}
+
+p {
+  color: black;
+}
+
+.cta-button {
+  @include cta-button($color-brand, white);
+  margin-top: 2rem;
 }
