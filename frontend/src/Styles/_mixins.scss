@@ -2,8 +2,8 @@
   $flex-direction: row,
   $align-items: flex-start,
   $justify-content: flex-start,
-  $height: 100%,
-  $width: 100%
+  $height: auto,
+  $width: auto
 ) {
   display: flex;
   flex-direction: $flex-direction;
@@ -16,7 +16,7 @@
 @mixin cta-button($background-color: $color-brand, $text-color: white) {
   background-color: $background-color;
   color: $text-color;
-  padding: 0.5em 2em;
+  padding: 0.3em 1.25em;
   border-radius: 0.25rem;
   text-decoration: none;
 }

@@ -1,0 +1,30 @@
+@use "../../../Styles/mixins" as *;
+@use "../../../Styles/variables" as *;
+
+.container {
+  @include flex-item(column, center, center, 85%, 100%);
+  text-align: center;
+}
+
+.title {
+  // color: $color-brand;
+  color: black;
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.subtitle {
+  margin-top: 0.5rem;
+  max-width: 30ch;
+  font-weight: 400;
+}
+
+.cta {
+  @include cta-button(black, white);
+  margin-top: 1.5rem;
+}
+
+.subtitle,
+.cta {
+  font-size: 1.125rem;
+}

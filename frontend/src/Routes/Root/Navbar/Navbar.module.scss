@@ -1,0 +1,11 @@
+@use "../../../Styles/variables" as *;
+@use "../../../Styles/mixins" as *;
+
+ul {
+  @include flex-item(row, center, flex-end);
+  margin: 1em;
+
+  li {
+    margin: 0 1em;
+  }
+}
