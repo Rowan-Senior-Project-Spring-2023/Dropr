@@ -1,11 +1,16 @@
 @use "../../../Styles/variables" as *;
 @use "../../../Styles/mixins" as *;
 
+.header {
+  @include flex-item(row, flex-end, flex-end);
+  padding: 1.5em;
+}
+
 .navigation {
   @include flex-item(row, center, flex-end);
 
   & > li {
-    padding: 1em;
+    padding: 0 1em;
 
     a.cta {
       @include cta-button($color-brand, white);
@@ -41,6 +46,7 @@
     transition: transform 350ms ease-out;
 
     & > li {
+      padding: 1em 0;
       width: 100%;
       text-align: center;
 
@@ -53,7 +59,6 @@
 
   .navigationMenu {
     display: block;
-    position: absolute;
     z-index: 9999;
     top: 2rem;
     right: 2rem;

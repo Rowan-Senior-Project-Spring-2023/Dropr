@@ -2,7 +2,8 @@
 @use "../../../Styles/variables" as *;
 
 .container {
-  @include flex-item(column, center, center, 100%, 100%);
+  @include flex-item(column, center, center);
+  min-height: 80%;
   text-align: center;
 }
 

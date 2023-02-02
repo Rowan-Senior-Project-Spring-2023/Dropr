@@ -12,9 +12,9 @@ const Navbar = (props) => {
   };
 
   return (
-    <header>
+    <header className={styles.header}>
       <button
-        aria-controls="primary-navigation"
+        aria-controls="navigation"
         aria-expanded={ariaExpanded}
         className={
           showNavigation
@@ -27,7 +27,7 @@ const Navbar = (props) => {
       </button>
       <nav>
         <ul
-          id="primary-navigation"
+          id="navigation"
           className={
             showNavigation
               ? `${styles.navigation} ${styles.navigationOpen}`
