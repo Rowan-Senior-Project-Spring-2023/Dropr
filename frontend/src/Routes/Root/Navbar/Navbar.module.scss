@@ -5,7 +5,7 @@
   @include flex-item(row, center, flex-end);
 
   .cta {
-    @include cta-button(black, white);
+    @include cta-button($color-brand, white);
     font-size: 1.125rem;
   }
 }
@@ -32,7 +32,7 @@
     transparent;
 }
 
-@media (max-width: 35em) {
+@media (max-width: $breakpoint-mobile) {
   .list {
     @include flex-item(column, center, flex-start);
     position: fixed;
@@ -41,7 +41,8 @@
     padding: min(20vh, 7rem) 2rem;
     background-color: white;
     gap: 2em;
-    border-left: 1px solid rgb(228, 228, 228);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     transition: transform 350ms ease-out;
 
     & > li {

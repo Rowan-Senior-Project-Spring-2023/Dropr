@@ -34,9 +34,9 @@ const Navbar = (props) => {
               : `${styles.list} ${styles.mobileNavigationClose}`
           }
         >
-          <li className={styles.listItem}>For Companies</li>
-          <li className={styles.listItem}>Log in</li>
-          <li className={`${styles.listItem} ${styles.cta}`}>Sign up</li>
+          <li>For Companies</li>
+          <li>Log in</li>
+          <li className={styles.cta}>Sign up</li>
         </ul>
       </nav>
     </header>

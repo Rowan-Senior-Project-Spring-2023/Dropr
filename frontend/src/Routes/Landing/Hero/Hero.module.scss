@@ -2,7 +2,7 @@
 @use "../../../Styles/variables" as *;
 
 .container {
-  @include flex-item(column, center, center, 85%, 100%);
+  @include flex-item(column, center, center, 100%, 100%);
   text-align: center;
 }
 
@@ -13,14 +13,13 @@
 }
 
 .subtitle {
-  margin-top: 0.5rem;
+  margin: 1.5em;
   max-width: 30ch;
   font-weight: 400;
 }
 
 .cta {
-  @include cta-button(black, white);
-  margin-top: 2rem;
+  @include cta-button($color-brand, white);
 }
 
 .subtitle,
