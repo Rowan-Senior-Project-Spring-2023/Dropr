@@ -18,8 +18,8 @@ const Navbar = (props) => {
         aria-expanded={ariaExpanded}
         className={
           showNavigation
-            ? `${styles.mobileNavigationToggle} ${styles.mobileNavigationIconClose}`
-            : `${styles.mobileNavigationToggle} ${styles.mobileNavigationIconOpen}`
+            ? `${styles.navigationMenu} ${styles.navigationIconClose}`
+            : `${styles.navigationMenu} ${styles.navigationIconOpen}`
         }
         onClick={handleClick}
       >
@@ -30,13 +30,17 @@ const Navbar = (props) => {
           id="primary-navigation"
           className={
             showNavigation
-              ? `${styles.list} ${styles.mobileNavigationOpen}`
-              : `${styles.list} ${styles.mobileNavigationClose}`
+              ? `${styles.navigation} ${styles.navigationOpen}`
+              : `${styles.navigation} ${styles.navigationClose}`
           }
         >
           <li>For Companies</li>
           <li>Log in</li>
-          <li className={styles.cta}>Sign up</li>
+          <li>
+            <a href="#" className={styles.cta}>
+              Sign up
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
