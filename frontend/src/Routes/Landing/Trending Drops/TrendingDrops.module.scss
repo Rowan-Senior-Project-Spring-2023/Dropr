@@ -1,0 +1,6 @@
+@use "../../../Styles/mixins" as *;
+@use "../../../Styles/variables" as *;
+
+.container {
+  @include flex-item(row, center, center);
+}

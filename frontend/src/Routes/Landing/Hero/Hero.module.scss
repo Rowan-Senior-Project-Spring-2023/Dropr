@@ -7,10 +7,9 @@
 }
 
 .title {
-  // color: $color-brand;
-  color: black;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 500;
+  color: black;
 }
 
 .subtitle {
@@ -21,7 +20,7 @@
 
 .cta {
   @include cta-button(black, white);
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .subtitle,
