@@ -1,22 +1,23 @@
-@use "../../../Styles/mixins" as *;
 @use "../../../Styles/variables" as *;
+@use "../../../Styles/mixins" as *;
 
 .container {
   @include flex-item(column, center, center);
+  padding: $padding-section;
   min-height: 80%;
+  background-color: $color-section-even;
   text-align: center;
 }
 
-.title {
-  font-size: 4rem;
-  font-weight: 500;
-  color: black;
+.pageTitle {
+  font-size: $fs-page-title;
+  font-weight: $fw-page-title;
 }
 
 .subtitle {
-  margin: 1.5em;
-  max-width: 30ch;
+  margin: 1.5em 0;
   font-weight: 400;
+  max-width: 30ch;
 }
 
 .cta {

@@ -5,10 +5,17 @@ const Navbar = (props) => {
   const [showNavigation, setShowNavigation] = useState(false);
   const [ariaExpanded, setAriaExpanded] = useState(false);
 
+  const disableScroll = (showNavigation) => {
+    showNavigation
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "scroll");
+  };
+
   const handleClick = (event) => {
     event.preventDefault();
     setAriaExpanded(!ariaExpanded);
     setShowNavigation(!showNavigation);
+    disableScroll(!showNavigation); // what the heck
   };
 
   return (

@@ -36,3 +36,8 @@ ul {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
+::selection {
+  background-color: rgb(252, 176, 176);
+  color: $color-brand;
+}

@@ -1,9 +1,52 @@
-$ff-primary: "Fraunces", serif;
+/*=============================*
+ *         Font Families       *
+ *=============================*/
 
+$ff-primary: "Fraunces", serif;
+$ff-secondary: "Oswald", sans-serif;
+
+/*=============================*
+ *            Colors           *
+ *=============================*/
 $color-brand: #fb1919;
+$color-section-even: #fff;
+$color-section-odd: rgb(247, 247, 247);
 
 /*=============================*
  *          Breakpoints        *
  *=============================*/
 
 $breakpoint-mobile: 35em;
+
+/*=============================*
+ *           Spacing           *
+ *=============================*/
+
+$gap-cards: 2em;
+
+/*=============================*
+ *       Margins/Paddings      *
+ *=============================*/
+
+$padding-section: 3em 1.5em;
+
+/*=============================*
+ *          Font Size          *
+ *=============================*/
+
+$fs-page-title: 4.25rem;
+$fs-section-title: 2rem;
+$fs-product-card-title: 1.35rem;
+
+/*=============================*
+ *          Font Weight        *
+ *=============================*/
+
+$fw-page-title: 600;
+$fw-section-title: 500;
+
+/*=============================*
+ *         Border Radii        *
+ *=============================*/
+
+$br-round: 0.25rem;

@@ -11,10 +11,10 @@
 
   & > li {
     padding: 0 1em;
+    font-size: 1.25rem;
 
     a.cta {
       @include cta-button($color-brand, white);
-      font-size: 1.125rem;
     }
   }
 }
@@ -38,7 +38,7 @@
     @include flex-item(column, center, flex-start);
     position: fixed;
     z-index: 1000;
-    inset: 0 0 0 25%;
+    inset: 0 0 0 0;
     padding: min(20vh, 7rem) 2rem;
     background-color: white;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
@@ -47,13 +47,6 @@
 
     & > li {
       padding: 1em 0;
-      width: 100%;
-      text-align: center;
-
-      a.cta {
-        width: 100%;
-        display: block;
-      }
     }
   }
 

@@ -1,6 +1,23 @@
-@use "../../../Styles/mixins" as *;
 @use "../../../Styles/variables" as *;
+@use "../../../Styles/mixins" as *;
 
 .container {
-  @include flex-item(row, center, center);
+  @include flex-item(column, center, center);
+  gap: $gap-cards;
+  padding: $padding-section;
+  background-color: $color-section-odd;
+
+  .sectionTitle {
+    font-size: $fs-section-title;
+    font-weight: $fw-section-title;
+  }
+
+  .cards {
+    @include flex-item(column, center, center);
+    gap: $gap-cards;
+
+    @media (min-width: $breakpoint-mobile) {
+      @include flex-item(row, center, center);
+    }
+  }
 }
