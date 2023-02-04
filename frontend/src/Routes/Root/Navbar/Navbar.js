@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./Navbar.module.scss";
+import logo from "Assets/Logo.png";
 
 const Navbar = (props) => {
   const [showNavigation, setShowNavigation] = useState(false);
@@ -20,6 +21,7 @@ const Navbar = (props) => {
 
   return (
     <header className={styles.header}>
+      {/* <img className={styles.logo} src={logo} alt="Dropr logo" /> */}
       <button
         aria-controls="navigation"
         aria-expanded={ariaExpanded}
@@ -34,7 +36,6 @@ const Navbar = (props) => {
       </button>
       <nav>
         <ul
-          id="navigation"
           className={
             showNavigation
               ? `${styles.navigation} ${styles.navigationOpen}`

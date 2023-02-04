@@ -2,67 +2,67 @@
 @use "Styles/mixins" as *;
 
 .header {
-  @include flex-item(row, flex-end, flex-end);
-  padding: 1.5em;
-}
-
-.navigation {
   @include flex-item(row, center, flex-end);
+  padding: 1.5em 3em;
 
-  & > li {
-    padding: 0 1em;
-    font-size: 1.25rem;
-
-    a.cta {
-      @include cta-button($color-brand, white);
-    }
-  }
-}
-
-.navigationMenu {
-  display: none;
-}
-
-.navigationIconOpen {
-  background: url("/Assets/Mobile\ Navigation\ Menu.svg") no-repeat transparent;
-}
-
-.navigationIconClose {
-  background: url("/Assets/Mobile\ Navigation\ Close.svg") no-repeat transparent;
-}
-
-@media (max-width: $breakpoint-mobile) {
   .navigation {
-    @include flex-item(column, center, flex-start);
-    position: fixed;
-    z-index: 1000;
-    inset: 0 0 0 0;
-    padding: min(20vh, 7rem) 2rem;
-    background-color: white;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-    transition: transform 350ms ease-out;
+    @include flex-item(row, center, center);
 
     & > li {
-      padding: 1em 0;
+      padding: 0 1em;
+      font-size: 1.125rem;
+
+      a.cta {
+        @include cta-button($color-brand, white);
+      }
     }
   }
 
   .navigationMenu {
-    display: block;
-    z-index: 9999;
-    top: 2rem;
-    right: 2rem;
-    width: 2rem;
-    aspect-ratio: 1;
-    border: 0;
+    display: none;
   }
 
-  .navigationOpen {
-    transform: translateX(0%);
+  .navigationIconOpen {
+    background: url("/Assets/Mobile\ Navigation\ Menu.svg") no-repeat
+      transparent;
   }
 
-  .navigationClose {
-    transform: translateX(100%);
+  .navigationIconClose {
+    background: url("/Assets/Mobile\ Navigation\ Close.svg") no-repeat
+      transparent;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    .navigationMenu {
+      display: block;
+      z-index: 9999;
+      width: 2rem;
+      aspect-ratio: 1;
+      border: 0;
+    }
+
+    .navigation {
+      @include flex-item(column, center, flex-start);
+      position: fixed;
+      z-index: 1000;
+      inset: 0 0 0 0;
+      padding: min(20vh, 7rem) 2rem;
+      background-color: white;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+      transition: transform 350ms ease-out;
+
+      & > li {
+        padding: 1em 0;
+      }
+    }
+
+    .navigationOpen {
+      transform: translateX(0%);
+    }
+
+    .navigationClose {
+      transform: translateX(100%);
+    }
   }
 }
