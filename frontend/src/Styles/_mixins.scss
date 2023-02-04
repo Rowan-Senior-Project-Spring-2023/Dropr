@@ -15,6 +15,17 @@
   width: $width;
 }
 
+@mixin section-landing($background-color: white) {
+  gap: $gap-cards;
+  padding: $padding-section;
+  background-color: $background-color;
+
+  h2 {
+    font-size: $fs-section-title;
+    font-weight: $fw-section-title;
+  }
+}
+
 @mixin cta-button($background-color: $color-brand, $text-color: white) {
   background-color: $background-color;
   color: $text-color;

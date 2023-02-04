@@ -2,15 +2,8 @@
 @use "Styles/mixins" as *;
 
 .container {
+  @include section-landing($color-section-grey);
   @include flex-item(column, center, center);
-  gap: $gap-cards;
-  padding: $padding-section;
-  background-color: $color-section-odd;
-
-  .sectionTitle {
-    font-size: $fs-section-title;
-    font-weight: $fw-section-title;
-  }
 
   .cards {
     @include flex-item(column, center, center);
