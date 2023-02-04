@@ -24,13 +24,11 @@
 }
 
 .navigationIconOpen {
-  background: url("../../../Assets/Mobile\ Navigation\ Menu.svg") no-repeat
-    transparent;
+  background: url("/Assets/Mobile\ Navigation\ Menu.svg") no-repeat transparent;
 }
 
 .navigationIconClose {
-  background: url("../../../Assets/Mobile\ Navigation\ Close.svg") no-repeat
-    transparent;
+  background: url("/Assets/Mobile\ Navigation\ Close.svg") no-repeat transparent;
 }
 
 @media (max-width: $breakpoint-mobile) {
