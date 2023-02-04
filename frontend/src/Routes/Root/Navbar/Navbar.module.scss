@@ -1,19 +1,24 @@
 @use "Styles/variables" as *;
 @use "Styles/mixins" as *;
 
-.header {
+header.header {
   @include flex-item(row, center, flex-end);
   padding: 1.5em 3em;
 
-  .navigation {
+  ul.navigationList {
     @include flex-item(row, center, center);
 
     & > li {
       padding: 0 1em;
-      font-size: 1.125rem;
 
-      a.cta {
-        @include cta-button($color-brand, white);
+      a {
+        font-size: 1.25rem;
+        text-decoration: none;
+        color: black;
+
+        &.cta {
+          @include cta-button($color-brand, white);
+        }
       }
     }
   }
@@ -22,18 +27,18 @@
     display: none;
   }
 
-  .navigationIconOpen {
+  button.navigationIconOpen {
     background: url("/Assets/Mobile\ Navigation\ Menu.svg") no-repeat
       transparent;
   }
 
-  .navigationIconClose {
+  button.navigationIconClose {
     background: url("/Assets/Mobile\ Navigation\ Close.svg") no-repeat
       transparent;
   }
 
   @media (max-width: $breakpoint-mobile) {
-    .navigationMenu {
+    button.navigationMenu {
       display: block;
       z-index: 9999;
       width: 2rem;
@@ -41,15 +46,13 @@
       border: 0;
     }
 
-    .navigation {
+    ul.navigationList {
       @include flex-item(column, center, flex-start);
       position: fixed;
       z-index: 1000;
       inset: 0 0 0 0;
       padding: min(20vh, 7rem) 2rem;
       background-color: white;
-      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
       transition: transform 350ms ease-out;
 
       & > li {
@@ -57,11 +60,11 @@
       }
     }
 
-    .navigationOpen {
+    ul.navigationListOpen {
       transform: translateX(0%);
     }
 
-    .navigationClose {
+    ul.navigationListClose {
       transform: translateX(100%);
     }
   }

@@ -3,15 +3,20 @@
 
 .container {
   @include flex-item(column, center, center);
-  padding: $padding-section;
   min-height: 80%;
+  padding: $padding-section;
   background-color: $color-section-white;
   text-align: center;
 }
 
-.pageTitle {
-  font-size: $fs-page-title;
-  font-weight: $fw-page-title;
+.title {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.subtitle,
+.cta {
+  font-size: 1.125rem;
 }
 
 .subtitle {
@@ -22,9 +27,4 @@
 
 .cta {
   @include cta-button($color-brand, white);
-}
-
-.subtitle,
-.cta {
-  font-size: 1.125rem;
 }

@@ -34,19 +34,23 @@ const Navbar = (props) => {
       >
         <span className="sr-only">Menu</span>
       </button>
-      <nav>
+      <nav className={styles.navigation}>
         <ul
           className={
             showNavigation
-              ? `${styles.navigation} ${styles.navigationOpen}`
-              : `${styles.navigation} ${styles.navigationClose}`
+              ? `${styles.navigationList} ${styles.navigationListOpen}`
+              : `${styles.navigationList} ${styles.navigationListClose}`
           }
         >
-          <li>For Companies</li>
-          <li>Log in</li>
+          <li>
+            <a href="#">For Companies</a>
+          </li>
+          <li>
+            <a href="#">Log in</a>
+          </li>
           <li>
             <a href="#" className={styles.cta}>
-              Sign up
+              Get started
             </a>
           </li>
         </ul>

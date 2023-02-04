@@ -15,7 +15,7 @@
   width: $width;
 }
 
-@mixin section-landing($background-color: white) {
+@mixin section($background-color: white) {
   gap: $gap-cards;
   padding: $padding-section;
   background-color: $background-color;

@@ -2,7 +2,7 @@
 @use "Styles/mixins" as *;
 
 .container {
-  @include section-landing($color-section-white);
+  @include section($color-section-white);
   @include flex-item(column, center, center);
 
   .cards {
