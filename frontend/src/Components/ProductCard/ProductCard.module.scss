@@ -1,5 +1,5 @@
-@use "../../Styles/mixins" as *;
-@use "../../Styles/variables" as *;
+@use "Styles/mixins" as *;
+@use "Styles/variables" as *;
 
 .container {
   @include flex-item(column, flex-start, flex-end);

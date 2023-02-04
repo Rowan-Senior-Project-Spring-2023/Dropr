@@ -1,5 +1,5 @@
 import styles from "./TrendingDrops.module.scss";
-import ProductCard from "../../../Components/ProductCard/ProductCard";
+import ProductCard from "Components/ProductCard/ProductCard";
 
 const TrendingDrops = (props) => {
   return (
