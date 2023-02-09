@@ -1,35 +1,5 @@
 @use "./variables" as *;
 
-html,
-body,
-#root {
-  height: 100%;
-  width: 100%;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a {
-  font-family: $ff-primary;
-}
-
-a {
-  color: black;
-}
-
-p {
-  max-width: 70ch;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -39,8 +9,4 @@ ul {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
-}
-
-::selection {
-  color: $color-brand;
 }
