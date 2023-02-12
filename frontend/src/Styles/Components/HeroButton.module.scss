@@ -1,0 +1,10 @@
+@use "Styles/tokens" as *;
+
+.button {
+  padding: $ds-padding-hero-button;
+  font-weight: $ds-fw-button-hero;
+  color: $ds-color-button-hero;
+  background-color: $ds-bc-button-hero;
+  // border-radius: $ds-br-primary;
+  text-decoration: none;
+}

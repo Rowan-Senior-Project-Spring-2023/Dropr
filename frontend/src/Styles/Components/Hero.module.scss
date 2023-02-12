@@ -1,0 +1,7 @@
+@use "Styles/tokens" as *;
+
+.container {
+  // make this a mixin
+  display: flex;
+  flex-direction: row;
+}

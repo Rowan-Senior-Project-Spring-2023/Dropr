@@ -1,4 +1,8 @@
-@use "Patterns/00_Tokens/tokens" as *;
+@use "./tokens" as *;
+
+body {
+  font-family: $ds-ff-main;
+}
 
 .sr-only {
   position: absolute;
