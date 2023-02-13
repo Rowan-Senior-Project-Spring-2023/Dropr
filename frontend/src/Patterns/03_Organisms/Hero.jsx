@@ -8,8 +8,9 @@ const Hero = (props) => {
       <HeroText
         heading={"This is a header"}
         description={"This is some description text."}
+        cta={"Get started"}
       />
-      <HeroImage src={} alt={"This is alt text for an image."} />
+      <HeroImage src={""} alt={"This is alt text for an image."} />
     </main>
   );
 };

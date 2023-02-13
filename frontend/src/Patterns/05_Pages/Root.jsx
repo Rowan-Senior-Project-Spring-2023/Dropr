@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import HeroButton from "Patterns/01_Atoms/HeroButton";
+import Hero from "Patterns/03_Organisms/Hero";
 
 const Root = (props) => {
-  return <HeroButton text={"Get started"} />;
+  return <Hero />;
 };
 
 export default Root;
