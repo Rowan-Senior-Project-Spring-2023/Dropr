@@ -10,14 +10,15 @@ $ds-ff-main: "Barlow", sans-serif;
 
 $ds-fs-heading-hero: 4rem;
 $ds-fs-heading: 3rem;
-$ds-fs-body-hero: 1.25rem;
+$ds-fs-body-hero: 1.5rem;
 $ds-fs-body: 1rem;
+$ds-fs-button-hero: 1.5rem;
 
 /*=====================*
  *     Font weights    *
  *=====================*/
 
-$ds-fw-heading-hero: 600;
+$ds-fw-heading-hero: 500;
 $ds-fw-heading-section: 500;
 $ds-fw-body: 400;
 $ds-fw-button-hero: 500;
@@ -35,7 +36,7 @@ $ds-color-button-hero: #fff;
  *  Background Colors  *
  *=====================*/
 
-$ds-bc-hero: #000;
+$ds-bc-hero: #ff90e8;
 $ds-bc-button-hero: #000;
 
 /*=====================*
@@ -52,7 +53,13 @@ $ds-bp-desktop: 100rem;
 $ds-bp-tablet: 50rem;
 
 /*=====================*
+ *       Borders       *
+ *=====================*/
+
+$ds-border-text-hero: 2px solid black;
+
+/*=====================*
  *       Padding       *
  *=====================*/
 
-$ds-padding-hero-button: 1rem 2.5rem;
+$ds-padding-hero-button: 1rem 3.5rem;

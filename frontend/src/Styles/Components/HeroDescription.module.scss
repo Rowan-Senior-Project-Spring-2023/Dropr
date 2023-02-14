@@ -1,1 +1,5 @@
 @use "Styles/tokens" as *;
+
+.description {
+  font-size: $ds-fs-body-hero;
+}

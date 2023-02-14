@@ -6,7 +6,7 @@ import styles from "Styles/Components/HeroText.module.scss";
 const HeroText = (props) => {
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.innerContainer}>
         <HeroHeading text={props.heading} />
         <HeroDescription text={props.description} />
         <HeroButton text={props.cta} />

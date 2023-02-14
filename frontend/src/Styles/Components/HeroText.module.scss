@@ -4,14 +4,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 6.5vw;
+  background-color: $ds-bc-hero;
+  border-right: $ds-border-text-hero;
 
-  & > div {
+  .innerContainer {
     display: flex;
     flex-direction: column;
     gap: 2em;
-
-    a {
-      text-align: center;
-    }
   }
 }

@@ -1,1 +1,6 @@
 @use "Styles/tokens" as *;
+
+.heading {
+  font-size: $ds-fs-heading-hero;
+  font-weight: $ds-fw-heading-hero;
+}

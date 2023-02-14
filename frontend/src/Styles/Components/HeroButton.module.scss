@@ -1,10 +1,13 @@
 @use "Styles/tokens" as *;
 
 .button {
+  align-self: flex-start;
   padding: $ds-padding-hero-button;
+  font-size: $ds-fs-button-hero;
   font-weight: $ds-fw-button-hero;
   color: $ds-color-button-hero;
   background-color: $ds-bc-button-hero;
-  // border-radius: $ds-br-primary;
+  border-radius: $ds-br-primary;
   text-decoration: none;
+  text-align: center;
 }

@@ -6,8 +6,10 @@ const Hero = (props) => {
   return (
     <main className={styles.container}>
       <HeroText
-        heading={"This is a header"}
-        description={"This is some description text."}
+        heading={"Go from zero to 1$"}
+        description={
+          "With Gumroad, anyone can earn their first dollar online. Just start with what you know, see what sticks, and get paid. It’s that easy."
+        }
         cta={"Get started"}
       />
       <HeroImage src={""} alt={"This is alt text for an image."} />
