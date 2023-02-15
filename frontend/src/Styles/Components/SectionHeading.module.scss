@@ -1,0 +1,12 @@
+@use "Styles/tokens" as *;
+
+.heading {
+  font-size: $ds-fs-heading-hero;
+  font-weight: $ds-fw-heading-hero;
+  line-height: $ds-lh-heading-section;
+  text-align: center;
+
+  @media (min-width: $ds-bp-tablet) {
+    text-align: left;
+  }
+}

@@ -1,0 +1,18 @@
+@use "Styles/tokens" as *;
+
+.button {
+  align-self: flex-start;
+  padding: $ds-padding-button-hero;
+  font-size: $ds-fs-button-hero;
+  font-weight: $ds-fw-button-hero;
+  color: $ds-color-button-hero;
+  background-color: $ds-bc-button-hero;
+  border-radius: $ds-br-primary;
+  text-decoration: none;
+  text-align: center;
+  align-self: stretch;
+
+  @media (min-width: $ds-bp-tablet) {
+    align-self: flex-start;
+  }
+}

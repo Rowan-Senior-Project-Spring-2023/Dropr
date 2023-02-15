@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
+import Section from "Patterns/03_Organisms/Section";
 
 const Root = (props) => {
-  return <h1>Hello, world!</h1>;
+  return <Section />;
 };
 
 export default Root;

@@ -1,0 +1,10 @@
+@use "Styles/tokens" as *;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $ds-padding-section;
+  background-color: $ds-bc-image-hero;
+  border-right: $ds-border-text-hero;
+}

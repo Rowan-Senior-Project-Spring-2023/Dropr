@@ -1,0 +1,16 @@
+@use "Styles/tokens" as *;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $ds-padding-section;
+  background-color: $ds-bc-text-hero;
+  border-right: $ds-border-text-hero;
+
+  .innerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  }
+}

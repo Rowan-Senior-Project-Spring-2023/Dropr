@@ -1,0 +1,11 @@
+@use "Styles/tokens" as *;
+
+.description {
+  font-size: $ds-fs-body-hero;
+  text-align: center;
+  // max-width: $ds-width-description-section;
+
+  @media (min-width: $ds-bp-tablet) {
+    text-align: left;
+  }
+}

@@ -1,0 +1,79 @@
+/*=====================*
+ *    Font families    *
+ *=====================*/
+
+$ds-ff-main: "Barlow", sans-serif;
+
+/*=====================*
+ *      Font sizes     *
+ *=====================*/
+
+$ds-fs-heading-hero: clamp(3rem, 3.5vw, 4rem);
+$ds-fs-heading: clamp(2rem, 2.5vw, 3rem);
+$ds-fs-body-hero: clamp(1.25rem, 1.35vw, 1.5rem);
+$ds-fs-body: 1rem;
+$ds-fs-button-hero: clamp(1.25rem, 1.35vw, 1.5rem);
+
+/*=====================*
+ *     Font weights    *
+ *=====================*/
+
+$ds-fw-heading-hero: 500;
+$ds-fw-heading-section: 500;
+$ds-fw-body: 400;
+$ds-fw-button-hero: 500;
+
+/*=====================*
+ *       Colors        *
+ *=====================*/
+
+$ds-color-text-primary: #000;
+$ds-color-text-secondary: rgb(81, 81, 81);
+$ds-color-button-primary: rgb(111, 111, 241);
+$ds-color-button-hero: #fff;
+
+/*=====================*
+ *  Background Colors  *
+ *=====================*/
+
+$ds-bc-text-hero: #ff90e8;
+$ds-bc-image-hero: #ffc900;
+$ds-bc-button-hero: #000;
+
+/*=====================*
+ *     Border radii    *
+ *=====================*/
+
+$ds-br-primary: 0.25rem;
+
+/*=====================*
+ *     Breakpoints     *
+ *=====================*/
+
+$ds-bp-desktop: 100rem;
+$ds-bp-tablet: 50rem;
+
+/*=====================*
+ *       Borders       *
+ *=====================*/
+
+$ds-border-text-hero: 2px solid black;
+
+/*=====================*
+ *     Line Heights    *
+ *=====================*/
+
+$ds-lh-heading-section: 1;
+
+/*=====================*
+ *       Padding       *
+ *=====================*/
+
+$ds-padding-button-hero: 1rem 2rem;
+$ds-padding-section: 6.5vw;
+
+/*=====================*
+ *        Widths       *
+ *=====================*/
+
+$ds-width-description-section: 45ch;
