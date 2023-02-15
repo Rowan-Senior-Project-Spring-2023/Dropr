@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import styles from "Styles/Components/HeroButton.module.scss";
+import styles from "Styles/Components/SectionButton.module.scss";
 
-const HeroButton = (props) => {
+const SectionButton = (props) => {
   return (
     <Link to="#" className={styles.button}>
       {props.text}
@@ -9,4 +9,4 @@ const HeroButton = (props) => {
   );
 };
 
-export default HeroButton;
+export default SectionButton;

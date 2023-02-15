@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import Hero from "Patterns/03_Organisms/Hero";
+import Section from "Patterns/03_Organisms/Section";
 
 const Root = (props) => {
-  return <Hero />;
+  return <Section />;
 };
 
 export default Root;

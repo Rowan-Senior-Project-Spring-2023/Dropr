@@ -1,8 +1,8 @@
-import HeroText from "Patterns/02_Molecules/HeroText";
-import HeroImage from "Patterns/02_Molecules/HeroImage";
-import styles from "Styles/Components/Hero.module.scss";
+import HeroText from "Patterns/02_Molecules/SectionText";
+import HeroImage from "Patterns/02_Molecules/SectionImage";
+import styles from "Styles/Components/Section.module.scss";
 
-const Hero = (props) => {
+const Section = (props) => {
   return (
     <main className={styles.container}>
       <HeroText
@@ -17,4 +17,4 @@ const Hero = (props) => {
   );
 };
 
-export default Hero;
+export default Section;
