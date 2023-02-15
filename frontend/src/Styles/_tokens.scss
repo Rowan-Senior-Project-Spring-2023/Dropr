@@ -8,11 +8,11 @@ $ds-ff-main: "Barlow", sans-serif;
  *      Font sizes     *
  *=====================*/
 
-$ds-fs-heading-hero: 4rem;
-$ds-fs-heading: 3rem;
-$ds-fs-body-hero: 1.5rem;
+$ds-fs-heading-hero: clamp(3rem, 3.5vw, 4rem);
+$ds-fs-heading: clamp(2rem, 2.5vw, 3rem);
+$ds-fs-body-hero: clamp(1.25rem, 1.35vw, 1.5rem);
 $ds-fs-body: 1rem;
-$ds-fs-button-hero: 1.5rem;
+$ds-fs-button-hero: clamp(1.25rem, 1.35vw, 1.5rem);
 
 /*=====================*
  *     Font weights    *
@@ -69,4 +69,11 @@ $ds-lh-heading-section: 1;
  *       Padding       *
  *=====================*/
 
-$ds-padding-hero-button: 1rem 3.5rem;
+$ds-padding-button-hero: 1rem 2rem;
+$ds-padding-section: 6.5vw;
+
+/*=====================*
+ *        Widths       *
+ *=====================*/
+
+$ds-width-description-section: 45ch;

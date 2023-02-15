@@ -5,7 +5,7 @@
   grid-template-columns: auto;
   grid-template-rows: repeat(2, 1fr);
 
-  @media (min-width: 500px) {
+  @media (min-width: $ds-bp-tablet) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
   }
