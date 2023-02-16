@@ -1,11 +1,16 @@
-@use "Styles/tokens" as *;
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
 
 .container {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: repeat(2, 1fr);
 
-  @media (min-width: $ds-bp-tablet) {
+  @media (min-width: breakpoints.$tablet) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
   }
