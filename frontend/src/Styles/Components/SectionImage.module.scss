@@ -1,10 +1,14 @@
-@use "Styles/tokens" as *;
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: $ds-padding-section;
-  background-color: $ds-bc-image-hero;
-  border-right: $ds-border-text-hero;
+  padding: paddings.$section-lg;
+  background-color: colors.$yellow;
 }

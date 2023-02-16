@@ -1,12 +1,17 @@
-@use "Styles/tokens" as *;
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
 
 .heading {
-  font-size: $ds-fs-heading-hero;
-  font-weight: $ds-fw-heading-hero;
-  line-height: $ds-lh-heading-section;
+  font-size: fontSizes.$heading-lg;
+  font-weight: fontWeights.$x500;
+  line-height: 1;
   text-align: center;
 
-  @media (min-width: $ds-bp-tablet) {
+  @media (min-width: breakpoints.$tablet) {
     text-align: left;
   }
 }

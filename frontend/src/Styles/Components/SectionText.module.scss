@@ -1,16 +1,26 @@
-@use "Styles/tokens" as *;
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: $ds-padding-section;
-  background-color: $ds-bc-text-hero;
-  border-right: $ds-border-text-hero;
+  border-bottom: 2px solid colors.$black;
+  padding: paddings.$section-lg;
+  background-color: colors.$pink;
 
   .innerContainer {
     display: flex;
     flex-direction: column;
     gap: 2em;
+  }
+
+  @media (min-width: breakpoints.$tablet) {
+    border-bottom: 0;
+    border-right: 2px solid colors.$black;
   }
 }

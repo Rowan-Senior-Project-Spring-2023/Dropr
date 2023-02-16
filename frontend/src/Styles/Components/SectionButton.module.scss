@@ -1,18 +1,23 @@
-@use "Styles/tokens" as *;
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
 
 .button {
   align-self: flex-start;
-  padding: $ds-padding-button-hero;
-  font-size: $ds-fs-button-hero;
-  font-weight: $ds-fw-button-hero;
-  color: $ds-color-button-hero;
-  background-color: $ds-bc-button-hero;
-  border-radius: $ds-br-primary;
+  padding: paddings.$button-lg;
+  font-size: fontSizes.$button-lg;
+  font-weight: fontWeights.$x500;
+  color: colors.$white;
+  background-color: colors.$black;
+  border-radius: 0.25rem;
   text-decoration: none;
   text-align: center;
   align-self: stretch;
 
-  @media (min-width: $ds-bp-tablet) {
+  @media (min-width: breakpoints.$tablet) {
     align-self: flex-start;
   }
 }
