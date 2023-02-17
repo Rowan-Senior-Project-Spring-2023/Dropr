@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import styles from "Styles/Components/Button.module.scss";
 
-const Button = ({ label, size = "medium" }) => {
+const Button = ({ text, size = "medium" }) => {
   let classNames = null;
   if (size === "small") classNames = styles.buttonSmall;
   if (size === "medium") classNames = styles.buttonMedium;
@@ -11,7 +11,7 @@ const Button = ({ label, size = "medium" }) => {
   // Refactor to handle actions, not just links
   return (
     <Link to="#" className={classNames}>
-      {label}
+      {text}
     </Link>
   );
 };

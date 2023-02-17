@@ -1,4 +1,4 @@
-import HeroHeading from "Patterns/01_Atoms/SectionHeading";
+import Heading from "Patterns/01_Atoms/Heading";
 import HeroDescription from "Patterns/01_Atoms/Paragraph";
 import Button from "Patterns/01_Atoms/Button";
 import styles from "Styles/Components/SectionText.module.scss";
@@ -7,9 +7,9 @@ const SectionText = (props) => {
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
-        <HeroHeading text={props.heading} />
+        <Heading level={1} text={"Go from zero to 1$"} size="large" />
         <HeroDescription text={props.description} />
-        <Button label={props.cta} size="large" />
+        <Button text={props.cta} size="large" />
       </div>
     </div>
   );
