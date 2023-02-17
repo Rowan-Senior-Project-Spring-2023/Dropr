@@ -10,7 +10,7 @@ const Section = (props) => {
         description={
           "With Gumroad, anyone can earn their first dollar online. Just start with what you know, see what sticks, and get paid. It’s that easy."
         }
-        cta={"Get started"}
+        cta={"asdadsa"}
       />
       <HeroImage src={""} alt={"This is alt text for an image."} />
     </main>

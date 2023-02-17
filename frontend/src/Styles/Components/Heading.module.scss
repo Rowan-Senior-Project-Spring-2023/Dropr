@@ -5,11 +5,27 @@
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
 
-.description {
-  font-size: fontSizes.$body-lg;
+%heading {
+  font-weight: fontWeights.$x500;
+  line-height: 1;
   text-align: center;
 
   @media (min-width: breakpoints.$tablet) {
     text-align: left;
   }
+}
+
+.headingSmall {
+  @extend %heading;
+  font-size: fontSizes.$heading-small;
+}
+
+.headingMedium {
+  @extend %heading;
+  font-size: fontSizes.$heading-medium;
+}
+
+.headingLarge {
+  @extend %heading;
+  font-size: fontSizes.$heading-large;
 }

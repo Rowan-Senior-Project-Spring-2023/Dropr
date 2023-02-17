@@ -1,15 +1,15 @@
-import HeroHeading from "Patterns/01_Atoms/SectionHeading";
-import HeroDescription from "Patterns/01_Atoms/SectionDescription";
-import HeroButton from "Patterns/01_Atoms/SectionButton";
+import Heading from "Patterns/01_Atoms/Heading";
+import HeroDescription from "Patterns/01_Atoms/Paragraph";
+import Button from "Patterns/01_Atoms/Button";
 import styles from "Styles/Components/SectionText.module.scss";
 
 const SectionText = (props) => {
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
-        <HeroHeading text={props.heading} />
+        <Heading level={1} text={"Go from zero to 1$"} size="large" />
         <HeroDescription text={props.description} />
-        <HeroButton text={props.cta} />
+        <Button text={props.cta} size="large" />
       </div>
     </div>
   );

@@ -1,0 +1,38 @@
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
+
+%button {
+  padding: paddings.$button-large;
+  font-size: fontSizes.$button-large;
+  font-weight: fontWeights.$x500;
+  color: colors.$white;
+  background-color: colors.$black;
+  border-radius: 0.25rem;
+  align-self: flex-start;
+  text-decoration: none;
+  text-align: center;
+  align-self: stretch;
+
+  @media (min-width: breakpoints.$tablet) {
+    align-self: flex-start;
+  }
+}
+
+.buttonSmall {
+  @extend %button;
+  font-size: fontSizes.$button-small;
+}
+
+.buttonMedium {
+  @extend %button;
+  font-size: fontSizes.$button-medium;
+}
+
+.buttonLarge {
+  @extend %button;
+  font-size: fontSizes.$button-large;
+}

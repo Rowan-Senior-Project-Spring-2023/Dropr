@@ -5,19 +5,11 @@
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
 
-.button {
-  align-self: flex-start;
-  padding: paddings.$button-lg;
-  font-size: fontSizes.$button-lg;
-  font-weight: fontWeights.$x500;
-  color: colors.$white;
-  background-color: colors.$black;
-  border-radius: 0.25rem;
-  text-decoration: none;
+.paragraph {
+  font-size: fontSizes.$paragraph-large;
   text-align: center;
-  align-self: stretch;
 
   @media (min-width: breakpoints.$tablet) {
-    align-self: flex-start;
+    text-align: left;
   }
 }
