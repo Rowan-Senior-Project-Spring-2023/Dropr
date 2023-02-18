@@ -16,6 +16,8 @@
   text-decoration: none;
   text-align: center;
   align-self: stretch;
+  border: 0;
+  cursor: pointer;
 
   @media (min-width: breakpoints.$tablet) {
     align-self: flex-start;
