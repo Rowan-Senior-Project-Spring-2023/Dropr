@@ -12,3 +12,15 @@ Large.args = {
   text: "Press me",
   size: "large",
 };
+
+export const Medium = Template.bind({});
+Medium.args = {
+  text: "Press me",
+  size: "medium",
+};
+
+export const Small = Template.bind({});
+Small.args = {
+  text: "Press me",
+  size: "small",
+};
