@@ -1,12 +1,25 @@
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "Styles/Components/Button.module.scss";
 
 const Button = ({ text, size = "medium", onClick }) => {
-  let classNames = null;
-  if (size === "small") classNames = styles.buttonSmall;
-  if (size === "medium") classNames = styles.buttonMedium;
-  if (size === "large") classNames = styles.buttonLarge;
+  const [classNames, setClassNames] = useState("");
 
+  useEffect(() => {
+    if (size === "small") {
+      setClassNames(styles.buttonSmall);
+    }
+
+    if (size === "medium") {
+      setClassNames(styles.buttonMedium);
+    }
+
+    if (size === "large") {
+      setClassNames(styles.buttonLarge);
+    }
+  }, []);
+
+  console.log(classNames);
   return (
     <button onClick={onClick} className={classNames}>
       {text}
