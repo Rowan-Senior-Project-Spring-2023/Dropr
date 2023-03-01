@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Section from "Patterns/03_Organisms/Section";
-import SectionText from "Patterns/02_Molecules/SectionText";
-import SectionImage from "Patterns/02_Molecules/SectionImage";
+import Section from "Patterns/03_Organisms/Section/Section";
+import SectionText from "Patterns/02_Molecules/Section Text/SectionText";
+import SectionImage from "Patterns/02_Molecules/Section Image/SectionImage";
 
 const Root = (props) => {
   return (

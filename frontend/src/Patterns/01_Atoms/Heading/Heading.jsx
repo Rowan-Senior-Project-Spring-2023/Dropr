@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import styles from "Styles/Components/Heading.module.scss";
+import styles from "./Heading.module.scss";
 
 const Heading = ({ level, text, size = "medium" }) => {
   const HeadingTag = `h${level}`; // dynamically creates h1-6 based on level prop

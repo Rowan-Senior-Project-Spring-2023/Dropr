@@ -1,4 +1,4 @@
-import Link from "../01_Atoms/Link";
+import Link from "../../01_Atoms/Link/Link";
 
 const Links = (props) => {
   return (

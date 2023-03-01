@@ -1,7 +1,7 @@
-import Heading from "Patterns/01_Atoms/Heading";
-import Paragraph from "Patterns/01_Atoms/Paragraph";
-import Button from "Patterns/01_Atoms/Button";
-import styles from "Styles/Components/SectionText.module.scss";
+import Heading from "Patterns/01_Atoms/Heading/Heading";
+import Paragraph from "Patterns/01_Atoms/Paragraph/Paragraph";
+import Button from "Patterns/01_Atoms/Button/Button";
+import styles from "./SectionText.module.scss";
 
 const SectionText = (props) => {
   return (

@@ -1,4 +1,4 @@
-import Button from "Patterns/01_Atoms/Button";
+import Button from "Patterns/01_Atoms/Button/Button";
 
 export default {
   title: "Button",
