@@ -31,9 +31,11 @@
 
 .containerTwoChildren {
   @extend %container;
+  grid-template-columns: 1fr;
   grid-template-rows: repeat(2, 1fr);
 
   @media (min-width: breakpoints.$tablet) {
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
   }
 }
