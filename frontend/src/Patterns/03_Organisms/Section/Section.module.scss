@@ -5,7 +5,7 @@
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
 
-// I should probably refactor a lot of this, pretty unreadable. Stretch goal.
+// I should refactor this: unreadable. Stretch goal.
 
 %container {
   display: grid;

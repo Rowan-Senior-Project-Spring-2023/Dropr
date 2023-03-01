@@ -25,7 +25,11 @@ const Root = (props) => {
           />,
         ]}
       />
-      <Banner />
+      <Banner
+        level={2}
+        text={"Share your work. Someone out there needs it."}
+        size={"extra large"}
+      />
     </>
   );
 };

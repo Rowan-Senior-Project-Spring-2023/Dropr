@@ -1,14 +1,8 @@
 import Heading from "Patterns/01_Atoms/Heading/Heading";
-import Button from "Patterns/01_Atoms/Button/Button";
 import styles from "./BannerText.module.scss";
 
-const BannerText = ({ heading, button }) => {
-  return (
-    <>
-      <Heading />
-      <Button />
-    </>
-  );
+const BannerText = ({ level, text, size }) => {
+  return <Heading level={level} text={text} size={size} />;
 };
 
 export default BannerText;

@@ -1,0 +1,15 @@
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: paddings.$banner-large;
+  background-color: colors.$teal;
+  border: 2px solid colors.$black;
+}
