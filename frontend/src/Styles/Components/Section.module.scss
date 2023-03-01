@@ -1,0 +1,39 @@
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
+
+// I should probably refactor a lot of this, pretty unreadable. Stretch goal.
+
+%container {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto;
+}
+
+.containerOneChild {
+  @extend %container;
+
+  & > div {
+    border: 0;
+  }
+
+  & * {
+    text-align: center;
+  }
+
+  button {
+    align-self: center;
+  }
+}
+
+.containerTwoChildren {
+  @extend %container;
+  grid-template-rows: repeat(2, 1fr);
+
+  @media (min-width: breakpoints.$tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

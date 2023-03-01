@@ -1,4 +1,8 @@
-@use "Patterns/00_Tokens/tokens" as *;
+@use "./Tokens/FontNames" as fontNames;
+
+body {
+  font-family: fontNames.$barlow;
+}
 
 .sr-only {
   position: absolute;

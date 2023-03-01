@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import "./App.scss";
 import Root from "Patterns/05_Pages/Root";
 import Error from "Patterns/05_Pages/Error";
+import HeroButton from "Patterns/01_Atoms/Button";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        // element: <Landing />,
+        element: <HeroButton text={"Get started"} />,
       },
     ],
   },

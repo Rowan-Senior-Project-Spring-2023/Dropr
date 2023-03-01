@@ -1,11 +1,7 @@
 # Dropr
 
-Lorem ipsum...
+Bridging the gap between companies, products, and users.
 
 # Collaborators
 
-Vince Corradetti, Brian Campana, Anas Amir, Zachary Dilks
-
-## Workflow
-
-Gist link goes here...
+Vince Corradetti, Brian Campana, Anas Amir, & Zachary Dilks.
