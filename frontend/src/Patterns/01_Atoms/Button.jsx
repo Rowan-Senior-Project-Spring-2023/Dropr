@@ -19,7 +19,6 @@ const Button = ({ text, size = "medium", onClick }) => {
     }
   }, []);
 
-  console.log(classNames);
   return (
     <button onClick={onClick} className={classNames}>
       {text}
