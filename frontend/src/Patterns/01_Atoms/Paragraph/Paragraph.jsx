@@ -1,5 +1,5 @@
 import { PropTypes } from "prop-types";
-import styles from "Styles/Components/Paragraph.module.scss";
+import styles from "./Paragraph.module.scss";
 
 const Paragraph = ({ text, size = "medium" }) => {
   return <p className={styles.paragraph}>{text}</p>;

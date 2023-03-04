@@ -7,8 +7,13 @@
 
 .container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: paddings.$section-large;
-  background-color: colors.$yellow;
+  justify-content: center;
+  padding: paddings.$banner-large;
+  background-color: colors.$teal;
+  border: 2px solid colors.$black;
+
+  & * {
+    text-align: center; // specificity ftw
+  }
 }

@@ -29,3 +29,8 @@
   @extend %heading;
   font-size: fontSizes.$heading-large;
 }
+
+.headingExtraLarge {
+  @extend %heading;
+  font-size: fontSizes.$heading-extra-large;
+}

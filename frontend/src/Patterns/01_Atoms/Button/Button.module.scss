@@ -12,15 +12,14 @@
   color: colors.$white;
   background-color: colors.$black;
   border-radius: 0.25rem;
-  align-self: flex-start;
   text-decoration: none;
   text-align: center;
-  align-self: stretch;
   border: 0;
   cursor: pointer;
+  align-self: stretch;
 
   @media (min-width: breakpoints.$tablet) {
-    align-self: flex-start;
+    max-width: fit-content;
   }
 }
 

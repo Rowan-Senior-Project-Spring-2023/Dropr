@@ -1,6 +1,4 @@
-import SectionText from "Patterns/02_Molecules/SectionText";
-import SectionImage from "Patterns/02_Molecules/SectionImage";
-import styles from "Styles/Components/Section.module.scss";
+import styles from "./Section.module.scss";
 
 const Section = ({ children }) => {
   let classNames = "";

@@ -1,4 +1,4 @@
-import styles from "Styles/Components/SectionImage.module.scss";
+import styles from "./SectionImage.module.scss";
 
 const SectionImage = (props) => {
   return (
