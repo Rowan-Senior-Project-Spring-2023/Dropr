@@ -16,7 +16,11 @@
   text-align: center;
   border: 0;
   cursor: pointer;
-  max-width: fit-content;
+  align-self: stretch;
+
+  @media (min-width: breakpoints.$tablet) {
+    max-width: fit-content;
+  }
 }
 
 .buttonSmall {

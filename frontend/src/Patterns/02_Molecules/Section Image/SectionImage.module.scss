@@ -11,4 +11,8 @@
   align-items: center;
   padding: paddings.$section-large;
   background-color: colors.$yellow;
+
+  .image {
+    max-height: 50vh;
+  }
 }
