@@ -1,5 +1,5 @@
-const FormLabel = ({ forProp, text }) => {
-  return <label for={forProp}>{text}</label>;
+const FormLabel = ({ htmlFor, text }) => {
+  return <label htmlFor={htmlFor}>{text}</label>;
 };
 
 export default FormLabel;
