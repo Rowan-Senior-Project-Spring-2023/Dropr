@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
 
-const Button = ({ text, size = "medium", onClick }) => {
+const Button = ({ text, size = "medium", onClick, type }) => {
   const [classNames, setClassNames] = useState("");
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Button = ({ text, size = "medium", onClick }) => {
   }, []);
 
   return (
-    <button onClick={onClick} className={classNames}>
+    <button onClick={onClick} className={classNames} type={type ? type : null}>
       {text}
     </button>
   );
