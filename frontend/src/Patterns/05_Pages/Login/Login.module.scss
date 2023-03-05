@@ -9,14 +9,12 @@
 
 .page {
   display: flex;
-  max-height: 100vh;
-  overflow: hidden;
 
   .loginArea {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: colors.$white-grey;
+    background-color: colors.$grey;
     padding: paddings.$login-signup-area;
     height: heights.$login-signup-area;
     gap: 5rem;
@@ -27,11 +25,23 @@
     }
   }
 
-  .image {
+  .imageContainer {
+    position: relative;
     display: none;
+    max-width: 40vw;
+    max-height: 100vh;
+
+    .image {
+      position: relative;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
 
     @media (min-width: breakpoints.$tablet) {
-      display: block;
+      display: grid;
     }
   }
 }

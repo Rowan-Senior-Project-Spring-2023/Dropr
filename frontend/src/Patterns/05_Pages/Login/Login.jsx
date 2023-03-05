@@ -9,11 +9,15 @@ const Login = () => {
     <div className={styles.page}>
       <main className={styles.loginArea}>
         <header>
-          <Heading level={1} text={"Welcome back"} className={styles.heading} />
+          <Heading
+            level={1}
+            text={"Welcome back!"}
+            className={styles.heading}
+          />
         </header>
         <Form className={styles.form} />
       </main>
-      <aside>
+      <aside className={styles.imageContainer}>
         <Image
           src={loginImage}
           alt={"Background image for the Login page."}
