@@ -4,8 +4,17 @@
 @use "Styles/Tokens/FontSizes" as fontSizes;
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
+@use "Styles/Tokens/Heights" as heights;
+@use "Styles/Tokens/Widths" as widths;
 
-.formField {
+.loginArea {
   display: flex;
   flex-direction: column;
+  background-color: colors.$white-grey;
+  padding: paddings.$login-signup-area;
+  height: heights.$login-signup-area;
+
+  @media (min-width: breakpoints.$tablet) {
+    max-width: widths.$login-signup-area;
+  }
 }

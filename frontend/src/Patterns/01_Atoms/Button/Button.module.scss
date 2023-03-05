@@ -4,36 +4,36 @@
 @use "Styles/Tokens/FontSizes" as fontSizes;
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
+@use "Styles/Tokens/BorderRadii" as borderRadii;
 
-%button {
-  padding: paddings.$button-large;
-  font-size: fontSizes.$button-large;
+.button {
+  padding: paddings.$button;
   font-weight: fontWeights.$x500;
   color: colors.$white;
   background-color: colors.$black;
-  border-radius: 0.25rem;
+  border-radius: borderRadii.$button;
   text-decoration: none;
   text-align: center;
   border: 0;
   cursor: pointer;
-  align-self: stretch;
+  // align-self: stretch;
 
-  @media (min-width: breakpoints.$tablet) {
-    max-width: fit-content;
-  }
+  // @media (min-width: breakpoints.$tablet) {
+  //   max-width: fit-content;
+  // }
 }
 
 .buttonSmall {
-  @extend %button;
+  @extend .button;
   font-size: fontSizes.$button-small;
 }
 
 .buttonMedium {
-  @extend %button;
+  @extend .button;
   font-size: fontSizes.$button-medium;
 }
 
 .buttonLarge {
-  @extend %button;
+  @extend .button;
   font-size: fontSizes.$button-large;
 }

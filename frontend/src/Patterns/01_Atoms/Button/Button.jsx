@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
 
-const Button = ({ text, size = "medium", onClick, type = "button" }) => {
-  const [classNames, setClassNames] = useState("");
+const Button = ({ text, size, onClick, type = "button" }) => {
+  const [classNames, setClassNames] = useState(styles.button);
 
   useEffect(() => {
     if (size === "small") {

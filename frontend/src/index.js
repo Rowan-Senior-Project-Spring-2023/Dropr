@@ -6,7 +6,7 @@ import "./App.scss";
 import Root from "Patterns/05_Pages/Root";
 import Error from "Patterns/05_Pages/Error";
 import Landing from "Patterns/05_Pages/Landing";
-import Login from "Patterns/05_Pages/Login";
+import Login from "Patterns/05_Pages/Login/Login";
 import Signup from "Patterns/05_Pages/Signup";
 
 const router = createBrowserRouter([

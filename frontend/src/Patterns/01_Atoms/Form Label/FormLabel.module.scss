@@ -4,3 +4,7 @@
 @use "Styles/Tokens/FontSizes" as fontSizes;
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
+
+.label {
+  margin-bottom: 0.5em;
+}
