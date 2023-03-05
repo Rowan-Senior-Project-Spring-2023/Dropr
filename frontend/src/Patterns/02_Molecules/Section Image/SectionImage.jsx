@@ -1,10 +1,10 @@
 import Image from "Patterns/01_Atoms/Image/Image";
 import styles from "./SectionImage.module.scss";
 
-const SectionImage = (props) => {
+const SectionImage = ({ src, alt }) => {
   return (
     <div className={styles.container}>
-      <Image src={props.src} alt={props.alt} className={styles.image} />
+      <Image src={src} alt={"Picture of Vegalia"} className={styles.image} />
     </div>
   );
 };

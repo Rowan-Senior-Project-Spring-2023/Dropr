@@ -1,5 +1,6 @@
 import Heading from "Patterns/01_Atoms/Heading/Heading";
 import Form from "Patterns/03_Organisms/Form/Form";
+import Image from "Patterns/01_Atoms/Image/Image";
 import styles from "./Login.module.scss";
 
 const Login = () => {
@@ -11,7 +12,9 @@ const Login = () => {
         </header>
         <Form className={styles.form} />
       </main>
-      <aside></aside>
+      <aside>
+        <Image />
+      </aside>
     </>
   );
 };
