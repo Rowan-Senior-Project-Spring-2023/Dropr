@@ -7,15 +7,31 @@
 @use "Styles/Tokens/Heights" as heights;
 @use "Styles/Tokens/Widths" as widths;
 
-.loginArea {
+.page {
   display: flex;
-  flex-direction: column;
-  background-color: colors.$white-grey;
-  padding: paddings.$login-signup-area;
-  height: heights.$login-signup-area;
-  gap: 5rem;
+  max-height: 100vh;
+  overflow: hidden;
 
-  @media (min-width: breakpoints.$tablet) {
-    max-width: widths.$login-signup-area;
+  .loginArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: colors.$white-grey;
+    padding: paddings.$login-signup-area;
+    height: heights.$login-signup-area;
+    gap: 5rem;
+    width: 100%;
+
+    @media (min-width: breakpoints.$tablet) {
+      width: widths.$login-signup-area;
+    }
+  }
+
+  .image {
+    display: none;
+
+    @media (min-width: breakpoints.$tablet) {
+      display: block;
+    }
   }
 }

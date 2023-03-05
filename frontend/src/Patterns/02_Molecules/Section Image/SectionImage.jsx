@@ -4,7 +4,7 @@ import styles from "./SectionImage.module.scss";
 const SectionImage = ({ src, alt }) => {
   return (
     <div className={styles.container}>
-      <Image src={src} alt={"Picture of Vegalia"} className={styles.image} />
+      <Image src={src} alt={alt} className={styles.image} />
     </div>
   );
 };
