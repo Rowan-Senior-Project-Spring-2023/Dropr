@@ -13,6 +13,7 @@
   background-color: colors.$white-grey;
   padding: paddings.$login-signup-area;
   height: heights.$login-signup-area;
+  gap: 5rem;
 
   @media (min-width: breakpoints.$tablet) {
     max-width: widths.$login-signup-area;

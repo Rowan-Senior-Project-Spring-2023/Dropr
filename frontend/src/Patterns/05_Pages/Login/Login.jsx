@@ -4,10 +4,15 @@ import styles from "./Login.module.scss";
 
 const Login = () => {
   return (
-    <section className={styles.loginArea}>
-      <Heading level={1} text={"Welcome back"} />
-      <Form />
-    </section>
+    <>
+      <main className={styles.loginArea}>
+        <header>
+          <Heading level={1} text={"Welcome back"} className={styles.heading} />
+        </header>
+        <Form className={styles.form} />
+      </main>
+      <aside></aside>
+    </>
   );
 };
 

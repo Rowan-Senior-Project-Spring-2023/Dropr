@@ -2,7 +2,6 @@ import BannerText from "Patterns/02_Molecules/Banner Text/BannerText";
 import styles from "./Banner.module.scss";
 
 const Banner = ({ level, text, size }) => {
-  console.log(text);
   return (
     <section className={styles.container}>
       <BannerText level={level} text={text} size={size} />
