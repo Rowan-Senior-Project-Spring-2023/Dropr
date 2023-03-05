@@ -5,18 +5,12 @@
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
 
-.container {
+.form {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: paddings.$section-large;
-  background-color: colors.$yellow;
+  flex-direction: column;
+  gap: 1.5rem;
 
-  .image {
-    max-width: 100%;
-
-    @media (min-width: breakpoints.$desktop) {
-      max-width: 36rem;
-    }
+  button {
+    border: 1px solid colors.$black;
   }
 }

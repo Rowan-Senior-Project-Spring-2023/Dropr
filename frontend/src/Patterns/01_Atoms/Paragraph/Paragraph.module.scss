@@ -7,9 +7,9 @@
 
 .paragraph {
   font-size: fontSizes.$paragraph-large;
-  text-align: center;
+  // text-align: center;
 
-  @media (min-width: breakpoints.$tablet) {
-    text-align: left;
-  }
+  // @media (min-width: breakpoints.$tablet) {
+  //   text-align: left;
+  // }
 }

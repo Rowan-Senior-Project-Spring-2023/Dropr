@@ -8,11 +8,11 @@
 %heading {
   font-weight: fontWeights.$x500;
   line-height: 1;
-  text-align: center;
+  // text-align: center;
 
-  @media (min-width: breakpoints.$tablet) {
-    text-align: left;
-  }
+  // @media (min-width: breakpoints.$tablet) {
+  //   text-align: left;
+  // }
 }
 
 .headingSmall {

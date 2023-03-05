@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-const Root = (props) => {
+const Root = () => {
   return <Outlet />;
 };
 

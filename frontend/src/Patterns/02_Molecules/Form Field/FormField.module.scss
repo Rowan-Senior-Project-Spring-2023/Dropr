@@ -5,18 +5,7 @@
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
 
-.container {
+.formField {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: paddings.$section-large;
-  background-color: colors.$yellow;
-
-  .image {
-    max-width: 100%;
-
-    @media (min-width: breakpoints.$desktop) {
-      max-width: 36rem;
-    }
-  }
+  flex-direction: column;
 }

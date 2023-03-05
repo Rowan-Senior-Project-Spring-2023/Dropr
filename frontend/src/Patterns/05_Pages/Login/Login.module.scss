@@ -1,0 +1,47 @@
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
+@use "Styles/Tokens/Heights" as heights;
+@use "Styles/Tokens/Widths" as widths;
+
+.page {
+  display: flex;
+
+  .loginArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: colors.$grey;
+    padding: paddings.$login-signup-area;
+    height: heights.$login-signup-area;
+    gap: 5rem;
+    width: 100%;
+
+    @media (min-width: breakpoints.$tablet) {
+      width: widths.$login-signup-area;
+    }
+  }
+
+  .imageContainer {
+    position: relative;
+    display: none;
+    max-width: 40vw;
+    max-height: 100vh;
+
+    .image {
+      position: relative;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    @media (min-width: breakpoints.$tablet) {
+      display: grid;
+    }
+  }
+}

@@ -20,7 +20,7 @@ const Landing = () => {
           />,
           <SectionImage
             src={mainSectionImage}
-            alt={"This is alt text for an image."}
+            alt={"Picture of Vegalia."}
             key={2}
           />,
         ]}
