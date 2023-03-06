@@ -5,10 +5,7 @@
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
 
-.container {
+.formField {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: paddings.$section-large;
-  background-color: colors.$yellow;
+  flex-direction: column;
 }

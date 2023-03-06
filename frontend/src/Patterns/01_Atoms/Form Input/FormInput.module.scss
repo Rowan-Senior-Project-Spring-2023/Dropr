@@ -1,0 +1,13 @@
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
+@use "Styles/Tokens/BorderRadii" as borderRadii;
+
+.input {
+  padding: paddings.$button;
+  border-radius: borderRadii.$button;
+  border: 1px solid colors.$light-grey;
+}
