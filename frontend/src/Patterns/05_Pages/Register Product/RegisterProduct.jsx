@@ -2,9 +2,10 @@ import styles from "./RegisterProduct.module.scss";
 
 const RegisterProduct = () => {
   return (
-    <section>
-      <h1>Register a Product</h1>
-    </section>
+    <div>
+      <h1>Register a product</h1>
+      <form></form>
+    </div>
   );
 };
 
