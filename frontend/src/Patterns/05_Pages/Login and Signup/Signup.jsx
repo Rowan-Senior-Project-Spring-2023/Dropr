@@ -1,17 +1,17 @@
 import Heading from "Patterns/01_Atoms/Heading/Heading";
 import Form from "Patterns/03_Organisms/Form/Form";
 import Image from "Patterns/01_Atoms/Image/Image";
-import styles from "./Login.module.scss";
+import styles from "./LoginAndSignup.module.scss";
 import loginImage from "Assets/Login-and-Signup.webp";
 
-const Login = () => {
+const Signup = () => {
   return (
     <div className={styles.page}>
-      <main className={styles.loginArea}>
+      <main className={styles.actionArea}>
         <header>
           <Heading
             level={1}
-            text={"Welcome back!"}
+            text={"Join now and start subscribing to over 100,000 products."}
             className={styles.heading}
           />
         </header>
@@ -28,4 +28,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
