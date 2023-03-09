@@ -8,6 +8,7 @@ import Error from "Patterns/05_Pages/Error";
 import Landing from "Patterns/05_Pages/Landing";
 import Login from "Patterns/05_Pages/Login and Signup/Login";
 import Signup from "Patterns/05_Pages/Login and Signup/Signup";
+import Home from "Patterns/05_Pages/Home/Home";
 import RegisterProduct from "Patterns/05_Pages/Register Product/RegisterProduct";
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
       },
       {
         path: "/register-product",
