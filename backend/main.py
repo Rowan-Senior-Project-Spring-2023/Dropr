@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends
+from fastapi.middleware.cors import CORSMiddleware
 
 # Database Imports
 import models
@@ -7,6 +8,22 @@ from database import engine, SessionLocal
 from sqlalchemy.orm import Session
 
 app = FastAPI()
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+    "http://localhost:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Creates the database and table if it doesn't already exist
 models.Base.metadata.create_all(bind=engine)
@@ -17,6 +34,11 @@ def get_db():
         yield db
     finally:
         db.close()
+
+@app.post("/connected")
+def connect():
+    print("THIS METHOD WAS CALLED")
+    return "CONNECTED"
 
 @app.get("/products")
 def all_products(db: Session = Depends(get_db)):

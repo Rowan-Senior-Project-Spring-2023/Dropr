@@ -3,6 +3,15 @@ import Button from "Patterns/01_Atoms/Button/Button";
 import styles from "./Form.module.scss";
 
 const Form = ({ action, method }) => {
+  const handleClick = async (event) => {
+    event.preventDefault();
+    const response = await fetch("http://localhost:8000/connected", {
+      method: "POST", 
+      headers: { "Access-Control-Allow-Origin": "*"}
+    });
+    alert(response)
+  }
+
   return (
     <form action={action} method={method} className={styles.form}>
       <FormField
@@ -17,7 +26,7 @@ const Form = ({ action, method }) => {
         inputText={""}
         inputType={"password"}
       />
-      <Button text={"Log in"} type={"submit"} />
+      <Button text={"Log in"} type={"submit"} onClick={handleClick}/>
     </form>
   );
 };
