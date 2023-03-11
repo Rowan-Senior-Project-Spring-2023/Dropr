@@ -12,7 +12,7 @@
   padding: paddings.$section-large;
   background-color: colors.$yellow;
 
-  .image {
+  img {
     max-width: 100%;
 
     @media (min-width: breakpoints.$desktop) {
