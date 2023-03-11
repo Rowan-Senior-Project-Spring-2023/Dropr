@@ -7,7 +7,7 @@ const SectionText = (props) => {
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
-        <Heading level={1} text={"Go from zero to 1$"} size="large" />
+        <Heading variant={"hero"} text={"Go from zero to 1$"} />
         <Paragraph text={props.description} />
         <Button text={props.cta} size="large" />
       </div>
