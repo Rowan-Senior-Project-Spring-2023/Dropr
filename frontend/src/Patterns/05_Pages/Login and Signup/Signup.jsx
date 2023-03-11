@@ -10,7 +10,7 @@ const Signup = () => {
       <main className={styles.actionArea}>
         <header>
           <Heading
-            level={1}
+            variant={"section"}
             text={"Join now and start subscribing to over 100,000 products."}
             className={styles.heading}
           />

@@ -7,12 +7,12 @@
 
 %heading {
   line-height: 1;
+  font-weight: fontWeights.$x500;
 }
 
 .hero {
   @extend %heading;
   font-size: fontSizes.$heading-hero;
-  font-weight: fontWeights.$x500;
 }
 
 .section {
