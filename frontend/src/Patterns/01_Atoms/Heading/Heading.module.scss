@@ -6,31 +6,26 @@
 @use "Styles/Tokens/Paddings" as paddings;
 
 %heading {
-  font-weight: fontWeights.$x500;
   line-height: 1;
-  // text-align: center;
-
-  // @media (min-width: breakpoints.$tablet) {
-  //   text-align: left;
-  // }
 }
 
-.headingSmall {
+.hero {
   @extend %heading;
-  font-size: fontSizes.$heading-small;
+  font-size: fontSizes.$heading-hero;
+  font-weight: fontWeights.$x500;
 }
 
-.headingMedium {
+.section {
   @extend %heading;
-  font-size: fontSizes.$heading-medium;
+  font-size: fontSizes.$heading-section;
 }
 
-.headingLarge {
+.banner {
   @extend %heading;
-  font-size: fontSizes.$heading-large;
+  font-size: fontSizes.$heading-banner;
 }
 
-.headingExtraLarge {
+.card {
   @extend %heading;
-  font-size: fontSizes.$heading-extra-large;
+  font-size: fontSizes.$heading-card;
 }
