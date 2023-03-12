@@ -30,5 +30,5 @@
 
 .buttonForm {
   @extend %button;
-  align-self: stretch;
+  min-width: 100%;
 }

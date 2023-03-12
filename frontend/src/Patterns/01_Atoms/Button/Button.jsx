@@ -16,14 +16,14 @@ const Button = ({ variant, text, onClick, type = "button" }) => {
   }, []);
 
   return (
-    <button onClick={onClick} className={classNames} type={type}>
+    <button onClick={onClick} type={type} className={classNames}>
       {text}
     </button>
   );
 };
 
 Button.propTypes = {
-  variant: PropTypes.oneOf(["section", "card"]),
+  variant: PropTypes.oneOf(["section", "form", "card"]),
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
