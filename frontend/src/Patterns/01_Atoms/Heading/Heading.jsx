@@ -17,6 +17,10 @@ const Heading = ({ variant, text }) => {
   if (variant === "card") {
     return <h3 className={styles.card}>{text}</h3>;
   }
+
+  if (variant === "card-container") {
+    return <h2 className={styles.cardContainer}>{text}</h2>;
+  }
 };
 
 Heading.propTypes = {

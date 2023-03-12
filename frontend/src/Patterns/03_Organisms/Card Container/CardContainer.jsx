@@ -5,7 +5,7 @@ import styles from "./CardContainer.module.scss";
 const CardContainer = ({ children }) => {
   return (
     <section className={styles.container}>
-      <Heading variant={"card"} text={"card container"} />
+      <Heading variant={"card-container"} text={"Trending drops"} />
       <div className={styles.cardContainer}>{children}</div>
     </section>
   );

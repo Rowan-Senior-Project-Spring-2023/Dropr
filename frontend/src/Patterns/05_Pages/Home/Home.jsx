@@ -12,6 +12,8 @@ const Home = () => {
         <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
         <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
         <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
+        <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
+        <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
       </CardContainer>
     </div>
   );

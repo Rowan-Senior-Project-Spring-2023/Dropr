@@ -10,6 +10,4 @@
 
 .card {
   @extend %image;
-  border: 1px solid colors.$black;
-  border-bottom: 0;
 }
