@@ -9,7 +9,7 @@ const SectionText = (props) => {
       <div className={styles.innerContainer}>
         <Heading variant={"hero"} text={"Go from zero to 1$"} />
         <Paragraph text={props.description} />
-        <Button text={props.cta} size="large" />
+        <Button variant={"section"} text={props.cta} />
       </div>
     </div>
   );

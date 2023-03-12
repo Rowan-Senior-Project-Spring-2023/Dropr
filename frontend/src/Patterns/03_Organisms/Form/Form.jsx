@@ -17,7 +17,7 @@ const Form = ({ action, method }) => {
         inputText={""}
         inputType={"password"}
       />
-      <Button text={"Log in"} type={"submit"} />
+      <Button variant={"form"} text={"Log in"} type={"submit"} />
     </form>
   );
 };
