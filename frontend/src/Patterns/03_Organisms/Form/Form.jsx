@@ -2,9 +2,9 @@ import FormField from "Patterns/02_Molecules/Form Field/FormField";
 import Button from "Patterns/01_Atoms/Button/Button";
 import styles from "./Form.module.scss";
 
-const Form = ({ action, method }) => {
+const Form = ({ variant, action, method }) => {
   return (
-    <form action={action} method={method} className={styles.form}>
+    <form action={action} method={method} className={styles.loginForm}>
       <FormField
         name={"email"}
         labelText={"Email"}
@@ -17,7 +17,7 @@ const Form = ({ action, method }) => {
         inputText={""}
         inputType={"password"}
       />
-      <Button text={"Log in"} type={"submit"} />
+      <Button variant={"form"} text={"Log in"} type={"submit"} />
     </form>
   );
 };

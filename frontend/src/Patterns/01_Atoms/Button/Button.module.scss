@@ -6,7 +6,7 @@
 @use "Styles/Tokens/Paddings" as paddings;
 @use "Styles/Tokens/BorderRadii" as borderRadii;
 
-.button {
+%button {
   padding: paddings.$button;
   font-weight: fontWeights.$x500;
   color: colors.$white;
@@ -14,26 +14,28 @@
   border-radius: borderRadii.$button;
   text-decoration: none;
   text-align: center;
-  border: 0;
   cursor: pointer;
-  // align-self: stretch;
-
-  // @media (min-width: breakpoints.$tablet) {
-  //   max-width: fit-content;
-  // }
+  border: 0;
 }
 
-.buttonSmall {
-  @extend .button;
-  font-size: fontSizes.$button-small;
-}
-
-.buttonMedium {
-  @extend .button;
-  font-size: fontSizes.$button-medium;
-}
-
-.buttonLarge {
-  @extend .button;
+.section {
+  @extend %button;
   font-size: fontSizes.$button-large;
+  align-self: stretch;
+
+  @media (min-width: breakpoints.$tablet) {
+    max-width: fit-content;
+  }
+}
+
+.form {
+  @extend %button;
+  min-width: 100%;
+}
+
+.card {
+  border: transparent;
+  background-color: transparent;
+  text-decoration: underline;
+  cursor: pointer;
 }

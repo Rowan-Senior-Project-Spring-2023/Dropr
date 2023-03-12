@@ -10,7 +10,7 @@ const Login = () => {
       <main className={styles.actionArea}>
         <header>
           <Heading
-            level={1}
+            variant={"section"}
             text={"Welcome back!"}
             className={styles.heading}
           />

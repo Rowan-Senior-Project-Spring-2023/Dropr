@@ -5,10 +5,13 @@
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
 
-.container {
+%footer {
+}
+
+.card {
+  @extend %footer;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  padding: 1rem;
+  padding: 1em;
 }

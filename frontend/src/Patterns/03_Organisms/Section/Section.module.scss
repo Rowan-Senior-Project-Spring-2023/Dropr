@@ -7,30 +7,8 @@
 
 // I should refactor this: unreadable. Stretch goal.
 
-%container {
+.section {
   display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: auto;
-}
-
-.containerOneChild {
-  @extend %container;
-
-  & > div {
-    border: 0;
-  }
-
-  & * {
-    text-align: center;
-  }
-
-  button {
-    align-self: center;
-  }
-}
-
-.containerTwoChildren {
-  @extend %container;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, 1fr);
 
