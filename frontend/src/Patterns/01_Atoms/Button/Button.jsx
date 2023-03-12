@@ -7,11 +7,15 @@ const Button = ({ variant, text, onClick, type = "button" }) => {
 
   useEffect(() => {
     if (variant === "section") {
-      setClassNames(styles.buttonSection);
+      setClassNames(styles.section);
     }
 
     if (variant === "form") {
-      setClassNames(styles.buttonForm);
+      setClassNames(styles.form);
+    }
+
+    if (variant === "card") {
+      setClassNames(styles.card);
     }
   }, []);
 

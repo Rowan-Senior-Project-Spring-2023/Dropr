@@ -18,7 +18,7 @@
   border: 0;
 }
 
-.buttonSection {
+.section {
   @extend %button;
   font-size: fontSizes.$button-large;
   align-self: stretch;
@@ -28,7 +28,14 @@
   }
 }
 
-.buttonForm {
+.form {
   @extend %button;
   min-width: 100%;
+}
+
+.card {
+  border: transparent;
+  background-color: transparent;
+  text-decoration: underline;
+  cursor: pointer;
 }

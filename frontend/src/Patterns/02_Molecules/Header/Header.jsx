@@ -2,20 +2,21 @@ import PropTypes from "prop-types";
 import Heading from "Patterns/01_Atoms/Heading/Heading";
 import styles from "./Header.module.scss";
 
-const Header = ({ type, children }) => {
-  // for now, if Header isn't of type card, render children passed into it
-  return type === "card" ? (
-    <header>
-      <Heading level={3} text={"Nike shoe"} />
+const Header = ({ variant, heading }) => {
+  return variant === "card" ? (
+    <header className={styles.card}>
+      <Heading variant={"card"} text={heading} />
     </header>
   ) : (
-    <header>{children}</header>
+    <header>
+      <i>Future usecases here...</i>
+    </header>
   );
 };
 
 Header.propTypes = {
-  type: PropTypes.oneOf(["card"]),
-  children: PropTypes.object,
+  variant: PropTypes.oneOf(["card"]),
+  heading: PropTypes.string,
 };
 
 export default Header;

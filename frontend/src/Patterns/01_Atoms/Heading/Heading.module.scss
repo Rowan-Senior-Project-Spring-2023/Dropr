@@ -6,26 +6,29 @@
 @use "Styles/Tokens/Paddings" as paddings;
 
 %heading {
-  line-height: 1;
   font-weight: fontWeights.$x500;
 }
 
 .hero {
   @extend %heading;
   font-size: fontSizes.$heading-hero;
+  line-height: 1;
 }
 
 .section {
   @extend %heading;
   font-size: fontSizes.$heading-section;
+  line-height: 1;
 }
 
 .banner {
   @extend %heading;
   font-size: fontSizes.$heading-banner;
+  line-height: 1;
 }
 
 .card {
   @extend %heading;
   font-size: fontSizes.$heading-card;
+  font-weight: fontWeights.$x400;
 }

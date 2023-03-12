@@ -1,21 +1,23 @@
 import PropTypes from "prop-types";
 import Button from "Patterns/01_Atoms/Button/Button";
+import CardPrice from "Patterns/01_Atoms/Card Price/CardPrice";
 import styles from "./Footer.module.scss";
 
-const Footer = ({ type, children }) => {
-  // Same as Header; if type isn't card, render children for now until more use cases
-  return type === "card" ? (
-    <footer>
-      <Button />
+const Footer = ({ variant, price }) => {
+  return variant === "card" ? (
+    <footer className={styles.card}>
+      <Button variant={"card"} text={"Subscribe"} />
+      <CardPrice price={price} />
     </footer>
   ) : (
-    <footer>{children}</footer>
+    <footer>
+      <i>Placeholder for future usecases...</i>
+    </footer>
   );
 };
 
 Footer.propTypes = {
-  type: PropTypes.oneOf(["card"]),
-  children: PropTypes.object,
+  variant: PropTypes.oneOf(["card"]),
 };
 
 export default Footer;
