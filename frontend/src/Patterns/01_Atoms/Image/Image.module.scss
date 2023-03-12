@@ -4,3 +4,12 @@
 @use "Styles/Tokens/FontSizes" as fontSizes;
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
+
+%image {
+}
+
+.card {
+  @extend %image;
+  border: 1px solid colors.$black;
+  border-bottom: 0;
+}

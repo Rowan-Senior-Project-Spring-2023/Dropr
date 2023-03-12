@@ -1,0 +1,25 @@
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
+@use "Styles/Tokens/Widths" as widths;
+
+.container {
+  max-width: widths.$card-container-max-width;
+
+  .cardContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @media (min-width: breakpoints.$card-container-two-items) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: breakpoints.$card-container-three-items) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

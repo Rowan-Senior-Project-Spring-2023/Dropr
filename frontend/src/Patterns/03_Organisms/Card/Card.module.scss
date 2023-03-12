@@ -6,8 +6,6 @@
 @use "Styles/Tokens/Paddings" as paddings;
 
 .productCard {
-  max-width: 20rem; // arbitrary for now
-  margin: 1em;
   border-radius: 0.25rem;
 
   img {
