@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Boolean
+from typing import Optional
 from database import Base
 
 class Products(Base):
@@ -10,10 +11,11 @@ class Products(Base):
     quantity = Column(Integer)
     
 class Users(Base):
-    __tablename__ = "users"
+    __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String)
-    email = Column(String)
-    password = Column(String)
-    phone_number = Column(String)
+    username = Column(String, unique=True, index=True)
+    email = Column(String, unique=True, index=True)
+    full_name = Column(String, index=True)
+    disabled = Column(Boolean, default=False)
+    hashed_password = Column(String)
