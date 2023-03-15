@@ -12,16 +12,12 @@ const BannerText = ({ variant, heading, description, cta }) => {
     if (variant === "no-description") setClassName(styles.noDescription);
   }, []);
 
-  if (variant === "no-description") {
-    return (
-      <div className={className}>
-        <Heading variant={"banner"} text={heading} />
-        <Button variant={"section"} text={cta} />
-      </div>
-    );
-  }
-
-  return (
+  return variant ? (
+    <div className={className}>
+      <Heading variant={"banner"} text={heading} />
+      <Button variant={"section"} text={cta} />
+    </div>
+  ) : (
     <div className={className}>
       <Heading variant={"banner"} text={heading} />
       <Paragraph text={description} />

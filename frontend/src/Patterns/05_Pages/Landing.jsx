@@ -18,7 +18,7 @@ const Landing = () => {
         <SectionImage src={mainSectionImage} alt={"Picture of Vegalia."} />
       </Section>
       <Banner
-        heading={"Make your own road."}
+        heading={"Make your own road"}
         description={
           "With Gumroad, anyone can earn their first dollar online. Just start with what you know, see what sticks, and get paid. It’s that easy."
         }
