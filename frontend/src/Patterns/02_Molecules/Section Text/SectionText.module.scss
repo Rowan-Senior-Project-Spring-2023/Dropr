@@ -9,7 +9,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid colors.$black;
   padding: paddings.$section-large;
   background-color: colors.$pink;
 
@@ -17,10 +16,5 @@
     display: flex;
     flex-direction: column;
     gap: 2em;
-  }
-
-  @media (min-width: breakpoints.$tablet) {
-    border-bottom: 0;
-    border-right: 2px solid colors.$black;
   }
 }
