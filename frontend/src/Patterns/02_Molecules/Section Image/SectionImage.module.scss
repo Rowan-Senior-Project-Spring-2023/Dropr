@@ -13,10 +13,7 @@
   background-color: colors.$yellow;
 
   img {
-    max-width: 100%;
-
-    @media (min-width: breakpoints.$desktop) {
-      max-width: 36rem;
-    }
+    width: 100%;
+    max-width: 30rem;
   }
 }

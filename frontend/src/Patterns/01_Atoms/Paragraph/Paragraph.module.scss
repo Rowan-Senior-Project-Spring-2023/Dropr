@@ -4,12 +4,8 @@
 @use "Styles/Tokens/FontSizes" as fontSizes;
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
+@use "Styles/Tokens/Widths" as widths;
 
 .paragraph {
   font-size: fontSizes.$paragraph-large;
-  // text-align: center;
-
-  // @media (min-width: breakpoints.$tablet) {
-  //   text-align: left;
-  // }
 }

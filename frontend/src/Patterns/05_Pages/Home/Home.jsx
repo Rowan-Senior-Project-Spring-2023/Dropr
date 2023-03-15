@@ -5,8 +5,7 @@ import styles from "./Home.module.scss";
 
 const Home = () => {
   return (
-    <div className={styles.container}>
-      <h1>Home Page</h1>
+    <main className={styles.container}>
       <CardContainer>
         <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
         <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
@@ -15,7 +14,7 @@ const Home = () => {
         <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
         <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
       </CardContainer>
-    </div>
+    </main>
   );
 };
 

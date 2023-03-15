@@ -21,11 +21,6 @@
 .section {
   @extend %button;
   font-size: fontSizes.$button-large;
-  align-self: stretch;
-
-  @media (min-width: breakpoints.$tablet) {
-    max-width: fit-content;
-  }
 }
 
 .form {
