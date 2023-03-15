@@ -6,7 +6,7 @@ const Button = ({ variant, text, onClick, type = "button" }) => {
   const [className, setClassName] = useState(styles.button);
 
   useEffect(() => {
-    if (variant === "section") {
+    if (variant === "section" || variant === "banner") {
       setClassName(styles.section);
     }
 
