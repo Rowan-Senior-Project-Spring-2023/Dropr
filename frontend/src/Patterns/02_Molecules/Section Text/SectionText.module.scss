@@ -4,6 +4,8 @@
 @use "Styles/Tokens/FontSizes" as fontSizes;
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
+@use "Styles/Tokens/Gaps" as gaps;
+@use "Styles/Tokens/Widths" as widths;
 
 .container {
   display: flex;
@@ -15,6 +17,25 @@
   .innerContainer {
     display: flex;
     flex-direction: column;
-    gap: 2em;
+    text-align: center;
+    gap: gaps.$landing-section;
+
+    button {
+      align-self: stretch;
+    }
+
+    p {
+      max-width: widths.$landing-paragraph;
+    }
+
+    @media (min-width: breakpoints.$tablet) {
+      align-items: flex-start;
+      justify-content: center;
+      text-align: left;
+
+      button {
+        align-self: flex-start;
+      }
+    }
   }
 }
