@@ -1,9 +1,10 @@
+import PropTypes from "prop-types";
 import FormField from "Patterns/02_Molecules/Form Field/FormField";
 import Button from "Patterns/01_Atoms/Button/Button";
 import styles from "./Form.module.scss";
 
 const Form = ({ variant, action, method }) => {
-  return (
+  return variant === "login" || variant === "signup" ? (
     <form action={action} method={method} className={styles.loginForm}>
       <FormField
         name={"email"}
@@ -19,7 +20,20 @@ const Form = ({ variant, action, method }) => {
       />
       <Button variant={"form"} text={"Log in"} type={"submit"} />
     </form>
+  ) : (
+    <FormField
+      name="search"
+      labelText={""}
+      inputText={"Search products"}
+      inputType="search"
+    />
   );
+};
+
+Form.propTypes = {
+  variant: PropTypes.oneOf(["login", "signup", "search"]),
+  action: PropTypes.string,
+  method: PropTypes.string,
 };
 
 export default Form;

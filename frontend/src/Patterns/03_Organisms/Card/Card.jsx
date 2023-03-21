@@ -1,5 +1,5 @@
 import Image from "Patterns/01_Atoms/Image/Image";
-import Header from "Patterns/02_Molecules/Header/Header";
+import Header from "Patterns/03_Organisms/Header/Header";
 import Heading from "Patterns/01_Atoms/Heading/Heading";
 import Footer from "Patterns/02_Molecules/Footer/Footer";
 import styles from "./Card.module.scss";
