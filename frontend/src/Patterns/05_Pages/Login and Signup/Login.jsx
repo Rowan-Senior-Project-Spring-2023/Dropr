@@ -15,7 +15,12 @@ const Login = () => {
             className={styles.heading}
           />
         </header>
-        <Form action={"/api"} method={"POST"} className={styles.form} />
+        <Form
+          variant="login"
+          action={"/api"}
+          method={"POST"}
+          className={styles.form}
+        />
       </main>
       <aside className={styles.imageContainer}>
         <Image
