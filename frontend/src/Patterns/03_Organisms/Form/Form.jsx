@@ -21,12 +21,7 @@ const Form = ({ variant, action, method }) => {
       <Button variant={"form"} text={"Log in"} type={"submit"} />
     </form>
   ) : (
-    <FormField
-      name="search"
-      labelText={""}
-      inputText={"Search products"}
-      inputType="search"
-    />
+    <FormField name="search" inputText={"Search products"} inputType="search" />
   );
 };
 
