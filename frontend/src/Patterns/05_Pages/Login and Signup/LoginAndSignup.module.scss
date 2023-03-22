@@ -9,6 +9,7 @@
 
 .page {
   display: flex;
+  max-height: 100vh;
 
   .actionArea {
     display: flex;
@@ -29,9 +30,8 @@
     position: relative;
     display: none;
     max-width: 40vw;
-    max-height: 100vh;
 
-    .image {
+    img {
       position: relative;
       top: 0;
       left: 0;

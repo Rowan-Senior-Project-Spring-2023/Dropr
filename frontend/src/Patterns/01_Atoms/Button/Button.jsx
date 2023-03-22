@@ -2,33 +2,37 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
 
-const Button = ({ text, size, onClick, type = "button" }) => {
-  const [classNames, setClassNames] = useState(styles.button);
+const Button = ({ variant, text, onClick, type = "button" }) => {
+  const [className, setClassName] = useState(styles.button);
 
   useEffect(() => {
-    if (size === "small") {
-      setClassNames(styles.buttonSmall);
+    if (variant === "section" || variant === "banner") {
+      setClassName(styles.section);
     }
 
-    if (size === "medium") {
-      setClassNames(styles.buttonMedium);
+    if (variant === "form") {
+      setClassName(styles.form);
     }
 
-    if (size === "large") {
-      setClassNames(styles.buttonLarge);
+    if (variant === "card") {
+      setClassName(styles.card);
+    }
+
+    if (variant === "arrow") {
+      setClassName(styles.card);
     }
   }, []);
 
   return (
-    <button onClick={onClick} className={classNames} type={type}>
+    <button onClick={onClick} type={type} className={className}>
       {text}
     </button>
   );
 };
 
 Button.propTypes = {
+  variant: PropTypes.oneOf(["section", "form", "card", "arrow"]),
   text: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(["small", "medium", "large"]),
   onClick: PropTypes.func,
 };
 
