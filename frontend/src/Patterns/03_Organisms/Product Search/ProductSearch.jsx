@@ -5,7 +5,7 @@ import Form from "../Form/Form";
 
 const ProductSearch = () => {
   return (
-    <div className={styles.header}>
+    <div className={styles.container}>
       <Header>
         <Form variant="search" />
       </Header>

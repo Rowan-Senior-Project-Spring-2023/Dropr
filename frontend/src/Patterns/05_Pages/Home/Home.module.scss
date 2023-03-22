@@ -4,6 +4,7 @@
 @use "Styles/Tokens/FontSizes" as fontSizes;
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
+@use "Styles/Tokens/Widths" as widths;
 
 .outerContainer {
   display: flex;
@@ -16,5 +17,8 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  max-width: 81.25rem;
+
+  main {
+    max-width: widths.$card-container-max-width;
+  }
 }
