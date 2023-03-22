@@ -1,0 +1,28 @@
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
+
+.productCard {
+  border-radius: 0.25rem;
+
+  img {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    border: 1px solid colors.$black;
+    border-bottom: 0;
+  }
+
+  header {
+    border: 1px solid colors.$black;
+  }
+
+  footer {
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border: 1px solid colors.$black;
+    border-top: 0;
+  }
+}

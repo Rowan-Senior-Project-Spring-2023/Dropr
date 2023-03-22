@@ -5,12 +5,10 @@
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
 
-.loginForm {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+%header {
+}
 
-  button {
-    border: 1px solid colors.$black;
-  }
+.card {
+  @extend %header;
+  padding: 1em;
 }

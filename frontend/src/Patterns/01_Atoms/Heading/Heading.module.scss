@@ -7,30 +7,33 @@
 
 %heading {
   font-weight: fontWeights.$x500;
+}
+
+.hero {
+  @extend %heading;
+  font-size: fontSizes.$heading-hero;
   line-height: 1;
-  // text-align: center;
-
-  // @media (min-width: breakpoints.$tablet) {
-  //   text-align: left;
-  // }
 }
 
-.headingSmall {
+.section {
   @extend %heading;
-  font-size: fontSizes.$heading-small;
+  font-size: fontSizes.$heading-section;
+  line-height: 1;
 }
 
-.headingMedium {
+.banner {
   @extend %heading;
-  font-size: fontSizes.$heading-medium;
+  font-size: fontSizes.$heading-banner;
+  line-height: 1;
 }
 
-.headingLarge {
+.card {
   @extend %heading;
-  font-size: fontSizes.$heading-large;
+  font-size: fontSizes.$heading-card;
+  font-weight: fontWeights.$x500;
 }
 
-.headingExtraLarge {
+.cardContainer {
   @extend %heading;
-  font-size: fontSizes.$heading-extra-large;
+  font-size: fontSizes.$heading-card-container;
 }

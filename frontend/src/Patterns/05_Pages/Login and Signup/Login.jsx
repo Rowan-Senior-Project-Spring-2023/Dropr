@@ -10,12 +10,17 @@ const Login = () => {
       <main className={styles.actionArea}>
         <header>
           <Heading
-            level={1}
+            variant={"section"}
             text={"Welcome back!"}
             className={styles.heading}
           />
         </header>
-        <Form action={"/connected"} method={"POST"} className={styles.form} />
+        <Form
+          variant="login"
+          action={"/api"}
+          method={"POST"}
+          className={styles.form}
+        />
       </main>
       <aside className={styles.imageContainer}>
         <Image

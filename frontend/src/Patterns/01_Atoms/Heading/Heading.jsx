@@ -1,21 +1,31 @@
 import { PropTypes } from "prop-types";
 import styles from "./Heading.module.scss";
 
-const Heading = ({ level, text, size = "medium" }) => {
-  const HeadingTag = `h${level}`; // dynamically creates h1-6 based on level prop
-  let classNames = "";
-  if (size === "small") classNames = styles.headingSmall;
-  if (size === "medium") classNames = styles.headingMedium;
-  if (size === "large") classNames = styles.headingLarge;
-  if (size === "extra large") classNames = styles.headingExtraLarge;
+const Heading = ({ variant, text }) => {
+  if (variant === "hero") {
+    return <h1 className={styles.hero}>{text}</h1>;
+  }
 
-  return <HeadingTag className={classNames}>{text}</HeadingTag>;
+  if (variant === "section") {
+    return <h2 className={styles.section}>{text}</h2>;
+  }
+
+  if (variant === "banner") {
+    return <h2 className={styles.banner}>{text}</h2>;
+  }
+
+  if (variant === "card") {
+    return <h3 className={styles.card}>{text}</h3>;
+  }
+
+  if (variant === "card-container") {
+    return <h2 className={styles.cardContainer}>{text}</h2>;
+  }
 };
 
 Heading.propTypes = {
-  level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]).isRequired,
+  variant: PropTypes.oneOf(["hero", "section", "banner", "card"]),
   text: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(["small", "medium", "large", "extra large"]),
 };
 
 export default Heading;
