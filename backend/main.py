@@ -15,13 +15,28 @@ from jose import JWTError, jwt
 from fastapi.middleware.cors import CORSMiddleware
 
 
-
 app = FastAPI()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+    "http://localhost:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Creates the database and table if it doesn't already exist
 models.Base.metadata.create_all(bind=engine)
@@ -32,6 +47,11 @@ def get_db():
         yield db
     finally:
         db.close()
+
+@app.post("/connected")
+def connect():
+    print("THIS METHOD WAS CALLED")
+    return "CONNECTED"
 
 @app.get("/products")
 def all_products(db: Session = Depends(get_db)):
@@ -67,18 +87,6 @@ def create_user(user: User, db: Session = Depends(get_db)):
     db.commit()
 
     return user
-
-origins = [
-    "http://localhost:3000",
-    "http://localhost:8080",
-]
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 
 class Token(BaseModel):
@@ -121,6 +129,10 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
+
+async def get_user(db: AsyncSession, username: str) -> models.Users:
+    result = db.execute(select(models.Users).filter_by(username=username))
+    return result.scalars().first()
 
 
 async def get_current_user(db: AsyncSession = Depends(get_db), token: str = Depends(oauth2_scheme)) -> models.Users:
