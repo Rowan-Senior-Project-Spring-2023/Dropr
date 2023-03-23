@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       <ProductSearch />
-      <main className={styles.container}>
+      <main className={styles.main}>
         <CardContainer>
           <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
           <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
