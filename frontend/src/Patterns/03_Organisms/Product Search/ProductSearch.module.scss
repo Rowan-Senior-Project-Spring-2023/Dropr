@@ -7,6 +7,7 @@
 @use "Styles/Tokens/Widths" as widths;
 
 .container {
+  padding: paddings.$home-outer-containers;
   background-color: colors.$teal;
   border: 1px solid colors.$black;
 
