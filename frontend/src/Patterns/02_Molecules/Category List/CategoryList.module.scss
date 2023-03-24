@@ -1,0 +1,13 @@
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
+@use "Styles/Tokens/Widths" as widths;
+
+.categories {
+  display: flex;
+  padding: 0;
+  list-style-type: none;
+}
