@@ -11,9 +11,9 @@ const Home = () => {
   const category = location.state?.category;
 
   useEffect(() => {
-    category && setRouteInfo(category);
-    console.log(routeInfo);
-  }, []);
+    setRouteInfo(category);
+    console.log(category);
+  }, [category]); // useLocation() is asynchronous, so we need to wait until category has something in it
 
   return (
     <>
