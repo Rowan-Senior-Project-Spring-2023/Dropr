@@ -15,11 +15,17 @@ const Home = () => {
     console.log(category);
   }, [category]); // useLocation() is asynchronous, so we need to wait until category has something in it
 
+  const capitalize = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   return (
     <>
       <ProductSearch />
       <main className={styles.main}>
-        <CardContainer>
+        <CardContainer
+          heading={`Trending drops in ${capitalize(category.name)}`}
+        >
           <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
           <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
           <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
