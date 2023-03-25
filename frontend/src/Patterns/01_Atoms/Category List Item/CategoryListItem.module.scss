@@ -7,7 +7,7 @@
 @use "Styles/Tokens/Widths" as widths;
 
 .category {
-  padding: 2rem 2rem 2rem 0;
+  padding: 2rem 2rem 0 0;
 
   & > a {
     color: colors.$black;

@@ -6,14 +6,14 @@ const CategoryList = ({ categories }) => {
   return (
     <ul className={styles.categories}>
       {categories.map((category) => (
-        <CategoryListItem category={category} />
+        <CategoryListItem key={category.id} category={category} />
       ))}
     </ul>
   );
 };
 
 CategoryList.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  categories: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default CategoryList;

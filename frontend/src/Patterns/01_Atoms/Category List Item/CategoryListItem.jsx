@@ -5,13 +5,18 @@ import styles from "./CategoryListItem.module.scss";
 const CategoryListItem = ({ category }) => {
   return (
     <li className={styles.category}>
-      <Link to={`/home/products/${category}`}>{category}</Link>
+      <Link
+        to={`/home/products/${category.name}`}
+        state={{ category: category }}
+      >
+        {category.name}
+      </Link>
     </li>
   );
 };
 
 CategoryListItem.propTypes = {
-  category: PropTypes.string.isRequired,
+  category: PropTypes.object.isRequired,
 };
 
 export default CategoryListItem;

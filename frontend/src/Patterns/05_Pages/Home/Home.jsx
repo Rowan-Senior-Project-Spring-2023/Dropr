@@ -1,10 +1,20 @@
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import ProductSearch from "Patterns/03_Organisms/Product Search/ProductSearch";
 import CardContainer from "Patterns/03_Organisms/Card Container/CardContainer";
 import Card from "Patterns/03_Organisms/Card/Card";
-import CategoryList from "Patterns/02_Molecules/Category List/CategoryList";
 import styles from "./Home.module.scss";
 
 const Home = () => {
+  const [routeInfo, setRouteInfo] = useState(null);
+  const location = useLocation();
+  const category = location.state?.category;
+
+  useEffect(() => {
+    category && setRouteInfo(category);
+    console.log(routeInfo);
+  }, []);
+
   return (
     <>
       <ProductSearch />
