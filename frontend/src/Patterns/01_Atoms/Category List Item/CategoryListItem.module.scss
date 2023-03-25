@@ -7,7 +7,8 @@
 @use "Styles/Tokens/Widths" as widths;
 
 .category {
-  padding: 2rem 2rem 0 0;
+  display: flex;
+  justify-content: center;
 
   & > a {
     color: colors.$black;

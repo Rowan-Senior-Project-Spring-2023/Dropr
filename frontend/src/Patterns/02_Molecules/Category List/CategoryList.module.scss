@@ -8,6 +8,9 @@
 
 .categories {
   display: flex;
+  flex-wrap: wrap;
   list-style-type: none;
+  gap: 1rem;
+  margin-top: 1rem;
   padding: 0;
 }

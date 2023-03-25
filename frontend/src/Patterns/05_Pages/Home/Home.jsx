@@ -12,7 +12,6 @@ const Home = () => {
 
   useEffect(() => {
     setRouteInfo(category);
-    console.log(category);
   }, [category]); // useLocation() is asynchronous, so we need to wait until category has something in it
 
   const capitalize = (string) => {
@@ -24,7 +23,11 @@ const Home = () => {
       <ProductSearch />
       <main className={styles.main}>
         <CardContainer
-          heading={`Trending drops in ${capitalize(category.name)}`}
+          heading={
+            category
+              ? `Trending drops in ${capitalize(category.name)}`
+              : "Trending Drops"
+          }
         >
           <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
           <Card heading={"Archer Canine Vrchat 3.0 PC + Quest"} price={35} />
