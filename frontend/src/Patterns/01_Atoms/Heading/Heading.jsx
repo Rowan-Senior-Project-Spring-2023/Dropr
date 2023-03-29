@@ -24,7 +24,13 @@ const Heading = ({ variant, text }) => {
 };
 
 Heading.propTypes = {
-  variant: PropTypes.oneOf(["hero", "section", "banner", "card"]),
+  variant: PropTypes.oneOf([
+    "hero",
+    "section",
+    "banner",
+    "card",
+    "card-container",
+  ]),
   text: PropTypes.string.isRequired,
 };
 
