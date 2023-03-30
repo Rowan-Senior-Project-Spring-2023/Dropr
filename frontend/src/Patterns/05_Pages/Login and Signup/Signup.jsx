@@ -15,15 +15,18 @@ const Signup = () => {
             className={styles.heading}
           />
         </header>
-        <Form action={"/api"} method={"POST"} className={styles.form} />
+        <Form action={"/api"} method={"POST"} type = {"user"} className={styles.form} />
       </main>
       <aside className={styles.imageContainer}>
+        <div className={styles.imageWrapper}>
         <Image
-          src={loginImage}
-          alt={"Background image for the Login page."}
-          className={styles.image}
+           src={loginImage}
+           alt={"Background image for the Login page."}
+            className={styles.image}
         />
+        </div>
       </aside>
+
     </div>
   );
 };

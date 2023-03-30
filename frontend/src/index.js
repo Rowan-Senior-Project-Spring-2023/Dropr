@@ -9,6 +9,7 @@ import Landing from "Patterns/05_Pages/Landing";
 import Login from "Patterns/05_Pages/Login and Signup/Login";
 import Signup from "Patterns/05_Pages/Login and Signup/Signup";
 import RegisterProduct from "Patterns/05_Pages/Register Product/RegisterProduct";
+import CompanySignup from "Patterns/05_Pages/Login and Signup/CompanySignup";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         path: "/register-product",
         element: <RegisterProduct />,
       },
+      {
+        path: "/company-signup",
+        element: <CompanySignup />,
+      }
     ],
   },
 ]);
