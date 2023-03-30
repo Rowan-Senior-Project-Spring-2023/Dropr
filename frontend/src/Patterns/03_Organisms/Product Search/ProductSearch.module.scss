@@ -6,14 +6,15 @@
 @use "Styles/Tokens/Paddings" as paddings;
 @use "Styles/Tokens/Widths" as widths;
 
-.container {
+.header {
   padding: paddings.$home-outer-containers;
   background-color: colors.$teal;
   border: 1px solid colors.$black;
 
   header {
-    padding-block: 5rem;
     margin: 0 auto;
+    padding-block: 5rem;
+    padding-inline: paddings.$home-outer-containers;
     max-width: widths.$card-container-max-width;
 
     input {

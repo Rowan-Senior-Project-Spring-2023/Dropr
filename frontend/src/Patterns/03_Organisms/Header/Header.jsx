@@ -15,7 +15,7 @@ const Header = ({ variant, heading, children }) => {
 Header.propTypes = {
   variant: PropTypes.oneOf(["card"]),
   heading: PropTypes.string,
-  children: PropTypes.object,
+  children: PropTypes.arrayOf(PropTypes.element),
 };
 
 export default Header;
