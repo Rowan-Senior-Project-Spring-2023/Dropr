@@ -1,4 +1,5 @@
-from fastapi import FastAPI, Depends, HTTPException, status
+import os
+from fastapi import FastAPI, Depends, File, HTTPException, UploadFile, status
 # Database Imports
 from datetime import datetime, timedelta
 import models
@@ -6,14 +7,16 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from schemas import Product, User
 from database import engine, SessionLocal
 from sqlalchemy.orm import Session
-from typing import Optional
+from typing import Optional, Union
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from passlib.context import CryptContext
 from jose import JWTError, jwt
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 
+media_directory = os.getcwd() + "/media/"
 
 app = FastAPI()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
@@ -53,22 +56,47 @@ def connect():
     print("THIS METHOD WAS CALLED")
     return "CONNECTED"
 
-@app.get("/products")
+@app.get("/all_products")
 def all_products(db: Session = Depends(get_db)):
     return db.query(models.Products).all()
 
-@app.post("/products")
-def create_product(product: Product, db: Session = Depends(get_db)):
+@app.post("/create_product")
+def create_product(product: Product = Depends(), file: Union[UploadFile, None] = None, db: Session = Depends(get_db)):
     
     product_model = models.Products()
     product_model.name = product.product_name
     product_model.description = product.description
-    product_model.quantity = product.quantity
+    product_model.remaining_quantity = product.start_quantity
+    product_model.start_quantity = product.start_quantity
+    product_model.limit_per_user = product.limit
+
+    product_model.is_featured = product.is_featured
+    product_model.is_open = product.is_open 
+
+    product_model.created_at = datetime.now()
+    product_model.updated_at = datetime.now()
+
+    image_path = media_directory+str(product.product_name.replace(" ", "")+str("-")+str(datetime.now())[0:10]+str(".jpg"))
+
+    if(file is not None):
+        with open(image_path,'wb') as image:
+            image.write(file.file.read())
+            image.close()
+
+
+    product_model.path_to_image = image_path
 
     db.add(product_model)
     db.commit()
 
     return product
+
+@app.get("/product/image")
+def ret_products_image(product_key: int,db: Session = Depends(get_db)):
+    return FileResponse(db.query(models.Products).get(product_key).path_to_image)
+        
+        
+
 
 
 @app.get("/users")
