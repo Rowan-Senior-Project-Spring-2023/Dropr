@@ -75,9 +75,8 @@ def create_product(product: Product, db: Session = Depends(get_db)):
 def all_users(db: Session = Depends(get_db)):
     return db.query(models.Users).all()
 
-@app.post("/users")
-def create_user(user: User, db: Session = Depends(get_db)):
-    
+@app.post("/createUser")
+def create_user(user: User, db: Session = Depends(get_db)):    
     user_model = models.Users()
     user_model.username = user.username
     user_model.email = user.emails
@@ -130,10 +129,6 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-async def get_user(db: AsyncSession, username: str) -> models.Users:
-    result = db.execute(select(models.Users).filter_by(username=username))
-    return result.scalars().first()
-
 
 async def get_current_user(db: AsyncSession = Depends(get_db), token: str = Depends(oauth2_scheme)) -> models.Users:
     credentials_exception = HTTPException(
@@ -161,7 +156,7 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
     return current_user
 
 
-@app.post("/token", response_model=Token)
+@app.post("/login", response_model=Token)
 async def login_for_access_token(db: AsyncSession = Depends(get_db), form_data: OAuth2PasswordRequestForm = Depends()):
     user = await authenticate_user(db, form_data.username, form_data.password)
     if not user:
