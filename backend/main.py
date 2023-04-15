@@ -15,6 +15,7 @@ from passlib.context import CryptContext
 from jose import JWTError, jwt
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+from twilio.twiml.messaging_response import MessagingResponse
 
 media_directory = os.getcwd() + "/media/"
 
@@ -97,8 +98,6 @@ def ret_products_image(product_key: int,db: Session = Depends(get_db)):
         
         
 
-
-
 @app.get("/users")
 def all_users(db: Session = Depends(get_db)):
     return db.query(models.Users).all()
@@ -116,6 +115,19 @@ def create_user(user: User, db: Session = Depends(get_db)):
 
     return user
 
+
+
+
+@app.post("/sms")
+def sms_reply():
+    """Respond to incoming calls with a simple text message."""
+    # Start our TwiML response
+    resp = MessagingResponse()
+
+    # Add a message
+    resp.message("The Robots are coming! Head for the hills!")
+
+    return str(resp)
 
 class Token(BaseModel):
     access_token: str
