@@ -6,18 +6,6 @@ import styles from "./Form.module.scss";
 const Form = ({ variant, action, method }) => {
   return variant === "login" || variant === "signup" ? (
     <form action={action} method={method} className={styles.loginForm}>
-const Form = ({ action, method }) => {
-  const handleClick = async (event) => {
-    event.preventDefault();
-    const response = await fetch("http://localhost:8000/connected", {
-      method: "POST", 
-      headers: { "Access-Control-Allow-Origin": "*"}
-    });
-    alert(response)
-  }
-
-  return (
-    <form action={action} method={method} className={styles.form}>
       <FormField
         name={"email"}
         labelText={"Email"}
