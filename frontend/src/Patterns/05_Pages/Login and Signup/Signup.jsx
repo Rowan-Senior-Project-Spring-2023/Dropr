@@ -10,12 +10,21 @@ const Signup = () => {
       <main className={styles.actionArea}>
         <header>
           <Heading
-            level={1}
+            variant={"section"}
             text={"Join now and start subscribing to over 100,000 products."}
             className={styles.heading}
           />
         </header>
+<<<<<<< HEAD
         <Form action={"/api"} method={"POST"} type = {"user"} className={styles.form} />
+=======
+        <Form
+          variant="signup"
+          action={"/api"}
+          method={"POST"}
+          className={styles.form}
+        />
+>>>>>>> 1f47a28879b517b04decbd7e5146e2d85eb00d5f
       </main>
       <aside className={styles.imageContainer}>
         <div className={styles.imageWrapper}>

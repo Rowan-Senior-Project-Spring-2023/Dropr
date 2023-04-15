@@ -4,23 +4,38 @@
 @use "Styles/Tokens/FontSizes" as fontSizes;
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
+@use "Styles/Tokens/Gaps" as gaps;
+@use "Styles/Tokens/Widths" as widths;
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid colors.$black;
   padding: paddings.$section-large;
   background-color: colors.$pink;
 
   .innerContainer {
     display: flex;
     flex-direction: column;
-    gap: 2em;
-  }
+    text-align: center;
+    gap: gaps.$landing-section;
 
-  @media (min-width: breakpoints.$tablet) {
-    border-bottom: 0;
-    border-right: 2px solid colors.$black;
+    button {
+      align-self: stretch;
+    }
+
+    p {
+      max-width: widths.$landing-paragraph;
+    }
+
+    @media (min-width: breakpoints.$tablet) {
+      align-items: flex-start;
+      justify-content: center;
+      text-align: left;
+
+      button {
+        align-self: flex-start;
+      }
+    }
   }
 }

@@ -5,37 +5,22 @@
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
 
-// I should refactor this: unreadable. Stretch goal.
-
-%container {
+.section {
   display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: auto;
-}
-
-.containerOneChild {
-  @extend %container;
-
-  & > div {
-    border: 0;
-  }
-
-  & * {
-    text-align: center;
-  }
-
-  button {
-    align-self: center;
-  }
-}
-
-.containerTwoChildren {
-  @extend %container;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, 1fr);
 
   @media (min-width: breakpoints.$tablet) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
+  }
+
+  & > * + * {
+    border-top: 2px solid colors.$black;
+
+    @media (min-width: breakpoints.$tablet) {
+      border-left: 2px solid colors.$black;
+      border-top: 0;
+    }
   }
 }

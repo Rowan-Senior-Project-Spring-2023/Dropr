@@ -5,15 +5,20 @@
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
 
-.container {
+%container {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: paddings.$banner-large;
-  background-color: colors.$teal;
   border: 2px solid colors.$black;
+}
 
-  & * {
-    text-align: center; // specificity ftw
-  }
+.teal {
+  @extend %container;
+  background-color: colors.$teal;
+}
+
+.white {
+  @extend %container;
+  background-color: colors.$white;
 }

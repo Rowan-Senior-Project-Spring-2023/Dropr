@@ -1,0 +1,17 @@
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
+
+%footer {
+}
+
+.card {
+  @extend %footer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+}

@@ -1,0 +1,24 @@
+@use "Styles/Tokens/Colors" as colors;
+@use "Styles/Tokens/Breakpoints" as breakpoints;
+@use "Styles/Tokens/FontNames" as fontNames;
+@use "Styles/Tokens/FontSizes" as fontSizes;
+@use "Styles/Tokens/FontWeights" as fontWeights;
+@use "Styles/Tokens/Paddings" as paddings;
+@use "Styles/Tokens/Widths" as widths;
+
+.header {
+  padding: paddings.$home-outer-containers;
+  background-color: colors.$teal;
+  border: 1px solid colors.$black;
+
+  header {
+    margin: 0 auto;
+    padding-block: 5rem;
+    padding-inline: paddings.$home-outer-containers;
+    max-width: widths.$card-container-max-width;
+
+    input {
+      border: 1px solid colors.$black;
+    }
+  }
+}
