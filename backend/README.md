@@ -16,3 +16,5 @@ Real quick, this is how to run the fast api file -
     uvicorn main:app --reload
 
     should create db on launch
+    
+    twilio pass - +"!?"
