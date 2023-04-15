@@ -23,9 +23,3 @@ yarn-debug.log*
 yarn-error.log*
 
 /.idea
-
-# media
-/backend/media/
-/backend/dropr.db
-/backend/API-KEY-DO-NOT-GIT.txt
-
