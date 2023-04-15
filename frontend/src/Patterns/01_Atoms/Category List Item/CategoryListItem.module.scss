@@ -9,6 +9,7 @@
 .category {
   display: flex;
   justify-content: center;
+  font-size: 1.25rem;
 
   & > a {
     color: colors.$black;
