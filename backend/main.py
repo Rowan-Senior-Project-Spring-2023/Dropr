@@ -1,3 +1,4 @@
+import base64
 import os
 from fastapi import FastAPI, Depends, File, HTTPException, UploadFile, status
 # Database Imports
@@ -16,6 +17,7 @@ from jose import JWTError, jwt
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from twilio.twiml.messaging_response import MessagingResponse
+from models import CategoryEnum
 
 media_directory = os.getcwd() + "/media/"
 
@@ -57,11 +59,11 @@ def connect():
     print("THIS METHOD WAS CALLED")
     return "CONNECTED"
 
-@app.get("/all_products")
+@app.get("/product/all")
 def all_products(db: Session = Depends(get_db)):
     return db.query(models.Products).all()
 
-@app.post("/create_product")
+@app.post("/product/create")
 def create_product(product: Product = Depends(), file: Union[UploadFile, None] = None, db: Session = Depends(get_db)):
     
     product_model = models.Products()
@@ -70,6 +72,8 @@ def create_product(product: Product = Depends(), file: Union[UploadFile, None] =
     product_model.remaining_quantity = product.start_quantity
     product_model.start_quantity = product.start_quantity
     product_model.limit_per_user = product.limit
+
+    product_model.category = product.category
 
     product_model.is_featured = product.is_featured
     product_model.is_open = product.is_open 
@@ -92,12 +96,23 @@ def create_product(product: Product = Depends(), file: Union[UploadFile, None] =
 
     return product
 
+@app.post("/product/all")
+def ret_products_by_cate(product_cate: CategoryEnum,db: Session = Depends(get_db)):
+    return db.query(models.Products).filter_by(category=product_cate).all()
+
+
+
 @app.get("/product/image")
 def ret_products_image(product_key: int,db: Session = Depends(get_db)):
-    return FileResponse(db.query(models.Products).get(product_key).path_to_image)
-        
-        
+    path = db.query(models.Products).get(product_key).path_to_image
 
+    with open(path, "rb") as image_file:
+       encoded_image_string = base64.b64encode(image_file.read())
+
+    ret_dict = {"encode_image":encoded_image_string,
+                "key":product_key}
+
+    return ret_dict
 @app.get("/users")
 def all_users(db: Session = Depends(get_db)):
     return db.query(models.Users).all()
@@ -114,7 +129,6 @@ def create_user(user: User, db: Session = Depends(get_db)):
     db.commit()
 
     return user
-
 
 
 
