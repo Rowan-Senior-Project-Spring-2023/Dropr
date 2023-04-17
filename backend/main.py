@@ -61,11 +61,11 @@ def connect():
     print("THIS METHOD WAS CALLED")
     return "CONNECTED"
 
-@app.get("/product/all")
+@app.get("/products/all")
 def all_products(db: Session = Depends(get_db)):
     return db.query(models.Products).all()
 
-@app.post("/product/create")
+@app.post("/products/create")
 def create_product(product: Product = Depends(), file: Union[UploadFile, None] = None, db: Session = Depends(get_db)):
     
     product_model = models.Products()
@@ -98,13 +98,13 @@ def create_product(product: Product = Depends(), file: Union[UploadFile, None] =
 
     return product
 
-@app.post("/product/all")
+@app.post("/products/all")
 def ret_products_by_cate(product_cate: CategoryEnum,db: Session = Depends(get_db)):
     return db.query(models.Products).filter_by(category=product_cate).all()
 
 
 
-@app.get("/product/image")
+@app.get("/products/image")
 def ret_products_image(product_key: int,db: Session = Depends(get_db)):
     path = db.query(models.Products).get(product_key).path_to_image
 

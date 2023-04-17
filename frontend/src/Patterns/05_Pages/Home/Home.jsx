@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     if (!category) {
       // get all products
-      axios.get("http://localhost:8000/all_products/").then((data) => {
+      axios.get("http://localhost:8000/products/all").then((data) => {
         setProducts(data.data);
       });
     } else {
