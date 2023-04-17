@@ -8,27 +8,27 @@ import styles from "./Home.module.scss";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const [productImages, setProductImages] = useState([]);
+  const [productImages, setProductImages] = useState("");
   const [routeInfo, setRouteInfo] = useState(undefined);
   const location = useLocation();
   const category = location.state?.category;
 
   useEffect(() => {
-    if (!category) {
-      // get all products
-      axios.get("http://localhost:8000/products/all").then((data) => {
-        setProducts(data.data);
-      });
-    } else {
-      // get products specified by category in route
-      setRouteInfo(category);
-      // axios.get(`http://localhost:8000/products/${category.name}`); Once Brian sets up categories route
-    }
-  }, [category]); // useLocation() is asynchronous, so we need to wait until category has something in it
+    axios.get("http://localhost:8000/products/all").then((data) => {
+      setProducts(data.data);
+    });
+  }, []);
 
   useEffect(() => {
-    // Get product images here
-  }, [products]);
+    // get products specified by category in route
+    setRouteInfo(category);
+  }, [category]);
+
+  useEffect(() => {}, [products]);
+
+  // image: `data:image;base64,${image}`
+  // const image = data.data.encode_image;
+  // const productKey = data.data.key;
 
   const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -45,18 +45,18 @@ const Home = () => {
               : "Trending drops"
           }
         >
-          {products ? (
-            products.map((product) => (
-              <ProductCard
-                key={product.id}
-                image={null}
-                heading={product.name}
-                quantity={product.remaining_quantity}
-              />
-            ))
-          ) : (
-            <p>Loading...</p>
-          )}
+          {products &&
+            products.map(
+              (product) => {
+                console.log(product);
+              }
+              // <ProductCard
+              //   key={product.id}
+              //   image={product.image}
+              //   heading={product.name}
+              //   quantity={product.remaining_quantity}
+              // />
+            )}
         </CardContainer>
       </main>
     </>

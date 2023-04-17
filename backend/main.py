@@ -64,6 +64,7 @@ def connect():
 @app.get("/products/all")
 def all_products(db: Session = Depends(get_db)):
     return db.query(models.Products).all()
+    # myDict = db.query(models.Products).all()
 
 @app.post("/products/create")
 def create_product(product: Product = Depends(), file: Union[UploadFile, None] = None, db: Session = Depends(get_db)):
