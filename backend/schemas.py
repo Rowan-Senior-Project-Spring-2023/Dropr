@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Optional
+from models import CategoryEnum
 
 
 class Product(BaseModel):
@@ -7,6 +8,7 @@ class Product(BaseModel):
     description: str = Field(min_lenght=1, max_length=1000)
     start_quantity: int = Field(min=0)
     limit: int = Field(min=0)
+    category: CategoryEnum = Field(min=0)
     is_open: bool
     is_featured: bool
 

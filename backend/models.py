@@ -1,6 +1,16 @@
-from sqlalchemy import Column, DateTime, Integer, String, Boolean
+import enum
+from sqlalchemy import Column, DateTime, Integer, String, Boolean, Enum
 from typing import Optional
 from database import Base
+
+class CategoryEnum(str, enum.Enum):
+    footwear = 'footwear'
+    shirts = 'shirts'
+    pants = 'pants'
+    jewerly = 'jewerly'
+    tech = 'tech'
+    headwear = 'headwear'
+    other = 'other'
 
 class Products(Base):
     __tablename__ = "products"
@@ -13,6 +23,7 @@ class Products(Base):
     limit_per_user = Column(Integer)
     is_open = Column(Boolean)
     is_featured = Column(Boolean)
+    category = Column(Enum(CategoryEnum),nullable=True)
 
     created_at = Column(DateTime)
     updated_at = Column(DateTime)
@@ -20,7 +31,6 @@ class Products(Base):
 
     path_to_image = Column(String, nullable=True)
 
-    
 class Users(Base):
     __tablename__ = 'users'
 
