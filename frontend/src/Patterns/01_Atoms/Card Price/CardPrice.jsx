@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
-import styles from "./CardPrice.module.scss";
+import styles from "./CardQuantity.module.scss";
 
-const CardPrice = ({ price }) => {
-  return <div className={styles.price}>{`$${price}`}</div>;
+const CardQuantity = ({ quantity }) => {
+  return <div className={styles.price}>{quantity}</div>;
 };
 
-CardPrice.propTypes = {
-  price: PropTypes.number,
+CardQuantity.propTypes = {
+  quantity: PropTypes.number,
 };
 
-export default CardPrice;
+export default CardQuantity;

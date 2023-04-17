@@ -3,11 +3,11 @@ import Button from "Patterns/01_Atoms/Button/Button";
 import CardPrice from "Patterns/01_Atoms/Card Price/CardPrice";
 import styles from "./Footer.module.scss";
 
-const Footer = ({ variant, price }) => {
+const Footer = ({ variant, quantity }) => {
   return variant === "card" ? (
     <footer className={styles.card}>
       <Button variant={"card"} text={"Subscribe"} />
-      <CardPrice price={price} />
+      <CardPrice quantity={quantity} />
     </footer>
   ) : (
     <footer>
