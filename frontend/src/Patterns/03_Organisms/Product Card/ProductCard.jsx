@@ -8,7 +8,7 @@ import defaultImage from "Assets/ezgif-1-af2e163fba.webp";
 const ProductCard = ({ image, heading, quantity }) => {
   return (
     <article className={styles.productCard}>
-      <div className="image-container">
+      <div className={styles.imageContainer}>
         <Image
           variant={"card"}
           src={image || defaultImage}
