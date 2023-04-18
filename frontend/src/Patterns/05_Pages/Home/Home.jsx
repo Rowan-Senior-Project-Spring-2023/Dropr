@@ -8,7 +8,7 @@ import styles from "./Home.module.scss";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const [productImages, setProductImages] = useState("");
+  const [images, setImages] = useState([]);
   const [routeInfo, setRouteInfo] = useState(undefined);
   const location = useLocation();
   const category = location.state?.category;
@@ -20,19 +20,31 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    // get products specified by category in route
-    setRouteInfo(category);
+    setRouteInfo(category); // get products specified by category in route
   }, [category]);
 
-  useEffect(() => {}, [products]);
+  useEffect(() => {
+    if (products.length === 0) return;
 
-  // image: `data:image;base64,${image}`
-  // const image = data.data.encode_image;
-  // const productKey = data.data.key;
+    Promise.allSettled(
+      products.map(async (product) => {
+        return axios
+          .get(`http://localhost:8000/products/image?product_key=${product.id}`)
+          .then((data) => data.data);
+      })
+    ).then((results) => {
+      results = results
+        .filter((result) => result.status === "fulfilled")
+        .map((result) => result.value);
 
-  const capitalize = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
+      results.forEach(
+        (result) =>
+          (result.encode_image = `data:image;base64,${result.encode_image}`)
+      );
+
+      setImages(results);
+    });
+  }, [products]);
 
   return (
     <>
@@ -46,25 +58,24 @@ const Home = () => {
           }
         >
           {products &&
-            products.map(
-              (product) => {
-                console.log(product);
-              }
-              // <ProductCard
-              //   key={product.id}
-              //   image={product.image}
-              //   heading={product.name}
-              //   quantity={product.remaining_quantity}
-              // />
-            )}
+            products.map((product) => (
+              <ProductCard
+                key={product.id}
+                image={
+                  images.find((image) => image.key === product.id)?.encode_image
+                }
+                heading={product.name}
+                quantity={product.remaining_quantity}
+              />
+            ))}
         </CardContainer>
       </main>
     </>
   );
 };
 
-const readFileResponse = (fileResponse) => {
-  return URL.createObjectURL(fileResponse);
+const capitalize = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
 export default Home;
