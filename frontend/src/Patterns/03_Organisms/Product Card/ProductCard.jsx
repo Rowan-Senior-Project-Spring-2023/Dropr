@@ -8,12 +8,14 @@ import defaultImage from "Assets/ezgif-1-af2e163fba.webp";
 const ProductCard = ({ image, heading, quantity }) => {
   return (
     <article className={styles.productCard}>
-      <Image
-        variant={"card"}
-        src={image || defaultImage}
-        alt={"Example product card image"}
-      />
-      <Header variant={"card"} heading={heading} />
+      <div className="image-container">
+        <Image
+          variant={"card"}
+          src={image || defaultImage}
+          alt={"Example product card image"}
+        />
+      </div>
+      <Header variant={"card"} heading={heading || "Product"} />
       <Footer variant={"card"} quantity={quantity || 0} />
     </article>
   );
@@ -21,7 +23,7 @@ const ProductCard = ({ image, heading, quantity }) => {
 
 ProductCard.propTypes = {
   image: PropTypes.string,
-  heading: PropTypes.string.isRequired,
+  heading: PropTypes.string,
   quantity: PropTypes.number,
 };
 
