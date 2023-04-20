@@ -1,17 +1,10 @@
-<<<<<<< HEAD
 import React from "react";
-=======
 import PropTypes from "prop-types";
->>>>>>> 1f47a28879b517b04decbd7e5146e2d85eb00d5f
 import FormField from "Patterns/02_Molecules/Form Field/FormField";
 import Button from "Patterns/01_Atoms/Button/Button";
 import styles from "./Form.module.scss";
 
-<<<<<<< HEAD
-
-const LoginForm = ({ action, method }) => {
-=======
-const Form = ({ variant, action, method }) => {
+const LoginForm = ({ variant, action, method }) => {
   return variant === "login" || variant === "signup" ? (
     <form action={action} method={method} className={styles.loginForm}>
 const Form = ({ action, method }) => {
@@ -24,7 +17,6 @@ const Form = ({ action, method }) => {
     alert(response)
   }
 
->>>>>>> 1f47a28879b517b04decbd7e5146e2d85eb00d5f
   return (
     <form action={action} method={method} className={styles.form}>
       <FormField
