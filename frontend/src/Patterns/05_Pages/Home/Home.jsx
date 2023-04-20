@@ -75,7 +75,7 @@ const Home = () => {
                       ?.encode_image
                   }
                   heading={product.name}
-                  quantity={product.remaining_quantity}
+                  price={product.price}
                 />
               ))}
           </CardContainer>
