@@ -9,6 +9,7 @@ import styles from "./Home.module.scss";
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [routeInfo, setRouteInfo] = useState(undefined);
   const location = useLocation();
   const category = location.state?.category;
@@ -46,29 +47,39 @@ const Home = () => {
     });
   }, [products]);
 
+  useEffect(() => {
+    if (images.length === 0) return;
+
+    setLoading(false);
+  }, [images]);
+
   return (
     <>
       <ProductSearch />
       <main className={styles.main}>
-        <CardContainer
-          heading={
-            category
-              ? `Trending drops in ${capitalize(category.name)}`
-              : "Trending drops"
-          }
-        >
-          {products &&
-            products.map((product) => (
-              <ProductCard
-                key={product.id}
-                image={
-                  images.find((image) => image.key === product.id)?.encode_image
-                }
-                heading={product.name}
-                quantity={product.remaining_quantity}
-              />
-            ))}
-        </CardContainer>
+        {!loading && (
+          <CardContainer
+            heading={
+              category
+                ? `Trending drops in ${capitalize(category.name)}`
+                : "Trending drops"
+            }
+          >
+            {products &&
+              products.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  id={product.id}
+                  image={
+                    images.find((image) => image.key === product.id)
+                      ?.encode_image
+                  }
+                  heading={product.name}
+                  quantity={product.remaining_quantity}
+                />
+              ))}
+          </CardContainer>
+        )}
       </main>
     </>
   );
