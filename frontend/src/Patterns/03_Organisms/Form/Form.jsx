@@ -4,15 +4,9 @@ import FormField from "Patterns/02_Molecules/Form Field/FormField";
 import Button from "Patterns/01_Atoms/Button/Button";
 import styles from "./Form.module.scss";
 
-<<<<<<< HEAD
 const LoginForm = ({ variant, action, method }) => {
   return (
     <form action={action} method={method} className={styles.form}>
-=======
-const Form = ({ variant, action, method }) => {
-  return variant === "login" || variant === "signup" ? (
-    <form action={action} method={method} className={styles.loginForm}>
->>>>>>> fb8b47c6dc4c103267ed1838f7348619f6f29f93
       <FormField
         name={"username"}
         labelText={"Username"}

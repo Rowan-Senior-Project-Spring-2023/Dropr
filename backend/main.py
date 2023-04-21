@@ -153,6 +153,8 @@ def create_company(company: Company = Depends(), file: Union[UploadFile, None] =
 
             company_model.path_to_image = image_path
 
+    company_model.hashed_password = get_password_hash(company.password)
+
     db.add(company_model)
     db.commit()
 
