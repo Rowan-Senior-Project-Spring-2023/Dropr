@@ -19,7 +19,9 @@ const LoginForm = ({ variant, action, method }) => {
         inputText={""}
         inputType={"password"}
       />
+      <Button variant={"form"} text={"Log in"} type={"submit"} />
     </form>
+    
   );
 };
 
@@ -50,6 +52,13 @@ const UserForm = () => {
         inputText={""}
         inputType={"text"}
       />
+      <FormField
+        name={"Phone"}
+        labelText={"Phone number"}
+        inputText={""}
+        inputType={"tel"}
+      />
+      <Button variant={"form"} text={"Register"} type={"submit"} />
     </>
   );
 };
@@ -70,10 +79,10 @@ const CompanyForm = () => {
         inputType={"email"}
       />
       <FormField
-        name={"company-username"}
-        labelText={"Company Username"}
+        name={"company-description"}
+        labelText={"Compay Description"}
         inputText={""}
-        inputType={"text"}
+        inputType={"longtext"}
       />
       <FormField
         name={"company-password"}
@@ -81,6 +90,13 @@ const CompanyForm = () => {
         inputText={""}
         inputType={"password"}
       />
+      <FormField
+        name={"company-image"}
+        labelText={"Company Image"}
+        inputType="file" accept="image/*" 
+      />
+
+      <Button variant={"form"} text={"Register"} type={"submit"} />
     </>
   );
 };
@@ -91,7 +107,6 @@ const Form = ({ action, method, type }) => {
       {type === "user" && <UserForm/>}
       {type === "company" && <CompanyForm/>}
       {type === "login" && <LoginForm/>}
-      <Button variant={"form"} text={"Log in"} type={"submit"} />
     </form>
   );
 };

@@ -16,7 +16,7 @@ const Signup = () => {
           />
         </header>
         <Form
-          variant="signup"
+          type ="user"
           action={"/api"}
           method={"POST"}
           className={styles.form}
