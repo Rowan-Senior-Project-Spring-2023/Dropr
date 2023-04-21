@@ -3,11 +3,16 @@ import SectionImage from "Patterns/02_Molecules/Section Image/SectionImage";
 import PropTypes from "prop-types";
 import styles from "./Section.module.scss";
 
-const Section = ({ children }) => {
-  return <section className={styles.section}>{children}</section>;
+const Section = ({ variant, children }) => {
+  if (variant === "landing") {
+    return <section className={styles.sectionLanding}>{children}</section>;
+  }
+
+  return <section>{children}</section>;
 };
 
 Section.propTypes = {
+  variant: PropTypes.oneOf(["generic", "landing"]),
   children: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

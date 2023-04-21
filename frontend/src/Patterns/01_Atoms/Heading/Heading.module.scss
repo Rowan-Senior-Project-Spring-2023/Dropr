@@ -27,6 +27,11 @@
   line-height: 1;
 }
 
+.company {
+  @extend %heading;
+  font-size: fontSizes.$heading-company;
+}
+
 .card {
   @extend %heading;
   font-size: fontSizes.$heading-card;

@@ -58,7 +58,7 @@ const Login = () => {
           />
         </header>
         <Form
-          variant="login"
+          type="login"
           className={styles.form}
           onSubmit={handleSubmit}
           onChange={handleChange}

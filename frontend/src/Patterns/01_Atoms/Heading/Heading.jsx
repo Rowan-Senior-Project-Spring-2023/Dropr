@@ -14,6 +14,10 @@ const Heading = ({ variant, text }) => {
     return <h2 className={styles.banner}>{text}</h2>;
   }
 
+  if (variant === "company") {
+    return <h1 className={styles.company}>{text}</h1>;
+  }
+
   if (variant === "card") {
     return <h3 className={styles.card}>{text}</h3>;
   }
@@ -28,6 +32,7 @@ Heading.propTypes = {
     "hero",
     "section",
     "banner",
+    "company",
     "card",
     "card-container",
   ]),

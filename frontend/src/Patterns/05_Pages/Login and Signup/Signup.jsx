@@ -53,19 +53,22 @@ const Signup = () => {
           />
         </header>
         <Form
-          variant="signup"
+          type="signup"
           className={styles.form}
           onSubmit={handleSubmit}
           onChange={handleChange}
         />
       </main>
       <aside className={styles.imageContainer}>
+        <div className={styles.imageWrapper}>
         <Image
-          src={loginImage}
-          alt={"Background image for the Login page."}
-          className={styles.image}
+           src={loginImage}
+           alt={"Background image for the Login page."}
+            className={styles.image}
         />
+        </div>
       </aside>
+
     </div>
   );
 };
