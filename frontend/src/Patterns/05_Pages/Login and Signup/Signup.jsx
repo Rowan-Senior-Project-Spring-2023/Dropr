@@ -6,17 +6,20 @@ import loginImage from "Assets/Login-and-Signup.webp";
 import { useState } from "react";
 import axios from "axios"
 import React from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 const Signup = () => {
- 
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password:  "",
     fullName: "",
+    phone:  "",
   });
 
-  const { username, email, password, fullName } = formData;
+  const { username, email, password, fullName, phone } = formData;
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,18 +30,19 @@ const Signup = () => {
       username: username,
       emails: email,
       password: password,
-      full_name: fullName,
+      full_names: fullName,
+      phone_number: phone,
       disabled: false
     };
     axios
       .post("http://127.0.0.1:8000/createUser", data)
       .then((response) => {
-        console.log(data);
-        console.log(response);
-        alert(response);
+        //console.log(response);
+        navigate("/login");
+        //alert(response);
       })
       .catch((error) => {
-        alert(error);
+        //alert(error);
       });
   };
 
@@ -53,7 +57,7 @@ const Signup = () => {
           />
         </header>
         <Form
-          type="signup"
+          type="user"
           className={styles.form}
           onSubmit={handleSubmit}
           onChange={handleChange}

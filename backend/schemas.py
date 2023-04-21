@@ -5,6 +5,7 @@ from models import CategoryEnum
 class Company(BaseModel):
     company_name: str = Field(min_length=1, max_length=100)
     description: str = Field(min_lenght=1, max_length=1000)
+    path_to_image: str = Field(min_lenght=1, max_length=1000)
     link: str
     password: str
 

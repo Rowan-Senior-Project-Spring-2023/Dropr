@@ -35,7 +35,7 @@ const Login = () => {
         }
       })
       .then((response) => {
-        alert(response);
+        //alert(response);
         Cookies.set("token", response.data.access_token);
         navigate("/home");
 

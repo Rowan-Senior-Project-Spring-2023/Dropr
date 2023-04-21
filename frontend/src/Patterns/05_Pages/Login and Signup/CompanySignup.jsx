@@ -3,8 +3,46 @@ import Form from "Patterns/03_Organisms/Form/Form";
 import Image from "Patterns/01_Atoms/Image/Image";
 import styles from "./LoginAndSignup.module.scss";
 import loginImage from "Assets/Login-and-Signup.webp";
+import axios from "axios";
+import { useState } from "react";
+
 
 const CompanySignup = () => {
+  const [formData, setFormData] = useState({
+    companyName: "",
+    //companyEmail: "",
+    companyDescription: "",
+    companyPassword:  "",
+    Link: "",
+    image: ""
+  });
+
+  const { companyName, companyEmail, companyPassword, companyDescription, Link, image } = formData;
+
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (evt) => {
+    evt.preventDefault();
+    const data = {
+      company_name: companyName,
+      //company_Email: companyEmail,
+      password: companyPassword,
+      description: companyDescription,
+      link: Link,
+      image_path: image
+    };
+    axios
+      .post("http://127.0.0.1:8000/companies/create", data)
+      .then((response) => {
+        console.log(data);
+        console.log(response);
+        alert(response);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
   return (
     <div className={styles.page}>
       <main className={styles.actionArea}>
@@ -17,8 +55,8 @@ const CompanySignup = () => {
         </header>
         <Form
           type ="company"
-          action={"/api"}
-          method={"POST"}
+          onSubmit={handleSubmit}
+          onChange={handleChange}
           className={styles.form}
         />
       </main>

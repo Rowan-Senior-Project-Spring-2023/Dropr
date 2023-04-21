@@ -3,12 +3,11 @@ import PropTypes from "prop-types";
 import FormField from "Patterns/02_Molecules/Form Field/FormField";
 import Button from "Patterns/01_Atoms/Button/Button";
 import styles from "./Form.module.scss";
-import { useState } from "react";
 
-const LoginForm = ({ variant, action, method }) => {
+const LoginForm = () => {
   return (
-    <form action={action} method={method} className={styles.form} onSubmit={onSubmit} onChange={onChange} >
-      <FormField
+    <>
+    <FormField
         name={"email"}
         labelText={"Email"}
         inputText={"email@domain.net"}
@@ -23,7 +22,7 @@ const LoginForm = ({ variant, action, method }) => {
         value={"password"}
       />
       <Button variant={"form"} text={"Log in"} type={"submit"} />
-    </form>
+    </>
     
   );
 };
@@ -50,13 +49,13 @@ const UserForm = () => {
         inputType={"password"}
       />
       <FormField
-        name={"full-name"}
+        name={"fullName"}
         labelText={"Full Name"}
         inputText={""}
         inputType={"text"}
       />
       <FormField
-        name={"Phone"}
+        name={"phone"}
         labelText={"Phone number"}
         inputText={""}
         inputType={"tel"}
@@ -70,28 +69,29 @@ const CompanyForm = () => {
   return (
     <>
       <FormField
-        name={"company-name"}
+        name={"companyName"}
         labelText={"Company Name"}
         inputText={""}
         inputType={"text"}
       />
+    
       <FormField
-        name={"company-email"}
-        labelText={"Company Email"}
-        inputText={"email@domain.net"}
-        inputType={"email"}
-      />
-      <FormField
-        name={"company-description"}
+        name={"companyDescription"}
         labelText={"Compay Description"}
         inputText={""}
         inputType={"longtext"}
       />
       <FormField
-        name={"company-password"}
+        name={"companyPassword"}
         labelText={"Company Password"}
         inputText={""}
         inputType={"password"}
+      />
+        <FormField
+        name={"Link"}
+        labelText={"Company link"}
+        inputText={""}
+        inputType={"link"}
       />
       <FormField
         name={"company-image"}
@@ -104,7 +104,7 @@ const CompanyForm = () => {
   );
 };
 
-const Form = ({ action, method, onSubmit, onChange })  => {
+const Form = ({ action, method, onSubmit, onChange, type })  => {
   return (
     <form action={action} method={method} onSubmit={onSubmit} onChange={onChange} className={styles.form}>
       {type === "user" && <UserForm/>}
