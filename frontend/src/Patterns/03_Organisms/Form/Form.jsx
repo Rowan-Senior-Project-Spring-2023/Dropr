@@ -23,7 +23,6 @@ const LoginForm = () => {
       />
       <Button variant={"form"} text={"Log in"} type={"submit"} />
     </>
-    
   );
 };
 
@@ -65,17 +64,6 @@ const UserForm = () => {
   );
 };
 
-const SearchForm = () => {
-  return (
-    <>
-      <FormField
-        name={"Search"}
-        labelText={"Search products"}
-        inputText={""}
-        inputType={"text"}
-      />
-    </>
-  )}
 
 const CompanyForm = () => {
   return (
@@ -116,13 +104,19 @@ const CompanyForm = () => {
   );
 };
 
+const Search = () => {
+  return (
+    <FormField name="search" inputText={"Search products"} inputType="search" />
+  );
+};
+
 const Form = ({ action, method, onSubmit, onChange, type })  => {
   return (
     <form action={action} method={method} onSubmit={onSubmit} onChange={onChange} className={styles.form}>
       {type === "user" && <UserForm/>}
       {type === "company" && <CompanyForm/>}
       {type === "login" && <LoginForm/>}
-      {type === "search" && <SearchForm/>}
+      {type === "search" && <Search/>}
     </form>
   );
 };

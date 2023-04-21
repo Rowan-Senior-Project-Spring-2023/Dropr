@@ -14,10 +14,10 @@ const CompanySignup = () => {
     companyDescription: "",
     companyPassword:  "",
     Link: "",
-    image: ""
+    file: ""
   });
 
-  const { companyName, companyEmail, companyPassword, companyDescription, Link, image } = formData;
+  const { companyName, companyEmail, companyPassword, companyDescription, Link, file } = formData;
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,10 +30,14 @@ const CompanySignup = () => {
       password: companyPassword,
       description: companyDescription,
       link: Link,
-      image_path: image
+      file: file,
     };
     axios
-      .post("http://127.0.0.1:8000/companies/create", data)
+      .post("http://127.0.0.1:8000/companies/create", data,  {
+        headers: {
+          "Content-Type": "multipart/form-data; boundary={boundary}"
+        }
+      })
       .then((response) => {
         console.log(data);
         console.log(response);

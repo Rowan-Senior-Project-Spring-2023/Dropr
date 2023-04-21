@@ -9,7 +9,7 @@ const ProductSearch = () => {
 
   useEffect(() => {
     setCategories([
-      { id: "1", name: "shoes" },
+      { id: "1", name: "footwear" },
       { id: "2", name: "shirts" },
       { id: "3", name: "pants" },
       { id: "4", name: "hats" },
