@@ -4,9 +4,9 @@ import axios from "axios";
 import ProductSearch from "Patterns/03_Organisms/Product Search/ProductSearch";
 import CardContainer from "Patterns/03_Organisms/Card Container/CardContainer";
 import ProductCard from "Patterns/03_Organisms/Product Card/ProductCard";
-import styles from "./Home.module.scss";
+import styles from "./App.module.scss";
 
-const Home = () => {
+const App = () => {
   const [products, setProducts] = useState([]);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -89,4 +89,4 @@ const capitalize = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-export default Home;
+export default App;

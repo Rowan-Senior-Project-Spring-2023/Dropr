@@ -8,7 +8,7 @@ import Error from "Patterns/05_Pages/Error";
 import Landing from "Patterns/05_Pages/Landing";
 import Login from "Patterns/05_Pages/Login and Signup/Login";
 import Signup from "Patterns/05_Pages/Login and Signup/Signup";
-import Home from "Patterns/05_Pages/Home/Home";
+import App from "Patterns/05_Pages/App/App";
 import RegisterProduct from "Patterns/05_Pages/Register Product/RegisterProduct";
 
 const router = createBrowserRouter([
@@ -30,12 +30,16 @@ const router = createBrowserRouter([
         element: <Signup />,
       },
       {
-        path: "/home/products",
-        element: <Home />,
+        path: "/home",
+        element: <App />,
       },
       {
-        path: "/home/products/:category",
-        element: <Home />,
+        path: "/home/category/:category",
+        element: <App />,
+      },
+      {
+        path: "/companies/:companyId",
+        element: <App />,
       },
       {
         path: "/register-product",
