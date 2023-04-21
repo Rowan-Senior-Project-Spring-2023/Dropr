@@ -7,7 +7,7 @@ import mainSectionImage from "Assets/vegalia.png";
 const Landing = () => {
   return (
     <main>
-      <Section>
+      <Section variant={"landing"}>
         <SectionText
           heading={"Go from zero to 1$"}
           description={
@@ -25,7 +25,7 @@ const Landing = () => {
         cta={"Get started"}
         color={"white"}
       />
-      <Section>
+      <Section variant={"landing"}>
         <SectionText
           heading={"Go from zero to 1$"}
           description={
@@ -44,7 +44,7 @@ const Landing = () => {
         cta={"Explore Features"}
         color={"teal"}
       />
-      <Section>
+      <Section variant={"landing"}>
         <SectionImage src={mainSectionImage} alt={"Picture of Vegalia."} />
         <SectionText
           heading={"Go from zero to 1$"}
