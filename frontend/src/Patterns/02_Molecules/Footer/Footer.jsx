@@ -3,10 +3,10 @@ import Button from "Patterns/01_Atoms/Button/Button";
 import CardPrice from "Patterns/01_Atoms/Card Price/CardPrice";
 import styles from "./Footer.module.scss";
 
-const Footer = ({ variant, price }) => {
+const Footer = ({ variant, price, onClick }) => {
   return variant === "card" ? (
     <footer className={styles.card}>
-      <Button variant={"card"} text={"Subscribe"} />
+      <Button variant={"card"} text={"Subscribe"} onClick={onClick} />
       <CardPrice price={price} />
     </footer>
   ) : (

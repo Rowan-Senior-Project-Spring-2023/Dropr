@@ -1,18 +1,13 @@
-Real quick, this is how to run the fast api file -
+# Setup
 
-    start venv
+1. Make sure you're CD'd into backend/
+2. Make a .venv
+3. python -m .venv /path/to/new/virtual/environment
+4. On Mac/Git Bash: source .venv/Scripts/activate
+5. On Windows: .venv\Scripts\activate.bat
+6. pip install -r requirements.txt
+7. uvicorn main:app --reload (this will create a local database on launch)
 
-    pip install fastapi
-    pip install uvicorn
-    pip install sqlalchemy
-    pip install passlib
-    pip install python-jose
-    pip install python-multipart
-    pip install bycrypt
+Brian note(s):
 
-
-    cd into backend in ur terminal and run
-
-    uvicorn main:app --reload
-
-    should create db on launch
+1. twilio pass - +"!?"
