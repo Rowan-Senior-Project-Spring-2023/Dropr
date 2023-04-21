@@ -21,7 +21,6 @@ const LoginForm = ({ variant, action, method }) => {
       />
       <Button variant={"form"} text={"Log in"} type={"submit"} />
     </form>
-    
   );
 };
 
@@ -93,7 +92,8 @@ const CompanyForm = () => {
       <FormField
         name={"company-image"}
         labelText={"Company Image"}
-        inputType="file" accept="image/*" 
+        inputType="file"
+        accept="image/*"
       />
 
       <Button variant={"form"} text={"Register"} type={"submit"} />
@@ -101,12 +101,19 @@ const CompanyForm = () => {
   );
 };
 
+const Search = () => {
+  return (
+    <FormField name="search" inputText={"Search products"} inputType="search" />
+  );
+};
+
 const Form = ({ action, method, type }) => {
   return (
     <form action={action} method={method} className={styles.form}>
-      {type === "user" && <UserForm/>}
-      {type === "company" && <CompanyForm/>}
-      {type === "login" && <LoginForm/>}
+      {type === "user" && <UserForm />}
+      {type === "company" && <CompanyForm />}
+      {type === "login" && <LoginForm />}
+      {type === "search" && <Search />}
     </form>
   );
 };

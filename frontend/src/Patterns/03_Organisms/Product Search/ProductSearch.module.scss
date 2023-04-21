@@ -18,6 +18,10 @@
     padding-inline: paddings.$home-outer-containers;
     max-width: widths.$card-container-max-width;
 
+    form {
+      min-width: 100%;
+    }
+
     input {
       border: 1px solid colors.$black;
     }
