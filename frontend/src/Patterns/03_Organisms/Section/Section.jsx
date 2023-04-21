@@ -13,7 +13,7 @@ const Section = ({ variant, children }) => {
 
 Section.propTypes = {
   variant: PropTypes.oneOf(["generic", "landing"]),
-  children: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Section;

@@ -4,6 +4,7 @@
 @use "Styles/Tokens/FontSizes" as fontSizes;
 @use "Styles/Tokens/FontWeights" as fontWeights;
 @use "Styles/Tokens/Paddings" as paddings;
+@use "Styles/Tokens/Widths" as widths;
 
 %header {
 }
@@ -11,4 +12,28 @@
 .card {
   @extend %header;
   padding: 1em;
+}
+
+.company {
+  // lazy, please refactor when not on a time crunch future Vince
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: paddings.$home-outer-containers;
+  background-color: colors.$teal;
+  border: 1px solid colors.$black;
+  font-size: 1.25rem;
+
+  header {
+    margin: 0 auto;
+    padding-block: 5rem;
+    padding-inline: paddings.$home-outer-containers;
+    max-width: widths.$card-container-max-width;
+    text-align: center;
+
+    & > * {
+      margin: 1rem;
+    }
+  }
 }

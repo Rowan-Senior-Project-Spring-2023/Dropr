@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import CardContainer from "Patterns/03_Organisms/Card Container/CardContainer";
 import ProductCard from "Patterns/03_Organisms/Product Card/ProductCard";
@@ -12,22 +12,21 @@ import Section from "Patterns/03_Organisms/Section/Section";
 // Perhaps we can render <Company /> inside a main <App /> component & route...
 
 const Company = () => {
+  const [company, setCompany] = useState();
   const [products, setProducts] = useState([]);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [routeInfo, setRouteInfo] = useState(undefined);
-  const location = useLocation();
-  const category = location.state?.category;
+  const { companyId } = useParams();
 
   useEffect(() => {
-    axios.get("http://localhost:8000/products/all").then((data) => {
-      setProducts(data.data);
-    });
+    axios
+      .get(`http://localhost:8000/companies/?company_id=${companyId}`)
+      .then((data) => {
+        setCompany(data.data.company);
+        setProducts(data.data.products);
+      });
   }, []);
-
-  useEffect(() => {
-    setRouteInfo(category); // get products specified by category in route
-  }, [category]);
 
   useEffect(() => {
     if (products.length === 0) return;
@@ -58,43 +57,51 @@ const Company = () => {
     setLoading(false);
   }, [images]);
 
-  return (
-    <>
-      {/* This is the only thing we're changing, rest can be refactored into some <App /> component */}
-      <Section>
-        <Header variant={"company"} />
-      </Section>
-      {/* ==================== */}
-      <main className={styles.main}>
-        {!loading && (
-          <CardContainer
-            heading={
-              category
-                ? `Trending drops in ${capitalize(category.name)}`
-                : "Trending drops"
-            }
-          >
-            {products &&
-              products.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  image={
-                    images.find((image) => image.key === product.id)
-                      ?.encode_image
-                  }
-                  heading={product.name}
-                  price={product.price}
-                />
-              ))}
-          </CardContainer>
-        )}
-      </main>
-    </>
-  );
+  if (!loading) {
+    return (
+      <>
+        {/* This is the only thing we're changing, rest can be refactored into some <App /> component */}
+        <Section>
+          <Header
+            variant={"company"}
+            heading={company.name}
+            description={company.description}
+          />
+        </Section>
+        {/* ==================== */}
+        <main className={styles.main}>
+          {!loading && (
+            <CardContainer
+              heading={
+                company.name
+                  ? `Trending drops in ${capitalize(company.name)}`
+                  : "Trending drops"
+              }
+            >
+              {products &&
+                products.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    id={product.id}
+                    image={
+                      images.find((image) => image.key === product.id)
+                        ?.encode_image
+                    }
+                    heading={product.name}
+                    price={product.price}
+                  />
+                ))}
+            </CardContainer>
+          )}
+        </main>
+      </>
+    );
+  }
 };
 
 const capitalize = (string) => {
+  if (typeof string !== "string") return "Company Name";
+
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 

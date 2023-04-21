@@ -4,7 +4,7 @@ import Paragraph from "Patterns/01_Atoms/Paragraph/Paragraph";
 import Link from "Patterns/01_Atoms/Link/Link";
 import styles from "./Header.module.scss";
 
-const Header = ({ variant, heading, children }) => {
+const Header = ({ variant, heading, description, children }) => {
   if (variant === "card") {
     return (
       <header className={styles.card}>
@@ -15,16 +15,18 @@ const Header = ({ variant, heading, children }) => {
 
   if (variant === "company") {
     return (
-      <>
-        <Heading variant={"company"} text={"Company name"} />
-        <Paragraph text={"Company description"} />
-        <Link
-          href={
-            "https://daveredfern.com/use-sass-placeholders-and-extend-wisely-a-cautionary-tale/"
-          }
-          description={"example link"}
-        />
-      </>
+      <div className={styles.company}>
+        <header className={styles}>
+          <Heading variant={"company"} text={heading} />
+          <Paragraph text={description} />
+          <Link
+            href={
+              "https://daveredfern.com/use-sass-placeholders-and-extend-wisely-a-cautionary-tale/"
+            }
+            description={description}
+          />
+        </header>
+      </div>
     );
   }
 
@@ -32,8 +34,9 @@ const Header = ({ variant, heading, children }) => {
 };
 
 Header.propTypes = {
-  variant: PropTypes.oneOf(["card", "company-page"]),
-  heading: PropTypes.string,
+  variant: PropTypes.oneOf(["card", "company"]),
+  heading: PropTypes.string.isRequired,
+  description: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.element),
 };
 
