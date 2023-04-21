@@ -52,7 +52,7 @@ const CompanySignup = () => {
       <main className={styles.actionArea}>
         <header>
           <Heading
-            variant={"section"}
+            variant={"registration"}
             text={"Join now and start selling your products to millions."}
             className={styles.heading}
           />

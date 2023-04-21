@@ -1,9 +1,8 @@
-import styles from "./RegisterProduct.module.scss";
 
 const RegisterProduct = () => {
   return (
-    <div className={styles.page}>
-      <div className={styles.left}>
+    <div>
+      <div>
         <h1>Register a product</h1>
         <form>
           <label htmlFor="product-name"><b>Product Name*</b></label>
@@ -19,14 +18,14 @@ const RegisterProduct = () => {
           <input type="number" id="limit-per-person" name="limit-per-person"/><br/>
 
           <label htmlFor="is-featured"><b>Featured?</b></label>
-          <div className={styles.checkboxContainer}>
+          <div>
           <input type="checkbox" id="is-featured" name="is-featured"/><br/>
           </div>
 
           <input type="submit" value="Submit"/>
         </form>
       </div>
-      <div className={styles.right}></div>
+      <div></div>
     </div>
   );
 };
