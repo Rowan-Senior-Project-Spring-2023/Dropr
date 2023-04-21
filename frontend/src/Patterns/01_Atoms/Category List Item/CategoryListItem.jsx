@@ -6,7 +6,7 @@ const CategoryListItem = ({ category }) => {
   return (
     <li className={styles.category}>
       <Link
-        to={`/home/products/${category.name}`}
+        to={`/home/category/${category.name}`}
         state={{ category: category }}
       >
         {category.name}

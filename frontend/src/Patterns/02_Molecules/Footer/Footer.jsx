@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import Button from "Patterns/01_Atoms/Button/Button";
-import CardQuantity from "Patterns/01_Atoms/Card Price/CardQuantity";
+import CardPrice from "Patterns/01_Atoms/Card Price/CardPrice";
 import styles from "./Footer.module.scss";
 
-const Footer = ({ variant, quantity, onClick }) => {
+const Footer = ({ variant, price, onClick }) => {
   return variant === "card" ? (
     <footer className={styles.card}>
       <Button variant={"card"} text={"Subscribe"} onClick={onClick} />
-      <CardQuantity quantity={quantity} />
+      <CardPrice price={price} />
     </footer>
   ) : (
     <footer>
