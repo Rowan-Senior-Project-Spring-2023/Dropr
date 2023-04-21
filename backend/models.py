@@ -19,3 +19,5 @@ class Users(Base):
     full_name = Column(String, index=True)
     disabled = Column(Boolean, default=False)
     hashed_password = Column(String)
+
+

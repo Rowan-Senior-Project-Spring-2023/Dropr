@@ -105,7 +105,11 @@ def get_password_hash(password):
     return pwd_context.hash(password)
 
 
-async def get_user(db: AsyncSession, username: str) -> models.Users:
+async def get_user(db: AsyncSession, email: str) -> models.Users:
+    result = db.execute(select(models.Users).filter_by(email=email))
+    return result.scalars().first()
+
+async def get_user_username(db: AsyncSession, username: str) -> models.Users:
     result = db.execute(select(models.Users).filter_by(username=username))
     return result.scalars().first()
 
@@ -127,6 +131,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
         expire = datetime.utcnow() + timedelta(minutes=15)
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    #print(encoded_jwt)
     return encoded_jwt
 
 
@@ -142,9 +147,10 @@ async def get_current_user(db: AsyncSession = Depends(get_db), token: str = Depe
         if username is None:
             raise credentials_exception
         token_data = TokenData(username=username)
+        print(token_data)
     except JWTError:
         raise credentials_exception
-    user = await get_user(db, username=token_data.username)
+    user = await get_user_username(db, username=token_data.username)
     if user is None:
         raise credentials_exception
     return user
@@ -156,7 +162,7 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
     return current_user
 
 
-@app.post("/login", response_model=Token)
+@app.post("/token", response_model=Token)
 async def login_for_access_token(db: AsyncSession = Depends(get_db), form_data: OAuth2PasswordRequestForm = Depends()):
     user = await authenticate_user(db, form_data.username, form_data.password)
     if not user:

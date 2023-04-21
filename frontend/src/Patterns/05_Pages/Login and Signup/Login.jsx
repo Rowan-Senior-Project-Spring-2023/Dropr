@@ -6,40 +6,45 @@ import loginImage from "Assets/Login-and-Signup.webp";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
-const defaultForm = {
-  name: "",
-}
 
 const Login = () => {
-  //const Auth = React.useContext(AuthApi);
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password:  "",
+  });
 
-  const pullData = (info) =>{
-    setName(info.name);
-    setPassword(info.password);
-  }
+  const { email, password, } = formData;
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const handleSubmit = async (evt) => {
+    
+    evt.preventDefault();
     const data = {
-      username: name,
+      username: email,
       password: password,
     };
+    axios
+      .post("http://127.0.0.1:8000/token", data, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
+      })
+      .then((response) => {
+        alert(response);
+        Cookies.set("token", response.data.access_token);
+        navigate("/home");
 
-    try {
-      const response = await axios.post("http://127.0.0.1:8000/login",  data);
+      })
+      .catch((error) => {
+        alert(error);
+      });
 
-      if (response && response.data)  {
-        Cookies.set("token", response.data.access_token)
-      }
-    } catch (error) {
-      throw new Error(error);
-    }
-     
-  }
+  };
 
 
   return (
@@ -54,11 +59,9 @@ const Login = () => {
         </header>
         <Form
           variant="login"
-          action={"/api"}
-          method={"POST"}
           className={styles.form}
-          onSubmit = {handleSubmit}
-          func = {pullData}
+          onSubmit={handleSubmit}
+          onChange={handleChange}
         />
       </main>
       <aside className={styles.imageContainer}>
