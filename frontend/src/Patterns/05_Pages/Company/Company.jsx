@@ -1,14 +1,10 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import CompanyHeader from "Patterns/03_Organisms/CompanyHeader/CompanyHeader";
 import CardContainer from "Patterns/03_Organisms/Card Container/CardContainer";
 import ProductCard from "Patterns/03_Organisms/Product Card/ProductCard";
 import styles from "./Company.module.scss";
-import Paragraph from "Patterns/01_Atoms/Paragraph/Paragraph";
-import Heading from "Patterns/01_Atoms/Heading/Heading";
 import Header from "Patterns/03_Organisms/Header/Header";
-import Link from "Patterns/01_Atoms/Link/Link";
 import Section from "Patterns/03_Organisms/Section/Section";
 
 // Definitely would like to refactor this since we're repeating code from <App />
@@ -66,16 +62,7 @@ const Company = () => {
     <>
       {/* This is the only thing we're changing, rest can be refactored into some <App /> component */}
       <Section>
-        <Header>
-          <Heading variant={"section"} text={"Company name"} />
-          <Paragraph text={"Company description"} />
-          <Link
-            href={
-              "https://daveredfern.com/use-sass-placeholders-and-extend-wisely-a-cautionary-tale/"
-            }
-            description={"example link"}
-          />
-        </Header>
+        <Header variant={"company"} />
       </Section>
       {/* ==================== */}
       <main className={styles.main}>
