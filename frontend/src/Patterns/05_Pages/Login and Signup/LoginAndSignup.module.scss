@@ -18,7 +18,7 @@
     background-color: colors.$grey;
     padding: paddings.$login-signup-area;
     height: heights.$login-signup-area;
-    gap: 5rem;
+    gap: 2rem;
     width: 100%;
 
     @media (min-width: breakpoints.$tablet) {
@@ -39,11 +39,11 @@
       width: 100%;
       object-fit: cover;
     }
+
     .imageWrapper {
       max-height: 100%;
       overflow: hidden;
     }
-    
 
     @media (min-width: breakpoints.$tablet) {
       display: grid;

@@ -9,5 +9,12 @@
 .input {
   padding: paddings.$button;
   border-radius: borderRadii.$button;
-  border: 1px solid colors.$light-grey;
+
+  &:not([type="file"]) {
+    border: 1px solid colors.$light-grey;
+  }
+
+  &[type="file"] {
+    padding-left: 0;
+  }
 }

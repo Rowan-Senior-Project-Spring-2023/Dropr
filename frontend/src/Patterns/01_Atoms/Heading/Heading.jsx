@@ -10,6 +10,10 @@ const Heading = ({ variant, text }) => {
     return <h2 className={styles.section}>{text}</h2>;
   }
 
+  if (variant === "registration") {
+    return <h2 className={styles.registration}>{text}</h2>;
+  }
+
   if (variant === "banner") {
     return <h2 className={styles.banner}>{text}</h2>;
   }
@@ -35,6 +39,7 @@ Heading.propTypes = {
     "company",
     "card",
     "card-container",
+    "registration",
   ]),
   text: PropTypes.string.isRequired,
 };
