@@ -6,21 +6,23 @@
 @use "Styles/Tokens/Paddings" as paddings;
 
 .section {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 1fr);
-
-  @media (min-width: breakpoints.$tablet) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-  }
-
-  & > * + * {
-    border-top: 2px solid colors.$black;
+  &Landing {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
 
     @media (min-width: breakpoints.$tablet) {
-      border-left: 2px solid colors.$black;
-      border-top: 0;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr;
+    }
+
+    & > * + * {
+      border-top: 2px solid colors.$black;
+
+      @media (min-width: breakpoints.$tablet) {
+        border-left: 2px solid colors.$black;
+        border-top: 0;
+      }
     }
   }
 }
