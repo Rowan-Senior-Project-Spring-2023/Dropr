@@ -37,7 +37,7 @@ const Signup = () => {
     axios
       .post("http://127.0.0.1:8000/createUser", data)
       .then((response) => {
-        //console.log(response);
+        console.log(response);
         navigate("/login");
         //alert(response);
       })

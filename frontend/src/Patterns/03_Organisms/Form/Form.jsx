@@ -65,6 +65,18 @@ const UserForm = () => {
   );
 };
 
+const SearchForm = () => {
+  return (
+    <>
+      <FormField
+        name={"Search"}
+        labelText={"Search products"}
+        inputText={""}
+        inputType={"text"}
+      />
+    </>
+  )}
+
 const CompanyForm = () => {
   return (
     <>
@@ -110,6 +122,7 @@ const Form = ({ action, method, onSubmit, onChange, type })  => {
       {type === "user" && <UserForm/>}
       {type === "company" && <CompanyForm/>}
       {type === "login" && <LoginForm/>}
+      {type === "search" && <SearchForm/>}
     </form>
   );
 };
