@@ -20,7 +20,7 @@ const ProductSearch = () => {
   return (
     <div className={styles.header}>
       <Header>
-        <Form variant="search" />
+        <Form type="search" />
         <CategoryList categories={categories} />
       </Header>
     </div>
