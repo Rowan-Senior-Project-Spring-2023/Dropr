@@ -30,6 +30,7 @@
 .company {
   @extend %heading;
   font-size: fontSizes.$heading-company;
+  line-height: 1;
 }
 
 .card {
