@@ -33,6 +33,7 @@ class Companys(Base):
     description = Column(String, index=True)
     company_link = Column(String, nullable=True, index=True)
     path_to_image = Column(String, nullable=True)
+    hashed_password = Column(String)
 
 class Products(Base):
     __tablename__ = "products"
