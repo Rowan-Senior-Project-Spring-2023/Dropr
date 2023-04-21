@@ -39,6 +39,11 @@
       width: 100%;
       object-fit: cover;
     }
+    .imageWrapper {
+      max-height: 100%;
+      overflow: hidden;
+    }
+    
 
     @media (min-width: breakpoints.$tablet) {
       display: grid;

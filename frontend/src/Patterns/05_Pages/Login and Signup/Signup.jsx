@@ -16,19 +16,22 @@ const Signup = () => {
           />
         </header>
         <Form
-          variant="signup"
+          type ="user"
           action={"/api"}
           method={"POST"}
           className={styles.form}
         />
       </main>
       <aside className={styles.imageContainer}>
+        <div className={styles.imageWrapper}>
         <Image
-          src={loginImage}
-          alt={"Background image for the Login page."}
-          className={styles.image}
+           src={loginImage}
+           alt={"Background image for the Login page."}
+            className={styles.image}
         />
+        </div>
       </aside>
+
     </div>
   );
 };
