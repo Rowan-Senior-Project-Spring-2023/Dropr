@@ -1,0 +1,7 @@
+@use "Styles/Tokens/Paddings" as paddings;
+
+.navigation {
+  padding: 2rem;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
