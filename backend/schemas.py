@@ -20,10 +20,11 @@ class Product(BaseModel):
 
 class User(BaseModel):
     username: str = Field(min_length=1, max_length=100)
-    emails: str = Field(min_lenght=1, max_length=1000)
-    password: str = Field(min=0)
-    phone_number: str = Field(min_length=10, max_length=10)
-    full_names: str
+    email: str = Field(min_lenght=1, max_length=1000)
+    hashed_password: str = Field(min=0)
+    phone_number: str 
+    full_name: str
+
 
     class Config:
         orm_mode = True

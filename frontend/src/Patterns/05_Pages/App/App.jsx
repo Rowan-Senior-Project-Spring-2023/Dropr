@@ -23,9 +23,9 @@ const App = () => {
 
   useEffect(() => {
     setRouteInfo(category); // get products specified by category in route
-    axios.get(`http://localhost:8000/products/category?product_cate=${category.name}`).then((data) => {
-      setProducts(data.data);
-    });
+    // axios.get(`http://localhost:8000/products/category?product_cate=${category.name}`).then((data) => {
+    //   setProducts(data.data);
+    // });
   }, [category]);
 
   useEffect(() => {

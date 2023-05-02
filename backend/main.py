@@ -196,10 +196,10 @@ def all_users(db: Session = Depends(get_db)):
 def create_user(user: User, db: Session = Depends(get_db)):    
     user_model = models.Users()
     user_model.username = user.username
-    user_model.email = user.emails
-    user_model.full_name = user.full_names
+    user_model.email = user.email
+    user_model.full_name = user.full_name
     user_model.phone_number = "+1"+user.phone_number
-    user_model.hashed_password = get_password_hash(user.password)
+    user_model.hashed_password = get_password_hash(user.hashed_password)
     db.add(user_model)
     db.commit()
 
@@ -229,10 +229,6 @@ def sms_reply(db: Session = Depends(get_db)):
             from_="+18339172623",
             to=user.phone_number
         )
-
-
-
-
     return 0
 
 class Token(BaseModel):
@@ -278,7 +274,6 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
         expire = datetime.utcnow() + timedelta(minutes=15)
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    #print(encoded_jwt)
     return encoded_jwt
 
 
@@ -294,7 +289,6 @@ async def get_current_user(db: AsyncSession = Depends(get_db), token: str = Depe
         if username is None:
             raise credentials_exception
         token_data = TokenData(username=username)
-        print(token_data)
     except JWTError:
         raise credentials_exception
     user = await get_user_username(db, username=token_data.username)
@@ -326,5 +320,5 @@ async def login_for_access_token(db: AsyncSession = Depends(get_db), form_data: 
 
 
 @app.get("/users/me/", response_model=User)
-async def read_users_me(current_user: User = Depends(get_current_active_user)):
+async def read_users_me(current_user: User = Depends(get_current_user)):
     return current_user

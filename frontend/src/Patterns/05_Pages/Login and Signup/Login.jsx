@@ -37,6 +37,7 @@ const Login = () => {
       .then((response) => {
         //alert(response);
         Cookies.set("token", response.data.access_token);
+        axios.get("http://127.0.0.1:8000/users/me")
         navigate("/home");
 
       })
