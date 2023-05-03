@@ -154,10 +154,10 @@ def buy(user_id: int, product_id: int, quantity: int, db: Session = Depends(get_
 
 
 @app.get("/products/image")
-def ret_products_image(product_key: int,db: Session = Depends(get_db)):
+def ret_products_image(product_key: int, db: Session = Depends(get_db)):
     image = db.query(models.Products).get(product_key).image_link
-
-    return image
+    
+    return  { "product_id": product_key, "image": image }
    
 
 @app.post("/companies/create")
