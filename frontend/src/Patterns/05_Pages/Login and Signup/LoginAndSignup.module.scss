@@ -9,7 +9,6 @@
 
 .page {
   display: flex;
-  max-height: 100vh;
 
   .actionArea {
     display: flex;
@@ -17,12 +16,17 @@
     justify-content: center;
     background-color: colors.$grey;
     padding: paddings.$login-signup-area;
+<<<<<<< HEAD
     height: heights.$login-signup-area;
     gap: 2rem;
+=======
+    gap: 3rem;
+>>>>>>> 6c937a1dc2a7687141c46ae07ad90627add54d69
     width: 100%;
 
     @media (min-width: breakpoints.$tablet) {
       width: widths.$login-signup-area;
+      height: heights.$login-signup-area;
     }
   }
 
@@ -43,7 +47,6 @@
       max-height: 100%;
       overflow: hidden;
     }
-    
 
     @media (min-width: breakpoints.$tablet) {
       display: grid;

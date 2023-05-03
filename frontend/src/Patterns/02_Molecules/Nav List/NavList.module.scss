@@ -1,0 +1,11 @@
+.list {
+  display: flex;
+  gap: 2.5rem;
+  padding: 0;
+  list-style-type: none;
+
+  & li:nth-of-type(3) {
+    margin-left: auto;
+    color: red;
+  }
+}

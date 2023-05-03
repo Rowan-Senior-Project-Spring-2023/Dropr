@@ -7,12 +7,15 @@ class Company(BaseModel):
     description: str = Field(min_lenght=1, max_length=1000)
     link: str
     password: str
+    image_link: str
 
 class Product(BaseModel):
     product_name: str = Field(min_length=1, max_length=100)
     description: str = Field(min_lenght=1, max_length=1000)
     price: float = Field(min=0)
     category: CategoryEnum = Field(min=0)
+    quantity: int = Field(min=1)
+    image_link: str
     company_id: int
     is_open: bool
     is_featured: bool

@@ -81,7 +81,7 @@ def ret_products_by_comp(product_comp: int,db: Session = Depends(get_db)):
 
 
 @app.post("/products/create")
-def create_product(product: Product = Depends(), file: Union[UploadFile, None] = None, db: Session = Depends(get_db)):
+def create_product(product: Product = Depends(), db: Session = Depends(get_db)):
     
     product_model = models.Products()
     product_model.name = product.product_name
@@ -90,25 +90,64 @@ def create_product(product: Product = Depends(), file: Union[UploadFile, None] =
     product_model.is_featured = product.is_featured
     product_model.is_open = product.is_open 
     product_model.price = product.price
+    product_model.quantity = product.quantity
 
     product_model.company_id = product.company_id
     product_model.company = db.query(models.Companys).filter_by(company_id=product.company_id).first()
 
 
-    image_path = media_directory+str(product.product_name.replace(" ", "")+str("-")+str(datetime.now())[0:10]+str(".jpg"))
-
-    if(file is not None):
-        with open(image_path,'wb') as image:
-            image.write(file.file.read())
-            image.close()
-
-
-            product_model.path_to_image = image_path
+    product_model.image_link = product.image_link
 
     db.add(product_model)
     db.commit()
 
     return product
+
+@app.post("/company/subscribe")
+def subscribe_user(user_id: int, company_id: int, db: Session = Depends(get_db)):
+    user_company_model = models.Users_Company()
+    user_company_model.company = company_id
+    user_company_model.user = user_id
+
+    db.add(user_company_model)
+    db.commit()
+
+@app.post("/company/unsubscribe")
+def subscribe_user(user_id: int, company_id: int, db: Session = Depends(get_db)):
+
+
+    temp = db.query(models.Users_Company()).filter_by(company=company_id).filter_by(user=user_id).first()
+
+    db.delete(temp.table_id)
+    db.commit()
+
+
+@app.post("/products/buy")
+def buy(user_id: int, product_id: int, quantity: int, db: Session = Depends(get_db)):
+    
+    prod = db.query(models.Products).filter_by(id=product_id).first()
+
+    if prod.quantity == 0 or prod.is_open == False:
+        return -1
+
+    if prod.quantity <= quantity:
+        quantity = prod.quantity
+        prod.quantity = 0
+        prod.is_open = False
+    else:
+        prod.quantity = prod.quantity - quantity
+    
+    
+    
+    products_users_model = models.Products_User()
+    products_users_model.product = product_id
+    products_users_model.user = user_id
+    products_users_model.quant = quantity
+
+    db.add(products_users_model)
+    db.commit()
+
+    return quantity
 
 
 
@@ -136,23 +175,14 @@ def ret_products_image(product_key: int,db: Session = Depends(get_db)):
         return ret_dict
 
 @app.post("/companies/create")
-def create_company(company: Company = Depends(), file: Union[UploadFile, None] = None, db: Session = Depends(get_db)):
+def create_company(company: Company = Depends(), db: Session = Depends(get_db)):
     company_model = models.Companys()
 
     company_model.name = company.company_name
     company_model.description = company.description
     company_model.company_link = company.link
 
-    image_path = media_directory+str(company.company_name.replace(" ", "")+str("-")+str(datetime.now())[0:10]+str(".jpg"))
-
-    if(file is not None):
-        with open(image_path,'wb') as image:
-            image.write(file.file.read())
-            image.close()
-
-
-            company_model.path_to_image = image_path
-
+    company_model.image_link = company.image_link
     company_model.hashed_password = get_password_hash(company.password)
 
     db.add(company_model)
