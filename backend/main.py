@@ -38,7 +38,9 @@ origins = [
     "http://localhost:8080",
     "http://localhost:3000",
     "http://localhost:3001",
-    "http://localhost:3002"
+    "http://localhost:3002",
+    "http://localhost:*",
+    "*"
 ]
 
 app.add_middleware(
@@ -153,26 +155,10 @@ def buy(user_id: int, product_id: int, quantity: int, db: Session = Depends(get_
 
 @app.get("/products/image")
 def ret_products_image(product_key: int,db: Session = Depends(get_db)):
-    path = db.query(models.Products).get(product_key).path_to_image
+    image = db.query(models.Products).get(product_key).image_link
 
-
-    if(path is not None):
-        with open(path, "rb") as image_file:
-            encoded_image_string = base64.b64encode(image_file.read())
-
-            ret_dict = {"encode_image":encoded_image_string,
-                        "key":product_key}
-
-        return ret_dict
-    else:
-        with open(DEFAULT_IMAGE, "rb") as image_file:
-    
-            encoded_image_string = base64.b64encode(image_file.read())
-
-            ret_dict = {"encode_image":encoded_image_string,
-                        "key":product_key}
-
-        return ret_dict
+    return image
+   
 
 @app.post("/companies/create")
 def create_company(company: Company = Depends(), db: Session = Depends(get_db)):
@@ -198,25 +184,9 @@ def get_companies(company_id: int, db: Session = Depends(get_db)):
 
 @app.get("/companies/image")
 def ret_products_image(company_key: int,db: Session = Depends(get_db)):
-    path = db.query(models.Companys).get(company_key).path_to_image
+    image = db.query(models.Companys).get(company_key).image_link
 
-    if(path is not None):
-        with open(path, "rb") as image_file:
-            encoded_image_string = base64.b64encode(image_file.read())
-
-            ret_dict = {"encode_image":encoded_image_string,
-                        "key":company_key}
-
-        return ret_dict
-    else:
-        with open(DEFAULT_IMAGE, "rb") as image_file:
-    
-            encoded_image_string = base64.b64encode(image_file.read())
-
-            ret_dict = {"encode_image":encoded_image_string,
-                        "key":company_key}
-
-        return ret_dict
+    return image
 
 @app.get("/users")
 def all_users(db: Session = Depends(get_db)):
@@ -228,7 +198,7 @@ def create_user(user: User, db: Session = Depends(get_db)):
     user_model.username = user.username
     user_model.email = user.email
     user_model.full_name = user.full_name
-    user_model.phone_number = "+1"+user.phone_number
+    user_model.phone_number = "+1" + user.phone_number
     user_model.hashed_password = get_password_hash(user.hashed_password)
     db.add(user_model)
     db.commit()

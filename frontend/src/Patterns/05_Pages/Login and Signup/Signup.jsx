@@ -4,19 +4,18 @@ import Image from "Patterns/01_Atoms/Image/Image";
 import styles from "./LoginAndSignup.module.scss";
 import loginImage from "Assets/Login-and-Signup.webp";
 import { useState } from "react";
-import axios from "axios"
-import React from 'react';
+import axios from "axios";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-
 
 const Signup = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
-    password:  "",
+    password: "",
     fullName: "",
-    phone:  "",
+    phone: "",
   });
 
   const { username, email, password, fullName, phone } = formData;
@@ -28,14 +27,13 @@ const Signup = () => {
     evt.preventDefault();
     const data = {
       username: username,
-      emails: email,
-      password: password,
-      full_names: fullName,
+      email: email,
+      hashed_password: password,
       phone_number: phone,
-      disabled: false
+      full_name: fullName,
     };
     axios
-      .post("http://127.0.0.1:8000/createUser", data)
+      .post("http://localhost:8000/createUser", data)
       .then((response) => {
         console.log(response);
         navigate("/login");
@@ -65,14 +63,13 @@ const Signup = () => {
       </main>
       <aside className={styles.imageContainer}>
         <div className={styles.imageWrapper}>
-        <Image
-           src={loginImage}
-           alt={"Background image for the Login page."}
+          <Image
+            src={loginImage}
+            alt={"Background image for the Login page."}
             className={styles.image}
-        />
+          />
         </div>
       </aside>
-
     </div>
   );
 };

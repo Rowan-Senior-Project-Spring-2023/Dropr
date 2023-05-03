@@ -4,7 +4,7 @@ import styles from "./Navbar.module.scss";
 
 const Navbar = ({ links }) => {
   return (
-    <nav class={styles.navigation}>
+    <nav className={styles.navigation}>
       <NavList links={links} />
     </nav>
   );

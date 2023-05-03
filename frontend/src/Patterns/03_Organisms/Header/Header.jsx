@@ -35,7 +35,7 @@ const Header = ({ variant, heading, description, children }) => {
 
 Header.propTypes = {
   variant: PropTypes.oneOf(["card", "company"]),
-  heading: PropTypes.string.isRequired,
+  heading: PropTypes.string,
   description: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.element),
 };

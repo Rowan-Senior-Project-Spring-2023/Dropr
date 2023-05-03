@@ -4,7 +4,7 @@ import styles from "./NavList.module.scss";
 
 const NavList = ({ links }) => {
   return (
-    <ul class={styles.list}>
+    <ul className={styles.list}>
       {links &&
         links.map((link, index) => (
           <li key={index}>

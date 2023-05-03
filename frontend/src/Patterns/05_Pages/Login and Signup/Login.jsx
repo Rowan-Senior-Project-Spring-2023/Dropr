@@ -8,21 +8,19 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
-    password:  "",
+    password: "",
   });
 
-  const { email, password, } = formData;
+  const { email, password } = formData;
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (evt) => {
-    
     evt.preventDefault();
     const data = {
       username: email,
@@ -31,22 +29,19 @@ const Login = () => {
     axios
       .post("http://127.0.0.1:8000/token", data, {
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        }
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
       })
       .then((response) => {
         //alert(response);
         Cookies.set("token", response.data.access_token);
-        axios.get("http://127.0.0.1:8000/users/me")
+        axios.get("http://localhost:8000/users/me");
         navigate("/home");
-
       })
       .catch((error) => {
         alert(error);
       });
-
   };
-
 
   return (
     <div className={styles.page}>
@@ -78,18 +73,16 @@ const Login = () => {
 
 export default Login;
 
-
-
-  // useEffect(() =>  {
-  //   const res = axios
-  //     .post("http://127.0.0.1:8000/login", data)
-  //     .then((response) => {
-  //       console.log(response);
-  //       Cookies.set("token", response.data.access_token);
-  //       return response;
-  //   })
-  //   .catch((error) => {
-  //     console.log(error.message);
-  //   });
-  //   })
-  // });
+// useEffect(() =>  {
+//   const res = axios
+//     .post("http://127.0.0.1:8000/login", data)
+//     .then((response) => {
+//       console.log(response);
+//       Cookies.set("token", response.data.access_token);
+//       return response;
+//   })
+//   .catch((error) => {
+//     console.log(error.message);
+//   });
+//   })
+// });

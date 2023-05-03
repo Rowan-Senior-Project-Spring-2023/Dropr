@@ -4,7 +4,7 @@ import styles from "./NavLink.module.scss";
 
 const NavLink = ({ name, to }) => {
   return (
-    <Link to={to} class={styles.link}>
+    <Link to={to} className={styles.link}>
       {name}
     </Link>
   );
