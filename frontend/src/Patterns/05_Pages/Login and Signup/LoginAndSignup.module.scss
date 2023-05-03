@@ -9,7 +9,6 @@
 
 .page {
   display: flex;
-  max-height: 100vh;
 
   .actionArea {
     display: flex;
@@ -17,12 +16,12 @@
     justify-content: center;
     background-color: colors.$grey;
     padding: paddings.$login-signup-area;
-    height: heights.$login-signup-area;
     gap: 3rem;
     width: 100%;
 
     @media (min-width: breakpoints.$tablet) {
       width: widths.$login-signup-area;
+      height: heights.$login-signup-area;
     }
   }
 
