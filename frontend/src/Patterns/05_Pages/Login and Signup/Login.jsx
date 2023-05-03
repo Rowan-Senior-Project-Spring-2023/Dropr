@@ -62,7 +62,7 @@ const Login = () => {
       <aside className={styles.imageContainer}>
         <Image
           src={loginImage}
-          alt={"Background image for the Login page."}
+          alt={"Decorative image for the page."}
           className={styles.image}
         />
       </aside>

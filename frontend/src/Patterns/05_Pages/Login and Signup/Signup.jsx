@@ -65,7 +65,7 @@ const Signup = () => {
         <div className={styles.imageWrapper}>
           <Image
             src={loginImage}
-            alt={"Background image for the Login page."}
+            alt={"Decorative image for the page."}
             className={styles.image}
           />
         </div>

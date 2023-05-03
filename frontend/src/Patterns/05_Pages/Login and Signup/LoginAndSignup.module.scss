@@ -10,6 +10,10 @@
 .page {
   display: flex;
 
+  @media (min-width: breakpoints.$tablet) {
+    max-height: heights.$login-signup-area;
+  }
+
   .actionArea {
     display: flex;
     flex-direction: column;
@@ -18,10 +22,10 @@
     padding: paddings.$login-signup-area;
     gap: 3rem;
     width: 100%;
+    overflow-y: auto;
 
     @media (min-width: breakpoints.$tablet) {
       width: widths.$login-signup-area;
-      height: heights.$login-signup-area;
     }
   }
 
