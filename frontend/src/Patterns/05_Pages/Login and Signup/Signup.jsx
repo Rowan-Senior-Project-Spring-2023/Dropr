@@ -3,8 +3,49 @@ import Form from "Patterns/03_Organisms/Form/Form";
 import Image from "Patterns/01_Atoms/Image/Image";
 import styles from "./LoginAndSignup.module.scss";
 import loginImage from "Assets/Login-and-Signup.webp";
+import { useState } from "react";
+import axios from "axios"
+import React from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password:  "",
+    fullName: "",
+    phone:  "",
+  });
+
+  const { username, email, password, fullName, phone } = formData;
+
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (evt) => {
+    evt.preventDefault();
+    const data = {
+      username: username,
+      emails: email,
+      password: password,
+      full_names: fullName,
+      phone_number: phone,
+      disabled: false
+    };
+    axios
+      .post("http://127.0.0.1:8000/createUser", data)
+      .then((response) => {
+        console.log(response);
+        navigate("/login");
+        //alert(response);
+      })
+      .catch((error) => {
+        //alert(error);
+      });
+  };
+
   return (
     <div className={styles.page}>
       <main className={styles.actionArea}>
@@ -16,10 +57,10 @@ const Signup = () => {
           />
         </header>
         <Form
-          type ="user"
-          action={"/api"}
-          method={"POST"}
+          type="user"
           className={styles.form}
+          onSubmit={handleSubmit}
+          onChange={handleChange}
         />
       </main>
       <aside className={styles.imageContainer}>

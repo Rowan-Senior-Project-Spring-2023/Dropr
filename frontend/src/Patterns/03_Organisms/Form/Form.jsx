@@ -4,23 +4,25 @@ import FormField from "Patterns/02_Molecules/Form Field/FormField";
 import Button from "Patterns/01_Atoms/Button/Button";
 import styles from "./Form.module.scss";
 
-const LoginForm = ({ variant, action, method }) => {
+const LoginForm = () => {
   return (
-    <form action={action} method={method} className={styles.form}>
-      <FormField
-        name={"username"}
-        labelText={"Username"}
-        inputText={""}
-        inputType={"username"}
-      />
+    <>
+    <FormField
+        name={"email"}
+        labelText={"Email"}
+        inputText={"email@domain.net"}
+        inputType={"email"}
+        value={"email"}
+        />
       <FormField
         name={"password"}
         labelText={"Password"}
         inputText={""}
         inputType={"password"}
+        value={"password"}
       />
       <Button variant={"form"} text={"Log in"} type={"submit"} />
-    </form>
+    </>
   );
 };
 
@@ -46,13 +48,13 @@ const UserForm = () => {
         inputType={"password"}
       />
       <FormField
-        name={"full-name"}
+        name={"fullName"}
         labelText={"Full Name"}
         inputText={""}
         inputType={"text"}
       />
       <FormField
-        name={"Phone"}
+        name={"phone"}
         labelText={"Phone number"}
         inputText={""}
         inputType={"tel"}
@@ -62,38 +64,39 @@ const UserForm = () => {
   );
 };
 
+
 const CompanyForm = () => {
   return (
     <>
       <FormField
-        name={"company-name"}
+        name={"companyName"}
         labelText={"Company Name"}
         inputText={""}
         inputType={"text"}
       />
+    
       <FormField
-        name={"company-email"}
-        labelText={"Company Email"}
-        inputText={"email@domain.net"}
-        inputType={"email"}
-      />
-      <FormField
-        name={"company-description"}
+        name={"companyDescription"}
         labelText={"Compay Description"}
         inputText={""}
         inputType={"longtext"}
       />
       <FormField
-        name={"company-password"}
+        name={"companyPassword"}
         labelText={"Company Password"}
         inputText={""}
         inputType={"password"}
       />
+        <FormField
+        name={"Link"}
+        labelText={"Company link"}
+        inputText={""}
+        inputType={"link"}
+      />
       <FormField
         name={"company-image"}
         labelText={"Company Image"}
-        inputType="file"
-        accept="image/*"
+        inputType="file" accept="image/*" 
       />
 
       <Button variant={"form"} text={"Register"} type={"submit"} />
@@ -107,13 +110,13 @@ const Search = () => {
   );
 };
 
-const Form = ({ action, method, type }) => {
+const Form = ({ action, method, onSubmit, onChange, type })  => {
   return (
-    <form action={action} method={method} className={styles.form}>
-      {type === "user" && <UserForm />}
-      {type === "company" && <CompanyForm />}
-      {type === "login" && <LoginForm />}
-      {type === "search" && <Search />}
+    <form action={action} method={method} onSubmit={onSubmit} onChange={onChange} className={styles.form}>
+      {type === "user" && <UserForm/>}
+      {type === "company" && <CompanyForm/>}
+      {type === "login" && <LoginForm/>}
+      {type === "search" && <Search/>}
     </form>
   );
 };
@@ -122,6 +125,7 @@ Form.propTypes = {
   variant: PropTypes.oneOf(["login", "signup", "search"]),
   action: PropTypes.string,
   method: PropTypes.string,
+  onSubmit: PropTypes.func,
 };
 
 export default Form;

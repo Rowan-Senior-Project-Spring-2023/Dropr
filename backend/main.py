@@ -222,15 +222,14 @@ def ret_products_image(company_key: int,db: Session = Depends(get_db)):
 def all_users(db: Session = Depends(get_db)):
     return db.query(models.Users).all()
 
-@app.post("/users")
-def create_user(user: User, db: Session = Depends(get_db)):
-    
+@app.post("/createUser")
+def create_user(user: User, db: Session = Depends(get_db)):    
     user_model = models.Users()
     user_model.username = user.username
-    user_model.email = user.emails
-    user_model.full_name = user.full_names
+    user_model.email = user.email
+    user_model.full_name = user.full_name
     user_model.phone_number = "+1"+user.phone_number
-    user_model.hashed_password = get_password_hash(user.password)
+    user_model.hashed_password = get_password_hash(user.hashed_password)
     db.add(user_model)
     db.commit()
 
@@ -260,10 +259,6 @@ def sms_reply(db: Session = Depends(get_db)):
             from_="+18339172623",
             to=user.phone_number
         )
-
-
-
-
     return 0
 
 class Token(BaseModel):
@@ -283,7 +278,11 @@ def get_password_hash(password):
     return pwd_context.hash(password)
 
 
-async def get_user(db: AsyncSession, username: str) -> models.Users:
+async def get_user(db: AsyncSession, email: str) -> models.Users:
+    result = db.execute(select(models.Users).filter_by(email=email))
+    return result.scalars().first()
+
+async def get_user_username(db: AsyncSession, username: str) -> models.Users:
     result = db.execute(select(models.Users).filter_by(username=username))
     return result.scalars().first()
 
@@ -307,10 +306,6 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-async def get_user(db: AsyncSession, username: str) -> models.Users:
-    result = db.execute(select(models.Users).filter_by(username=username))
-    return result.scalars().first()
-
 
 async def get_current_user(db: AsyncSession = Depends(get_db), token: str = Depends(oauth2_scheme)) -> models.Users:
     credentials_exception = HTTPException(
@@ -326,7 +321,7 @@ async def get_current_user(db: AsyncSession = Depends(get_db), token: str = Depe
         token_data = TokenData(username=username)
     except JWTError:
         raise credentials_exception
-    user = await get_user(db, username=token_data.username)
+    user = await get_user_username(db, username=token_data.username)
     if user is None:
         raise credentials_exception
     return user
@@ -355,5 +350,5 @@ async def login_for_access_token(db: AsyncSession = Depends(get_db), form_data: 
 
 
 @app.get("/users/me/", response_model=User)
-async def read_users_me(current_user: User = Depends(get_current_active_user)):
+async def read_users_me(current_user: User = Depends(get_current_user)):
     return current_user
