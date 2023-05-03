@@ -50,9 +50,6 @@ class Products(Base):
     company_id = Column(Integer, ForeignKey('companies.company_id'))
     company = relationship(Companys)
 
-<<<<<<< HEAD
-    path_to_image = Column(String, nullable=True)
-=======
     image_link = Column(String, nullable=True)
 
 class Products_User(Base):
@@ -69,4 +66,3 @@ class Users_Company(Base):
     table_id = Column(Integer, primary_key=True, index=True)
     user = Column(Integer, ForeignKey('users.id'))
     company = Column(Integer, ForeignKey('companies.company_id'))
->>>>>>> 6c937a1dc2a7687141c46ae07ad90627add54d69
