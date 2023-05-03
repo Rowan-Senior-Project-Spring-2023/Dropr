@@ -32,7 +32,7 @@ class Companys(Base):
     name = Column(String, unique=True, index=True)
     description = Column(String, index=True)
     company_link = Column(String, nullable=True, index=True)
-    path_to_image = Column(String, nullable=True)
+    image_link = Column(String, nullable=True)
     hashed_password = Column(String)
 
 class Products(Base):
@@ -42,6 +42,7 @@ class Products(Base):
     id = Column(Integer, primary_key=True, index=True)
     description = Column(String)
     price = Column(DECIMAL)
+    quantity = Column(Integer)
     is_open = Column(Boolean)
     is_featured = Column(Boolean)
     category = Column(Enum(CategoryEnum),nullable=True)
@@ -49,4 +50,19 @@ class Products(Base):
     company_id = Column(Integer, ForeignKey('companies.company_id'))
     company = relationship(Companys)
 
-    path_to_image = Column(String, nullable=True)
+    image_link = Column(String, nullable=True)
+
+class Products_User(Base):
+    __tablename__ = "products_user"
+
+    table_id = Column(Integer, primary_key=True, index=True)
+    user = Column(Integer, ForeignKey('users.id'))
+    product = Column(Integer, ForeignKey('products.id'))
+    quant = Column(Integer)
+
+class Users_Company(Base):
+    __tablename__ = "users_company"
+
+    table_id = Column(Integer, primary_key=True, index=True)
+    user = Column(Integer, ForeignKey('users.id'))
+    company = Column(Integer, ForeignKey('companies.company_id'))
