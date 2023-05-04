@@ -1,6 +1,6 @@
 import base64
 import os
-from fastapi import FastAPI, Depends, File, HTTPException, UploadFile, status
+from fastapi import FastAPI, Depends, File, HTTPException, UploadFile, status, Request
 # Database Imports
 from datetime import datetime, timedelta
 import models
@@ -20,6 +20,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 from models import CategoryEnum
 import os
 from twilio.rest import Client
+from twilio import twiml
 
 media_directory = os.getcwd() + "/media/"
 DEFAULT_IMAGE = os.getcwd()+"/media/DEFAULT.jpg"
@@ -31,6 +32,17 @@ SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
+active_product = None
+
+
+
+
+with open("API-KEY-DO-NOT-GIT.txt", 'r') as f:
+    lines = f.readlines()
+
+    account_sid = lines[0]
+    auth_token = lines[1]
+client = Client(account_sid, auth_token)
 
 origins = [
     "http://localhost.tiangolo.com",
@@ -104,10 +116,30 @@ def create_product(product: Product = Depends(), db: Session = Depends(get_db)):
     db.add(product_model)
     db.commit()
 
+    
+
     return product
+
+@app.get("/company/is_subscribed")
+def is_subscribed(user_id: int, company_id: int, db: Session = Depends(get_db)):
+   
+    try:
+        entry = db.query(models.Users_Company).filter_by(company=company_id,user=user_id).count()
+
+        if entry >= 1:
+            return True
+        else:
+            return False
+    except:
+        return False
 
 @app.post("/company/subscribe")
 def subscribe_user(user_id: int, company_id: int, db: Session = Depends(get_db)):
+
+    if is_subscribed(user_id,company_id,db):
+        return "already subscribed"
+
+
     user_company_model = models.Users_Company()
     user_company_model.company = company_id
     user_company_model.user = user_id
@@ -115,14 +147,20 @@ def subscribe_user(user_id: int, company_id: int, db: Session = Depends(get_db))
     db.add(user_company_model)
     db.commit()
 
+    return "subscribed"
+
 @app.post("/company/unsubscribe")
-def subscribe_user(user_id: int, company_id: int, db: Session = Depends(get_db)):
+def unsub_user(user_id: int, company_id: int, db: Session = Depends(get_db)):
 
+    temp = db.query(models.Users_Company).filter_by(company=company_id).first()
 
-    temp = db.query(models.Users_Company()).filter_by(company=company_id).filter_by(user=user_id).first()
+    if temp is None:
+        return "none"
 
-    db.delete(temp.table_id)
+    db.delete(temp)
     db.commit()
+
+    return "unsubscribed"
 
 
 @app.post("/products/buy")
@@ -203,29 +241,69 @@ def create_user(user: User, db: Session = Depends(get_db)):
     return user
 
 
-@app.post("/sms")
+
+@app.post("/sms-test")
 def sms_reply(db: Session = Depends(get_db)):
-
-    with open("API-KEY-DO-NOT-GIT.txt", 'r') as f:
-        lines = f.readlines()
-
-        account_sid = lines[0]
-        auth_token = lines[1]
-
-    print(account_sid)
-    print(auth_token)
-
-    client = Client(account_sid, auth_token)
 
     users = db.query(models.Users).all()
     for user in users:
-        
+
+          
+        if len(user.phone_number) != 12:
+            continue
+        print(user.phone_number)
         message = client.messages.create(
             body="DROPR ALERT: Hello "+user.full_name+", This is a test of the dropr sms system",
             from_="+18339172623",
             to=user.phone_number
         )
     return 0
+
+@app.post("/sms")
+async def handle_responses(request: Request, db: Session = Depends(get_db)):
+    response = request.form['Body']
+    sender = request.form['From']
+    # process the response here
+
+    print("here")
+
+    resp = twiml.Response()
+
+    user = db.query(models.Users).filter_by(phone_number=sender).first()
+    
+    if active_product is None:
+        message = resp.messages.create(
+            body="Currently No Proudcts are Available for Purchase over Text",
+            from_="+18339172623",
+            to=user.phone_number
+        )
+        return
+
+    if response.split() > 1:
+        message = resp.messages.create(
+            body="Please Only Inlcude Integer Value You'd Like to Purchase",
+            from_="+18339172623",
+            to=user.phone_number
+        )
+        return
+
+    bought = buy(user.user_id, active_product.product_id, int(response), db)
+
+    if bought == -1 or bought == 0:
+        message = resp.messages.create(
+            body="None left for Purchase!",
+            from_="+18339172623",
+            to=user.phone_number
+        )
+    else:
+        message = resp.messages.create(
+            body="Purchased {bought}! Now Linked to Your Account",
+            from_="+18339172623",
+            to=user.phone_number
+        )
+
+
+
 
 class Token(BaseModel):
     access_token: str
