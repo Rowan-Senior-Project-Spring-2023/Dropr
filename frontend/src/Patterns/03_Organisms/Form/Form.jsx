@@ -93,10 +93,9 @@ const CompanyForm = () => {
         inputType={"link"}
       />
       <FormField
-        name={"company-image"}
+        name={"companyImage"}
         labelText={"Company Image"}
-        inputType="file"
-        accept="image/*"
+        inputType="text" 
       />
       <Button variant={"form"} text={"Register"} type={"submit"} />
     </>

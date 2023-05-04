@@ -31,6 +31,7 @@ SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
+
 origins = [
     "http://localhost.tiangolo.com",
     "https://localhost.tiangolo.com",
@@ -161,19 +162,15 @@ def ret_products_image(product_key: int, db: Session = Depends(get_db)):
    
 
 @app.post("/companies/create")
-def create_company(company: Company = Depends(), db: Session = Depends(get_db)):
+def create_company(company: Company, db: Session = Depends(get_db)):
     company_model = models.Companys()
-
-    company_model.name = company.company_name
+    company_model.name = company.name
     company_model.description = company.description
     company_model.company_link = company.link
-
     company_model.image_link = company.image_link
     company_model.hashed_password = get_password_hash(company.password)
-
     db.add(company_model)
     db.commit()
-
     return company
 
 @app.get("/companies/")
@@ -204,7 +201,6 @@ def create_user(user: User, db: Session = Depends(get_db)):
     db.commit()
 
     return user
-
 
 
 @app.post("/sms")
