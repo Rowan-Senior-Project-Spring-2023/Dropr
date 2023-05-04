@@ -32,7 +32,7 @@ class Companys(Base):
     name = Column(String, unique=True, index=True)
     description = Column(String, index=True)
     company_link = Column(String, nullable=True, index=True)
-    path_to_image = Column(String, nullable=True)
+    image_link = Column(String, nullable=True)
     hashed_password = Column(String)
 
 class Products(Base):
