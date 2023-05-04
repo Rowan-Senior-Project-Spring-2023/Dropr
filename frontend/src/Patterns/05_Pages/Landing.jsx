@@ -3,7 +3,7 @@ import Section from "Patterns/03_Organisms/Section/Section";
 import SectionText from "Patterns/02_Molecules/Section Text/SectionText";
 import SectionImage from "Patterns/02_Molecules/Section Image/SectionImage";
 import Banner from "Patterns/03_Organisms/Banner/Banner";
-import mainSectionImage from "Assets/vegalia.png";
+import mainSectionImage from "Assets/DROPR.gif";
 
 const Landing = () => {
   return (
@@ -18,49 +18,49 @@ const Landing = () => {
       />
       <Section variant={"landing"}>
         <SectionText
-          heading={"Go from zero to 1$"}
+          heading={"Dropr"}
           description={
-            "With Gumroad, anyone can earn their first dollar online. Just start with what you know, see what sticks, and get paid. It’s that easy."
+            "Join millions of users around the globe waiting for the hottest drops!"
           }
-          cta={"Get started"}
+          link={{ name: "Signup", to: "/signup" }}
         />
         <SectionImage src={mainSectionImage} alt={"Picture of Vegalia."} />
       </Section>
       <Banner
-        heading={"Make your own road"}
+        heading={"Sign up to see the hottest brands!"}
         description={
-          "With Gumroad, anyone can earn their first dollar online. Just start with what you know, see what sticks, and get paid. It’s that easy."
+          "Welcome to Dropr, where anyone can find amazing limited edition deals from the hottest brands!"
         }
-        cta={"Get started"}
+        link={{ name: "Signup", to: "/signup" }}
         color={"white"}
       />
       <Section variant={"landing"}>
         <SectionText
-          heading={"Go from zero to 1$"}
+          heading={"Sign up with your Company Today!"}
           description={
-            "With Gumroad, anyone can earn their first dollar online. Just start with what you know, see what sticks, and get paid. It’s that easy."
+            "Want to sell your limited edition products? Sign your company up now to open your business to millions of users!"
           }
-          cta={"Get started"}
+          link={{ name: "Company Signup", to: "/company-signup" }}
         />
         <SectionImage src={mainSectionImage} alt={"Picture of Vegalia."} />
       </Section>
       <Banner
         variant="no-description"
-        heading={"Share your work. Someone out there needs it."}
+        heading={"Dropr supports all types of companies with all kinds of products!"}
         description={
-          "Whether you need more balance, flexibility, or just a different gig, we make it easier to chart a new path. You don't have to be a tech expert or even understand how to start a business. You just gotta take what you know and sell it."
+          "Dropr supports all types of companies with all kinds of products!"
         }
-        cta={"Explore Features"}
+        link={{ name: "Company Signup", to: "/company-signup" }}
         color={"teal"}
       />
       <Section variant={"landing"}>
         <SectionImage src={mainSectionImage} alt={"Picture of Vegalia."} />
         <SectionText
-          heading={"Go from zero to 1$"}
+          heading={"Dropr"}
           description={
-            "With Gumroad, anyone can earn their first dollar online. Just start with what you know, see what sticks, and get paid. It’s that easy."
+            "Join Now!"
           }
-          cta={"Get started"}
+          link={{ name: "Company Signup", to: "/comapny-signup" }}
         />
       </Section>
     </main>
