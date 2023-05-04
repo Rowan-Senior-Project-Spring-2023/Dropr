@@ -94,8 +94,9 @@ def ret_products_by_cate(product_cate: CategoryEnum,db: Session = Depends(get_db
 def ret_products_by_comp(product_comp: int,db: Session = Depends(get_db)):
     return db.query(models.Products).filter_by(id=product_comp).all()
 
-def text_all_subscribed(company_int:int,message_to_send:str,db: Session = Depends(get_db)):
+def text_all_subscribed(company_int:int,product_name:str,db: Session = Depends(get_db)):
     subs = db.query(models.Users_Company).filter_by(company=company_int).all()
+    company = db.query(models.Companys).filter_by(company_id=company_int).first()
 
     for i in subs:
 
@@ -103,8 +104,11 @@ def text_all_subscribed(company_int:int,message_to_send:str,db: Session = Depend
 
         print(f"Texting {user.phone_number}")
 
+        string = "DROPR ALERT: "+company.name+" just dropped a new product: "+product_name+"!"
+        print(string)
+
         message = client.messages.create(
-            body="DROPR ALERT: Hello "+user.full_name+", "+message_to_send,
+            body=string,
             from_="+18339172623",
             to=user.phone_number
         )
@@ -140,7 +144,20 @@ def create_product(product: Product = Depends(), db: Session = Depends(get_db)):
 
     product_model.image_link = product.image_link
 
-    text_all_subscribed(company.company_id,f"{product.company_name} has posted a new product: {product.product_name}.",db)
+    subs = db.query(models.Users_Company).filter_by(company=company.company_id).all()
+    company = db.query(models.Companys).filter_by(company_id=company.company_id).first()
+
+    for i in subs:
+
+        user = db.query(models.Users).filter_by(id=i.user).first()
+
+        print(f"Texting {user.phone_number}")
+
+        message = client.messages.create(
+            body="DROPR ALERT: a JIMBO you're subscribed too just dropped a new Product! Check Dropr For more info!",
+            from_="+18339172623",
+            to=user.phone_number
+        )
 
     db.add(product_model)
     db.commit()
@@ -181,7 +198,7 @@ def subscribe_user(user_id: int, company_id: int, db: Session = Depends(get_db))
 @app.post("/company/unsubscribe")
 def unsub_user(user_id: int, company_id: int, db: Session = Depends(get_db)):
 
-    temp = db.query(models.Users_Company).filter_by(company=company_id).first()
+    temp = db.query(models.Users_Company).filter_by(company=company_id,user=user_id).first()
 
     if temp is None:
         return "none"
