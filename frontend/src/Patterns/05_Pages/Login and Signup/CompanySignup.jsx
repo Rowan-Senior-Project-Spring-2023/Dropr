@@ -53,7 +53,7 @@ const CompanySignup = () => {
       });
   };
   return (
-    <div className={styles.pageNoOverflow}>
+    <div className={styles.page}>
       <main className={styles.actionArea}>
         <header>
           <Heading
