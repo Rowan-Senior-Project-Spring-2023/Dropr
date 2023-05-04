@@ -167,10 +167,8 @@ def create_company(company: Company, db: Session = Depends(get_db)):
     company_model.name = company.name
     company_model.description = company.description
     company_model.company_link = company.link
-
     company_model.image_link = company.image_link
     company_model.hashed_password = get_password_hash(company.password)
-
     db.add(company_model)
     db.commit()
     return company

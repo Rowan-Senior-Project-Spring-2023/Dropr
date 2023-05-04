@@ -40,7 +40,6 @@ const CompanySignup = () => {
         }
       })
       .then((response) => {
-        alert(response);
         console.log(response);
         navigate("/home");
       })
