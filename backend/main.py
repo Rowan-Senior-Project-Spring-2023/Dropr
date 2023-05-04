@@ -84,7 +84,7 @@ def ret_products_by_comp(product_comp: int,db: Session = Depends(get_db)):
 
 
 @app.post("/products/create")
-def create_product(product: Product = Depends(), db: Session = Depends(get_db)):
+def create_product(product: Product, db: Session = Depends(get_db)):
     
     product_model = models.Products()
     product_model.name = product.product_name
@@ -94,13 +94,9 @@ def create_product(product: Product = Depends(), db: Session = Depends(get_db)):
     product_model.is_open = product.is_open 
     product_model.price = product.price
     product_model.quantity = product.quantity
-
     product_model.company_id = product.company_id
     product_model.company = db.query(models.Companys).filter_by(company_id=product.company_id).first()
-
-
     product_model.image_link = product.image_link
-
     db.add(product_model)
     db.commit()
 
@@ -117,7 +113,6 @@ def subscribe_user(user_id: int, company_id: int, db: Session = Depends(get_db))
 
 @app.post("/company/unsubscribe")
 def subscribe_user(user_id: int, company_id: int, db: Session = Depends(get_db)):
-
 
     temp = db.query(models.Users_Company()).filter_by(company=company_id).filter_by(user=user_id).first()
 
@@ -139,8 +134,6 @@ def buy(user_id: int, product_id: int, quantity: int, db: Session = Depends(get_
         prod.is_open = False
     else:
         prod.quantity = prod.quantity - quantity
-    
-    
     
     products_users_model = models.Products_User()
     products_users_model.product = product_id
