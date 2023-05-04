@@ -10,10 +10,6 @@
 .page {
   display: flex;
 
-  @media (min-width: breakpoints.$tablet) {
-    max-height: heights.$login-signup-area;
-  }
-
   .actionArea {
     display: flex;
     flex-direction: column;

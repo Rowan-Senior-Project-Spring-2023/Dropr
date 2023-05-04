@@ -7,18 +7,23 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const CompanySignup = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     companyName: "",
     companyDescription: "",
-    companyPassword:  "",
+    companyPassword: "",
     Link: "",
-    companyImage: ""
+    companyImage: "",
   });
 
-  const { companyName, companyPassword, companyDescription, Link, companyImage } = formData;
+  const {
+    companyName,
+    companyPassword,
+    companyDescription,
+    Link,
+    companyImage,
+  } = formData;
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -32,12 +37,12 @@ const CompanySignup = () => {
       link: Link,
       image_link: companyImage,
     };
-  
+
     axios
-      .post("http://127.0.0.1:8000/companies/create", data,   {
+      .post("http://127.0.0.1:8000/companies/create", data, {
         headers: {
           //'Content-Type': 'multipart/form-data; boundary= ${bodyFormData._boundary}'
-        }
+        },
       })
       .then((response) => {
         console.log(response);
@@ -48,7 +53,7 @@ const CompanySignup = () => {
       });
   };
   return (
-    <div className={styles.page}>
+    <div className={styles.pageNoOverflow}>
       <main className={styles.actionArea}>
         <header>
           <Heading
@@ -58,7 +63,7 @@ const CompanySignup = () => {
           />
         </header>
         <Form
-          type ="company"
+          type="company"
           onSubmit={handleSubmit}
           onChange={handleChange}
           className={styles.form}

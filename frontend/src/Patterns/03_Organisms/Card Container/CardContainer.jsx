@@ -3,7 +3,6 @@ import Heading from "Patterns/01_Atoms/Heading/Heading";
 import styles from "./CardContainer.module.scss";
 
 const CardContainer = ({ heading = "Drops", children }) => {
-  console.log(children);
   return (
     <section className={styles.container}>
       <Heading variant={"card-container"} text={heading} />
