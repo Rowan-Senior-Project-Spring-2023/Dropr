@@ -25,7 +25,6 @@ const Company = () => {
       .then((data) => {
         setCompany(data.data.company);
         setProducts(data.data.products);
-        console.log(data.data.company);
       });
   }, []);
 
@@ -41,10 +40,10 @@ const Company = () => {
     ).then((results) => {
       results = results
         .filter((result) => result.status === "fulfilled")
-        .map((result) => result.value.image);
+        .map((result) => result.value);
 
       setImages(results);
-      console.log(results);
+      console.log(images);
     });
   }, [products]);
 
@@ -63,6 +62,7 @@ const Company = () => {
             variant={"company"}
             heading={company.name}
             description={company.description}
+            link={company.company_link}
           />
         </Section>
         {/* ==================== */}
@@ -81,8 +81,8 @@ const Company = () => {
                     key={product.id}
                     id={product.id}
                     image={
-                      images.find((image) => image.key === product.id)
-                        ?.encode_image
+                      images.find((image) => image.product_id === product.id)
+                        ?.image
                     }
                     heading={product.name}
                     price={product.price}
