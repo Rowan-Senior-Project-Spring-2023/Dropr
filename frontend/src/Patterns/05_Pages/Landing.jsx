@@ -3,7 +3,7 @@ import Section from "Patterns/03_Organisms/Section/Section";
 import SectionText from "Patterns/02_Molecules/Section Text/SectionText";
 import SectionImage from "Patterns/02_Molecules/Section Image/SectionImage";
 import Banner from "Patterns/03_Organisms/Banner/Banner";
-import mainSectionImage from "Assets/vegalia.png";
+import mainSectionImage from "Assets/DROPR.gif";
 
 const Landing = () => {
   return (
