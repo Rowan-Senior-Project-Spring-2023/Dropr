@@ -111,6 +111,16 @@ const Search = () => {
 const RegisterProduct = () => {
   return (
     <>
+    <FormField
+        name={"companyName"}
+        labelText={"Company Name"}
+        inputType={"text"}
+      />
+      <FormField
+        name={"companyPassword"}
+        labelText={"Company Password"}
+        inputType="text"
+      />
       <FormField
         name={"productName"}
         labelText={"Product Name"}
@@ -124,6 +134,11 @@ const RegisterProduct = () => {
       <FormField
         name={"productPrice"}
         labelText={"Product Price"}
+        inputType={"text"}
+      />
+      <FormField
+        name={"productQuantity"}
+        labelText={"Quantity"}
         inputType={"text"}
       />
       <FormField
@@ -146,6 +161,8 @@ const RegisterProduct = () => {
         labelText={"Product Is Featured?"}
         inputType={"text"}
       />
+     
+      
       <Button variant={"form"} text={"Create product"} type={"submit"} />
     </>
   );

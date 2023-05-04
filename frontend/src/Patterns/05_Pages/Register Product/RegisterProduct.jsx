@@ -13,14 +13,19 @@ const RegisterProduct = () => {
     const [formData, setFormData] = useState({
       productName: "",
       productDescription: "",
-      productPrice:  "",
-      productCategory:  "",
+      productPrice: "",
+      productCategory: "",
       productImage: "",
       productFeatured: "",
-      productOpen: ""
+      productOpen: "",
+      productQuantity: "",
+      companyName: "",
+      companyPassword: "",
+      productQuantity: ""
     });
 
-  const { productName, productDescription, productPrice, productCategory, productImage, productFeatured, productOpen } = formData;
+  const { productName, productDescription, productPrice, 
+          productCategory, productImage, productFeatured, productOpen, companyName, companyPassword, productQuantity} = formData;
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -32,7 +37,9 @@ const RegisterProduct = () => {
       image_link: productImage,
       is_featured: productFeatured,
       is_open: productOpen,
-
+      quantity: productQuantity,
+      company_password: companyPassword,
+      company_name: companyName
     };
 
     axios

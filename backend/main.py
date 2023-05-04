@@ -117,13 +117,22 @@ def text_all_subscribed(company_int:int,message_to_send:str,db: Session = Depend
 @app.post("/products/create")
 def create_product(product: Product, db: Session = Depends(get_db)):
     
+    
     company = db.query(models.Companys).filter_by(name=product.company_name).first()
 
     if company is None:
-        return -1
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect username or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
 
     if(not verify_password(product.company_password,company.hashed_password)):
-       return -1
+       raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect username or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
 
 
     product_model = models.Products()
@@ -144,9 +153,6 @@ def create_product(product: Product, db: Session = Depends(get_db)):
 
     db.add(product_model)
     db.commit()
-
-    
-
     return product
 
 @app.get("/company/is_subscribed")
@@ -181,7 +187,7 @@ def subscribe_user(user_id: int, company_id: int, db: Session = Depends(get_db))
 @app.post("/company/unsubscribe")
 def unsub_user(user_id: int, company_id: int, db: Session = Depends(get_db)):
 
-    temp = db.query(models.Users_Company).filter_by(company=company_id).first()
+    temp = db.query(models.Users_Company).filter_by(company=company_id, user=user_id).first()
 
     if temp is None:
         return "none"
@@ -197,7 +203,6 @@ def buy(user_id: int, product_id: int, quantity: int, db: Session = Depends(get_
     
     prod = db.query(models.Products).filter_by(id=product_id).first()
     user = db.query(models.Users).filter_by(id=user_id).first()
-
 
     if prod.quantity == 0 or prod.is_open == False:
 
