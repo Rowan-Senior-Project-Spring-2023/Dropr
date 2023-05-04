@@ -5,7 +5,6 @@ import styles from "./LoginAndSignup.module.scss";
 import loginImage from "Assets/Login-and-Signup.webp";
 import axios from "axios";
 import { useState } from "react";
-import Links from "Patterns/02_Molecules/Links/Links";
 import { useNavigate } from "react-router-dom";
 
 
@@ -28,9 +27,9 @@ const CompanySignup = () => {
     evt.preventDefault();
     const data = {
       name: companyName,
-      hashed_password: companyPassword,
+      password: companyPassword,
       description: companyDescription,
-      company_link: Link,
+      link: Link,
       image_link: companyImage,
     };
   

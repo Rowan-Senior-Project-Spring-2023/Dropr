@@ -31,7 +31,7 @@ const Button = ({ variant, text, onClick, type = "button" }) => {
 };
 
 Button.propTypes = {
-  variant: PropTypes.oneOf(["section", "form", "card", "arrow"]),
+  variant: PropTypes.oneOf(["section", "form", "card", "arrow", "banner"]),
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };

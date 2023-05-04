@@ -8,22 +8,19 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
-    password:  "",
+    password: "",
   });
 
-
-  const { email, password, } = formData;
+  const { email, password } = formData;
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (evt) => {
-    
     evt.preventDefault();
     const data = {
       username: email,
@@ -52,7 +49,6 @@ const Login = () => {
 
   };
 
-
   return (
     <div className={styles.page}>
       <main className={styles.actionArea}>
@@ -73,7 +69,7 @@ const Login = () => {
       <aside className={styles.imageContainer}>
         <Image
           src={loginImage}
-          alt={"Background image for the Login page."}
+          alt={"Decorative image for the page."}
           className={styles.image}
         />
       </aside>
@@ -83,18 +79,16 @@ const Login = () => {
 
 export default Login;
 
-
-
-  // useEffect(() =>  {
-  //   const res = axios
-  //     .post("http://127.0.0.1:8000/login", data)
-  //     .then((response) => {
-  //       console.log(response);
-  //       Cookies.set("token", response.data.access_token);
-  //       return response;
-  //   })
-  //   .catch((error) => {
-  //     console.log(error.message);
-  //   });
-  //   })
-  // });
+// useEffect(() =>  {
+//   const res = axios
+//     .post("http://127.0.0.1:8000/login", data)
+//     .then((response) => {
+//       console.log(response);
+//       Cookies.set("token", response.data.access_token);
+//       return response;
+//   })
+//   .catch((error) => {
+//     console.log(error.message);
+//   });
+//   })
+// });

@@ -1,3 +1,4 @@
+import Navbar from "Patterns/03_Organisms/Navbar/Navbar";
 import Section from "Patterns/03_Organisms/Section/Section";
 import SectionText from "Patterns/02_Molecules/Section Text/SectionText";
 import SectionImage from "Patterns/02_Molecules/Section Image/SectionImage";
@@ -7,6 +8,14 @@ import mainSectionImage from "Assets/vegalia.png";
 const Landing = () => {
   return (
     <main>
+      <Navbar
+        links={[
+          { name: "Landing", to: "/" },
+          { name: "Home", to: "/home" },
+          { name: "Sign up", to: "/signup" },
+          { name: "Log in", to: "/login" },
+        ]}
+      />
       <Section variant={"landing"}>
         <SectionText
           heading={"Go from zero to 1$"}

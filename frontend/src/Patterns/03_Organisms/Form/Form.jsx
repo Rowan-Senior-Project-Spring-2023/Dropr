@@ -7,13 +7,13 @@ import styles from "./Form.module.scss";
 const LoginForm = () => {
   return (
     <>
-    <FormField
+      <FormField
         name={"email"}
         labelText={"Email"}
         inputText={"email@domain.net"}
         inputType={"email"}
         value={"email"}
-        />
+      />
       <FormField
         name={"password"}
         labelText={"Password"}
@@ -64,7 +64,6 @@ const UserForm = () => {
   );
 };
 
-
 const CompanyForm = () => {
   return (
     <>
@@ -74,7 +73,7 @@ const CompanyForm = () => {
         inputText={""}
         inputType={"text"}
       />
-    
+
       <FormField
         name={"companyDescription"}
         labelText={"Compay Description"}
@@ -87,7 +86,7 @@ const CompanyForm = () => {
         inputText={""}
         inputType={"password"}
       />
-        <FormField
+      <FormField
         name={"Link"}
         labelText={"Company link"}
         inputText={""}
@@ -98,7 +97,6 @@ const CompanyForm = () => {
         labelText={"Company Image"}
         inputType="text" 
       />
-
       <Button variant={"form"} text={"Register"} type={"submit"} />
     </>
   );
@@ -110,13 +108,63 @@ const Search = () => {
   );
 };
 
-const Form = ({ action, method, onSubmit, onChange, type })  => {
+const RegisterProduct = () => {
   return (
-    <form action={action} method={method} onSubmit={onSubmit} onChange={onChange} className={styles.form}>
-      {type === "user" && <UserForm/>}
-      {type === "company" && <CompanyForm/>}
-      {type === "login" && <LoginForm/>}
-      {type === "search" && <Search/>}
+    <>
+      <FormField
+        name={"productName"}
+        labelText={"Product Name"}
+        inputType={"text"}
+      />
+      <FormField
+        name={"productDescription"}
+        labelText={"Product Description"}
+        inputType="text"
+      />
+      <FormField
+        name={"productPrice"}
+        labelText={"Product Price"}
+        inputType={"text"}
+      />
+      <FormField
+        name={"productCategory"}
+        labelText={"Product Category"}
+        inputType={"text"}
+      />
+      <FormField
+        name={"productImage"}
+        labelText={"Product Image Link"}
+        inputType={"text"}
+      />
+      <FormField
+        name={"productOpen"}
+        labelText={"Product Is Open?"}
+        inputType={"text"}
+      />
+      <FormField
+        name={"productFeatured"}
+        labelText={"Product Is Featured?"}
+        inputType={"text"}
+      />
+      <Button variant={"form"} text={"Create product"} type={"submit"} />
+    </>
+  );
+};
+
+const Form = ({ action, method, onSubmit, onChange, type }) => {
+  return (
+    <form
+      action={action}
+      method={method}
+      onSubmit={onSubmit}
+      onChange={onChange}
+      className={styles.form}
+    >
+      {type === "user" && <UserForm />}
+      {type === "company" && <CompanyForm />}
+      {type === "login" && <LoginForm />}
+      {type === "search" && <Search />}
+      {type === "product" && <RegisterProduct />}
     </form>
   );
 };

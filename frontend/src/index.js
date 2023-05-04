@@ -50,7 +50,7 @@ const router = createBrowserRouter([
       {
         path: "/company-signup",
         element: <CompanySignup />,
-      }
+      },
     ],
   },
 ]);
