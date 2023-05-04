@@ -1,67 +1,39 @@
-<<<<<<< HEAD
+import Heading from "Patterns/01_Atoms/Heading/Heading";
+import Form from "Patterns/03_Organisms/Form/Form";
+import Image from "Patterns/01_Atoms/Image/Image";
+import styles from "../Login and Signup/LoginAndSignup.module.scss";
+import loginImage from "Assets/Login-and-Signup.webp";
 
-=======
->>>>>>> 6c937a1dc2a7687141c46ae07ad90627add54d69
 const RegisterProduct = () => {
+  const handleSubmit = () => {};
+  const handleChange = () => {};
+
   return (
-    <div>
-      <div>
-        <h1>Register a product</h1>
-        <form>
-<<<<<<< HEAD
-          <label htmlFor="product-name"><b>Product Name*</b></label>
-          <input type="text" id="product-name" name="product-name" required/><br/>
-
-          <label htmlFor="product-desc"><b>Product Description*</b></label>
-          <textarea id="product-desc" name="product-desc" required></textarea><br/>
-
-          <label htmlFor="start-quantity"><b>Start Quantity*</b></label>
-          <input type="number" id="start-quantity" name="start-quantity" required/><br/>
-
-          <label htmlFor="limit-per-person"><b>Limit Per Person*</b></label>
-          <input type="number" id="limit-per-person" name="limit-per-person"/><br/>
-
-          <label htmlFor="is-featured"><b>Featured?</b></label>
-          <div>
-          <input type="checkbox" id="is-featured" name="is-featured"/><br/>
-=======
-          <label htmlFor="product-name">
-            <b>Product Name*</b>
-          </label>
-          <input type="text" id="product-name" name="product-name" required />
-          <br />
-          <label htmlFor="product-desc">
-            <b>Product Description*</b>
-          </label>
-          <textarea id="product-desc" name="product-desc" required></textarea>
-          <br />
-          <label htmlFor="start-quantity">
-            <b>Start Quantity*</b>
-          </label>
-          <input
-            type="number"
-            id="start-quantity"
-            name="start-quantity"
-            required
+    <div className={styles.page}>
+      <main className={styles.actionArea}>
+        <header>
+          <Heading
+            variant={"section"}
+            text={"Register a product for your company."}
+            className={styles.heading}
           />
-          <br />
-          <label htmlFor="limit-per-person">
-            <b>Limit Per Person*</b>
-          </label>
-          <input type="number" id="limit-per-person" name="limit-per-person" />
-          <br />
-          <label htmlFor="is-featured">
-            <b>Featured?</b>
-          </label>
-          <div>
-            <input type="checkbox" id="is-featured" name="is-featured" />
-            <br />
->>>>>>> 6c937a1dc2a7687141c46ae07ad90627add54d69
-          </div>
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
-      <div></div>
+        </header>
+        <Form
+          type="product"
+          className={styles.form}
+          onSubmit={handleSubmit}
+          onChange={handleChange}
+        />
+      </main>
+      <aside className={styles.imageContainer}>
+        <div className={styles.imageWrapper}>
+          <Image
+            src={loginImage}
+            alt={"Decorative image for the page."}
+            className={styles.image}
+          />
+        </div>
+      </aside>
     </div>
   );
 };

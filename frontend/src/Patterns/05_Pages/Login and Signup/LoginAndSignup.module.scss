@@ -10,23 +10,22 @@
 .page {
   display: flex;
 
+  @media (min-width: breakpoints.$tablet) {
+    max-height: heights.$login-signup-area;
+  }
+
   .actionArea {
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: colors.$grey;
     padding: paddings.$login-signup-area;
-<<<<<<< HEAD
-    height: heights.$login-signup-area;
-    gap: 2rem;
-=======
     gap: 3rem;
->>>>>>> 6c937a1dc2a7687141c46ae07ad90627add54d69
     width: 100%;
+    overflow-y: auto;
 
     @media (min-width: breakpoints.$tablet) {
       width: widths.$login-signup-area;
-      height: heights.$login-signup-area;
     }
   }
 

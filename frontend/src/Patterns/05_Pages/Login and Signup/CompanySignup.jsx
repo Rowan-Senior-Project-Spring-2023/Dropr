@@ -5,19 +5,20 @@ import styles from "./LoginAndSignup.module.scss";
 import loginImage from "Assets/Login-and-Signup.webp";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const CompanySignup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     companyName: "",
-    //companyEmail: "",
     companyDescription: "",
     companyPassword:  "",
     Link: "",
-    file: ""
+    companyImage: ""
   });
 
-  const { companyName, companyEmail, companyPassword, companyDescription, Link, file } = formData;
+  const { companyName, companyPassword, companyDescription, Link, companyImage } = formData;
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,23 +26,22 @@ const CompanySignup = () => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     const data = {
-      company_name: companyName,
-      //company_Email: companyEmail,
+      name: companyName,
       password: companyPassword,
       description: companyDescription,
       link: Link,
-      file: file,
+      image_link: companyImage,
     };
+  
     axios
-      .post("http://127.0.0.1:8000/companies/create", data,  {
+      .post("http://127.0.0.1:8000/companies/create", data,   {
         headers: {
-          "Content-Type": "multipart/form-data; boundary={boundary}"
+          //'Content-Type': 'multipart/form-data; boundary= ${bodyFormData._boundary}'
         }
       })
       .then((response) => {
-        console.log(data);
         console.log(response);
-        alert(response);
+        navigate("/home");
       })
       .catch((error) => {
         alert(error);

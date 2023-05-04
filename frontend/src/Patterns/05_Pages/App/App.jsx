@@ -23,9 +23,20 @@ const App = () => {
 
   useEffect(() => {
     setRouteInfo(category); // get products specified by category in route
-    // axios.get(`http://localhost:8000/products/category?product_cate=${category.name}`).then((data) => {
-    //   setProducts(data.data);
-    // });
+
+    if (!category) {
+      axios
+        .get("http://localhost:8000/products/all")
+        .then((data) => setProducts(data.data));
+    } else {
+      axios
+        .get(
+          `http://localhost:8000/products/category?product_cate=${category.name}`
+        )
+        .then((data) => {
+          setProducts(data.data);
+        });
+    }
   }, [category]);
 
   useEffect(() => {
@@ -42,14 +53,15 @@ const App = () => {
         .filter((result) => result.status === "fulfilled")
         .map((result) => result.value);
 
-      results.forEach(
-        (result) =>
-          (result.encode_image = `data:image;base64,${result.encode_image}`)
-      );
-
       setImages(results);
     });
   }, [products]);
+
+  useEffect(() => {
+    if (images === 0) return;
+
+    console.log(images);
+  }, [images]);
 
   useEffect(() => {
     if (images.length === 0) return;
@@ -77,8 +89,8 @@ const App = () => {
                   key={product.id}
                   id={product.id}
                   image={
-                    images.find((image) => image.key === product.id)
-                      ?.encode_image
+                    images.find((image) => image.product_id === product.id)
+                      ?.image
                   }
                   heading={product.name}
                   price={product.price}

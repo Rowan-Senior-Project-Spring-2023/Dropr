@@ -1,13 +1,16 @@
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Image from "Patterns/01_Atoms/Image/Image";
 import Header from "Patterns/03_Organisms/Header/Header";
-import Footer from "Patterns/02_Molecules/Footer/Footer";
+import CardFooter from "Patterns/02_Molecules/Card Footer/CardFooter";
 import styles from "./ProductCard.module.scss";
 import defaultImage from "Assets/ezgif-1-af2e163fba.webp";
 
 const ProductCard = ({ id, image, heading, price }) => {
-  const doSomething = () => {
-    console.log(id);
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleClick = (event) => {
+    setSubscribed(!subscribed);
   };
 
   return (
@@ -20,7 +23,12 @@ const ProductCard = ({ id, image, heading, price }) => {
         />
       </div>
       <Header variant={"card"} heading={heading || "Product"} />
-      <Footer variant={"card"} price={price || 0} onClick={doSomething} />
+      <CardFooter
+        variant={"card"}
+        price={price || 0}
+        onClick={handleClick}
+        buttonText={subscribed ? "Unsubscribe" : "Subscribe"}
+      />
     </article>
   );
 };
