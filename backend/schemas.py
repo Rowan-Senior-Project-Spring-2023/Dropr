@@ -16,7 +16,8 @@ class Product(BaseModel):
     category: CategoryEnum = Field(min=0)
     quantity: int = Field(min=1)
     image_link: str
-    company_id: int
+    company_name: str
+    company_password: str
     is_open: bool
     is_featured: bool
     

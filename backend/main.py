@@ -94,10 +94,38 @@ def ret_products_by_cate(product_cate: CategoryEnum,db: Session = Depends(get_db
 def ret_products_by_comp(product_comp: int,db: Session = Depends(get_db)):
     return db.query(models.Products).filter_by(id=product_comp).all()
 
+def text_all_subscribed(company_int:int,message_to_send:str,db: Session = Depends(get_db)):
+    subs = db.query(models.Users_Company).filter_by(company=company_int).all()
+
+    for i in subs:
+
+        user = db.query(models.Users).filter_by(id=i.user).first()
+
+        print(f"Texting {user.phone_number}")
+
+        message = client.messages.create(
+            body="DROPR ALERT: Hello "+user.full_name+", "+message_to_send,
+            from_="+18339172623",
+            to=user.phone_number
+        )
+
+
+
+
+
 
 @app.post("/products/create")
 def create_product(product: Product = Depends(), db: Session = Depends(get_db)):
     
+    company = db.query(models.Companys).filter_by(name=product.company_name).first()
+
+    if company is None:
+        return -1
+
+    if(not verify_password(product.company_password,company.hashed_password)):
+       return -1
+
+
     product_model = models.Products()
     product_model.name = product.product_name
     product_model.description = product.description
@@ -107,11 +135,12 @@ def create_product(product: Product = Depends(), db: Session = Depends(get_db)):
     product_model.price = product.price
     product_model.quantity = product.quantity
 
-    product_model.company_id = product.company_id
-    product_model.company = db.query(models.Companys).filter_by(company_id=product.company_id).first()
-
+    product_model.company_id = company.company_id
+    product_model.company = company
 
     product_model.image_link = product.image_link
+
+    text_all_subscribed(company.company_id,f"{product.company_name} has posted a new product: {product.product_name}.",db)
 
     db.add(product_model)
     db.commit()
@@ -167,8 +196,18 @@ def unsub_user(user_id: int, company_id: int, db: Session = Depends(get_db)):
 def buy(user_id: int, product_id: int, quantity: int, db: Session = Depends(get_db)):
     
     prod = db.query(models.Products).filter_by(id=product_id).first()
+    user = db.query(models.Users).filter_by(id=user_id).first()
+
 
     if prod.quantity == 0 or prod.is_open == False:
+
+        message = client.messages.create(
+            body="DROPR ALERT: Hello "+user.full_name+f", Your purchase did not go through. '{prod.name}' could be closed or out of stock",
+            from_="+18339172623",
+            to=user.phone_number
+        )
+
+
         return -1
 
     if prod.quantity <= quantity:
@@ -179,13 +218,33 @@ def buy(user_id: int, product_id: int, quantity: int, db: Session = Depends(get_
         prod.quantity = prod.quantity - quantity
     
     
+    existing = db.query(models.Products_User).filter_by(user=user_id,product=product_id).first()
     
-    products_users_model = models.Products_User()
-    products_users_model.product = product_id
-    products_users_model.user = user_id
-    products_users_model.quant = quantity
+    if existing is not None:
+        existing.quant += quantity
 
-    db.add(products_users_model)
+
+        message = client.messages.create(
+            body="DROPR ALERT: Hello "+user.full_name+f", You have purchased an additional {quantity} '{prod.name}'(s)! You have a total of {existing.quant} purchased.",
+            from_="+18339172623",
+            to=user.phone_number
+        )
+
+        db.commit()
+        return existing.quant
+    else:
+        products_users_model = models.Products_User()
+        products_users_model.product = product_id
+        products_users_model.user = user_id
+        products_users_model.quant = quantity
+
+        message = client.messages.create(
+            body="DROPR ALERT: Hello "+user.full_name+f", You have purchased '{prod.name}' {quantity} time(s)!",
+            from_="+18339172623",
+            to=user.phone_number
+        )
+
+        db.add(products_users_model)
     db.commit()
 
     return quantity
