@@ -30,7 +30,7 @@ const Login = () => {
       .post("http://127.0.0.1:8000/token", data, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
-        }
+        },
       })
       .then((response) => {
         Cookies.set("token", response.data.access_token);
@@ -40,13 +40,13 @@ const Login = () => {
       .catch((error) => {
         alert(error);
       });
-    console.log(await axios
-      .get("http://127.0.0.1:8000/users/me", {
-        headers:{
-          "Authorization": "Bearer " + Cookies.get("token")
-        }
-      }));
-
+    console.log(
+      await axios.get("http://127.0.0.1:8000/users/me", {
+        headers: {
+          Authorization: "Bearer " + Cookies.get("token"),
+        },
+      })
+    );
   };
 
   return (

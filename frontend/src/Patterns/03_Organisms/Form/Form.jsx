@@ -95,7 +95,7 @@ const CompanyForm = () => {
       <FormField
         name={"companyImage"}
         labelText={"Company Image"}
-        inputType="text" 
+        inputType="text"
       />
       <Button variant={"form"} text={"Register"} type={"submit"} />
     </>
