@@ -22,7 +22,7 @@ const Landing = () => {
           description={
             "With Gumroad, anyone can earn their first dollar online. Just start with what you know, see what sticks, and get paid. It’s that easy."
           }
-          cta={"Get started"}
+          link={{ name: "Signup", to: "/signup" }}
         />
         <SectionImage src={mainSectionImage} alt={"Picture of Vegalia."} />
       </Section>
@@ -31,7 +31,7 @@ const Landing = () => {
         description={
           "With Gumroad, anyone can earn their first dollar online. Just start with what you know, see what sticks, and get paid. It’s that easy."
         }
-        cta={"Get started"}
+        link={{ name: "Signup", to: "/signup" }}
         color={"white"}
       />
       <Section variant={"landing"}>
@@ -40,7 +40,7 @@ const Landing = () => {
           description={
             "With Gumroad, anyone can earn their first dollar online. Just start with what you know, see what sticks, and get paid. It’s that easy."
           }
-          cta={"Get started"}
+          link={{ name: "Signup", to: "/signup" }}
         />
         <SectionImage src={mainSectionImage} alt={"Picture of Vegalia."} />
       </Section>
@@ -50,7 +50,7 @@ const Landing = () => {
         description={
           "Whether you need more balance, flexibility, or just a different gig, we make it easier to chart a new path. You don't have to be a tech expert or even understand how to start a business. You just gotta take what you know and sell it."
         }
-        cta={"Explore Features"}
+        link={{ name: "Signup", to: "/signup" }}
         color={"teal"}
       />
       <Section variant={"landing"}>
@@ -60,7 +60,7 @@ const Landing = () => {
           description={
             "With Gumroad, anyone can earn their first dollar online. Just start with what you know, see what sticks, and get paid. It’s that easy."
           }
-          cta={"Get started"}
+          link={{ name: "Signup", to: "/signup" }}
         />
       </Section>
     </main>

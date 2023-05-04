@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
+import { Link } from "react-router-dom";
 
 const Button = ({ variant, text, onClick, type = "button" }) => {
   const [className, setClassName] = useState(styles.button);
