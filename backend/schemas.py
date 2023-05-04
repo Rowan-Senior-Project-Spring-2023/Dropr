@@ -23,6 +23,7 @@ class Product(BaseModel):
     
 
 class User(BaseModel):
+    id: int
     username: str = Field(min_length=1, max_length=100)
     email: str = Field(min_lenght=1, max_length=1000)
     hashed_password: str = Field(min=0)
@@ -32,5 +33,14 @@ class User(BaseModel):
 
     class Config:
         orm_mode = True
+
+class Buy(BaseModel):
+    user_id: int
+    product_id: int
+    quantity: int
+
+class Subscribe(BaseModel):
+    user_id: int
+    company_id: int
 
 

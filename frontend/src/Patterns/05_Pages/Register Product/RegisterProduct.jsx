@@ -3,10 +3,65 @@ import Form from "Patterns/03_Organisms/Form/Form";
 import Image from "Patterns/01_Atoms/Image/Image";
 import styles from "../Login and Signup/LoginAndSignup.module.scss";
 import loginImage from "Assets/Login-and-Signup.webp";
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const RegisterProduct = () => {
-  const handleSubmit = () => {};
-  const handleChange = () => {};
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+      productName: "",
+      productDescription: "",
+      productPrice: "",
+      productCategory: "",
+      productImage: "",
+      productFeatured: "",
+      productOpen: "",
+      productQuantity: "",
+      companyName: "",
+      companyPassword: "",
+      productQuantity: ""
+    });
+
+  const { productName, productDescription, productPrice, 
+          productCategory, productImage, productFeatured, productOpen, companyName, companyPassword, productQuantity} = formData;
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    const data = {
+      product_name: productName,
+      description: productDescription,
+      price: productPrice,
+      category: productCategory,
+      image_link: productImage,
+      is_featured: productFeatured,
+      is_open: productOpen,
+      quantity: productQuantity,
+      company_password: companyPassword,
+      company_name: companyName
+    };
+
+    axios
+    .post("http://127.0.0.1:8000/products/create", data,   {
+      headers: {
+        //'Content-Type': 'multipart/form-data; boundary= ${bodyFormData._boundary}'
+      }
+    })
+    .then((response) => {
+      console.log(response);
+      navigate("/home");
+    })
+    .catch((error) => {
+      alert(error);
+    });
+  };
+
+
+
+  const handleChange = (e) => {    
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className={styles.page}>
