@@ -5,7 +5,7 @@ from fastapi import FastAPI, Depends, File, HTTPException, UploadFile, status, R
 from datetime import datetime, timedelta
 import models
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from schemas import Product, User, Company
+from schemas import Product, User, Company, Buy, Subscribe
 from database import engine, SessionLocal
 from sqlalchemy.orm import Session, subqueryload
 from typing import Optional, Union
@@ -33,9 +33,6 @@ ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 active_product = None
-
-
-
 
 with open("API-KEY-DO-NOT-GIT.txt", 'r') as f:
     lines = f.readlines()
@@ -109,11 +106,6 @@ def text_all_subscribed(company_int:int,message_to_send:str,db: Session = Depend
             to=user.phone_number
         )
 
-
-
-
-
-
 @app.post("/products/create")
 def create_product(product: Product, db: Session = Depends(get_db)):
     
@@ -155,11 +147,11 @@ def create_product(product: Product, db: Session = Depends(get_db)):
     db.commit()
     return product
 
-@app.get("/company/is_subscribed")
-def is_subscribed(user_id: int, company_id: int, db: Session = Depends(get_db)):
-   
+@app.post("/company/is_subscribed")
+def is_subscribed(data: Subscribe, db: Session = Depends(get_db)):
+
     try:
-        entry = db.query(models.Users_Company).filter_by(company=company_id,user=user_id).count()
+        entry = db.query(models.Users_Company).filter_by(company=data.company_id,user=data.user_id).count()
 
         if entry >= 1:
             return True
@@ -169,15 +161,15 @@ def is_subscribed(user_id: int, company_id: int, db: Session = Depends(get_db)):
         return False
 
 @app.post("/company/subscribe")
-def subscribe_user(user_id: int, company_id: int, db: Session = Depends(get_db)):
+def subscribe_user(data: Subscribe, db: Session = Depends(get_db)):
 
-    if is_subscribed(user_id,company_id,db):
+    if is_subscribed(data, db):
         return "already subscribed"
 
 
     user_company_model = models.Users_Company()
-    user_company_model.company = company_id
-    user_company_model.user = user_id
+    user_company_model.company = data.company_id
+    user_company_model.user = data.user_id
 
     db.add(user_company_model)
     db.commit()
@@ -185,9 +177,9 @@ def subscribe_user(user_id: int, company_id: int, db: Session = Depends(get_db))
     return "subscribed"
 
 @app.post("/company/unsubscribe")
-def unsub_user(user_id: int, company_id: int, db: Session = Depends(get_db)):
+def unsub_user(data: Subscribe, db: Session = Depends(get_db)):
 
-    temp = db.query(models.Users_Company).filter_by(company=company_id, user=user_id).first()
+    temp = db.query(models.Users_Company).filter_by(company=data.company_id,user=data.user_id).first()
 
     if temp is None:
         return "none"
@@ -199,10 +191,11 @@ def unsub_user(user_id: int, company_id: int, db: Session = Depends(get_db)):
 
 
 @app.post("/products/buy")
-def buy(user_id: int, product_id: int, quantity: int, db: Session = Depends(get_db)):
-    
-    prod = db.query(models.Products).filter_by(id=product_id).first()
-    user = db.query(models.Users).filter_by(id=user_id).first()
+def buy(data: Buy, db: Session = Depends(get_db)):
+
+    prod = db.query(models.Products).filter_by(id=data.product_id).first()
+    user = db.query(models.Users).filter_by(id=data.user_id).first()
+
 
     if prod.quantity == 0 or prod.is_open == False:
 
@@ -211,26 +204,24 @@ def buy(user_id: int, product_id: int, quantity: int, db: Session = Depends(get_
             from_="+18339172623",
             to=user.phone_number
         )
-
-
         return -1
 
-    if prod.quantity <= quantity:
-        quantity = prod.quantity
+    if prod.quantity <= data.quantity:
+        data.quantity = prod.quantity
         prod.quantity = 0
         prod.is_open = False
     else:
-        prod.quantity = prod.quantity - quantity
-    
-    
-    existing = db.query(models.Products_User).filter_by(user=user_id,product=product_id).first()
-    
+        prod.quantity = prod.quantity - data.quantity
+
+
+    existing = db.query(models.Products_User).filter_by(user=data.user_id,product=data.product_id).first()
+
     if existing is not None:
-        existing.quant += quantity
+        existing.quant += data.quantity
 
 
         message = client.messages.create(
-            body="DROPR ALERT: Hello "+user.full_name+f", You have purchased an additional {quantity} '{prod.name}'(s)! You have a total of {existing.quant} purchased.",
+            body="DROPR ALERT: Hello "+user.full_name+f", You have purchased an additional {data.quantity} '{prod.name}'(s)! You have a total of {existing.quant} purchased.",
             from_="+18339172623",
             to=user.phone_number
         )
@@ -239,12 +230,12 @@ def buy(user_id: int, product_id: int, quantity: int, db: Session = Depends(get_
         return existing.quant
     else:
         products_users_model = models.Products_User()
-        products_users_model.product = product_id
-        products_users_model.user = user_id
-        products_users_model.quant = quantity
-
+        products_users_model.product = data.product_id
+        products_users_model.user = data.user_id
+        products_users_model.quant = data.quantity
+        print(user.full_name)
         message = client.messages.create(
-            body="DROPR ALERT: Hello "+user.full_name+f", You have purchased '{prod.name}' {quantity} time(s)!",
+            body="DROPR ALERT: Hello "+user.full_name+f", You have purchased '{prod.name}' {data.quantity} time(s)!",
             from_="+18339172623",
             to=user.phone_number
         )
@@ -252,7 +243,7 @@ def buy(user_id: int, product_id: int, quantity: int, db: Session = Depends(get_
         db.add(products_users_model)
     db.commit()
 
-    return quantity
+    return data.quantity
 
 
 

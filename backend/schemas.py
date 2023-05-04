@@ -34,4 +34,13 @@ class User(BaseModel):
     class Config:
         orm_mode = True
 
+class Buy(BaseModel):
+    user_id: int
+    product_id: int
+    quantity: int
+
+class Subscribe(BaseModel):
+    user_id: int
+    company_id: int
+
 
