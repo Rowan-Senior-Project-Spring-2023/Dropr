@@ -22,10 +22,12 @@ const Login = () => {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
+
     const data = {
       username: email,
       password: password,
     };
+
     await axios
       .post("http://127.0.0.1:8000/token", data, {
         headers: {
@@ -40,13 +42,12 @@ const Login = () => {
       .catch((error) => {
         alert(error);
       });
-    console.log(
-      await axios.get("http://127.0.0.1:8000/users/me", {
-        headers: {
-          Authorization: "Bearer " + Cookies.get("token"),
-        },
-      })
-    );
+
+    await axios.get("http://127.0.0.1:8000/users/me", {
+      headers: {
+        Authorization: "Bearer " + Cookies.get("token"),
+      },
+    });
   };
 
   return (
