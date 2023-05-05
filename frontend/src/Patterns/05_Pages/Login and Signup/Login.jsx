@@ -29,25 +29,18 @@ const Login = () => {
     };
 
     await axios
-      .post("http://127.0.0.1:8000/token", data, {
+      .post("http://localhost:8000/token", data, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
       })
       .then((response) => {
         Cookies.set("token", response.data.access_token);
-        console.log(response);
         navigate("/home");
       })
       .catch((error) => {
         alert(error);
       });
-
-    await axios.get("http://127.0.0.1:8000/users/me", {
-      headers: {
-        Authorization: "Bearer " + Cookies.get("token"),
-      },
-    });
   };
 
   return (

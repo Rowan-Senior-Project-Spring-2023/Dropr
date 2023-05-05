@@ -58,12 +58,6 @@ const App = () => {
   }, [products]);
 
   useEffect(() => {
-    if (images === 0) return;
-
-    console.log(images);
-  }, [images]);
-
-  useEffect(() => {
     if (images.length === 0) return;
 
     setLoading(false);

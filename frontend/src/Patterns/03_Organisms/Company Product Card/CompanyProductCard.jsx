@@ -1,46 +1,41 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import PropTypes from "prop-types";
 import Image from "Patterns/01_Atoms/Image/Image";
 import Header from "Patterns/03_Organisms/Header/Header";
 import CardFooter from "Patterns/02_Molecules/Card Footer/CardFooter";
-import styles from "./ProductCard.module.scss";
+import styles from "./CompanyProductCard.module.scss";
 import defaultImage from "Assets/ezgif-1-af2e163fba.webp";
 import Cookies from "js-cookie";
-import axios from "axios";
 
-const ProductCard = ({ user_id, id, image, heading, price }) => {
-  const [bought, setBought] = useState(false);
+/*
+ * Pretty much exact same as ProductCard, but handleClick has different functionality
+ */
 
-  const handleClick = (event) => {
-    setBought(!bought);
+const CompanyProductCard = ({ id, companyId, image, heading, price }) => {
+  const [subscribed, setSubscribed] = useState(false);
 
-    axios
-      .get("http://127.0.0.1:8000/users/me", {
+  const handleClick = async (event) => {
+    const userId = await axios
+      .get("http://localhost:8000/users/me/", {
         headers: {
           Authorization: "Bearer " + Cookies.get("token"),
         },
       })
-      .then((response) => {
-        user_id = response.data.id;
-      })
-      .catch((error) => {
-        alert(error);
-      });
+      .then((response) => response.data.id);
 
     const data = {
-      user_id: id,
-      product_id: id,
-      quantity: 1,
+      user_id: userId,
+      company_id: companyId,
     };
 
-    axios
-      .post("http://127.0.0.1:8000/products/buy", data)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        alert(error);
-      });
+    if (!subscribed) {
+      axios.post(`http://localhost:8000/company/subscribe`, data);
+    } else {
+      axios.post(`http://localhost:8000/company/unsubscribe`, data);
+    }
+
+    setSubscribed(!subscribed);
   };
 
   return (
@@ -57,16 +52,18 @@ const ProductCard = ({ user_id, id, image, heading, price }) => {
         variant={"card"}
         price={price || 0}
         onClick={handleClick}
-        buttonText={"Buy"}
+        buttonText={subscribed ? "Unsubscribe" : "Subscribe"}
       />
     </article>
   );
 };
 
-ProductCard.propTypes = {
+CompanyProductCard.propTypes = {
+  id: PropTypes.number,
+  companyId: PropTypes.string,
   image: PropTypes.string,
   heading: PropTypes.string,
   quantity: PropTypes.number,
 };
 
-export default ProductCard;
+export default CompanyProductCard;

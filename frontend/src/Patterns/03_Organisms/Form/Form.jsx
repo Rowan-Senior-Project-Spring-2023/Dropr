@@ -76,7 +76,7 @@ const CompanyForm = () => {
 
       <FormField
         name={"companyDescription"}
-        labelText={"Compay Description"}
+        labelText={"Company Description"}
         inputText={""}
         inputType={"longtext"}
       />
@@ -88,14 +88,14 @@ const CompanyForm = () => {
       />
       <FormField
         name={"Link"}
-        labelText={"Company link"}
+        labelText={"Company Link"}
         inputText={""}
-        inputType={"link"}
+        inputType={"Link"}
       />
       <FormField
         name={"companyImage"}
-        labelText={"Company Image"}
-        inputType="file"
+        labelText={"Company Image URL"}
+        inputType="text"
       />
       <Button variant={"form"} text={"Register"} type={"submit"} />
     </>
@@ -111,7 +111,7 @@ const Search = () => {
 const RegisterProduct = () => {
   return (
     <>
-    <FormField
+      <FormField
         name={"companyName"}
         labelText={"Company Name"}
         inputType={"text"}
@@ -119,7 +119,7 @@ const RegisterProduct = () => {
       <FormField
         name={"companyPassword"}
         labelText={"Company Password"}
-        inputType="text"
+        inputType="password"
       />
       <FormField
         name={"productName"}
@@ -161,8 +161,6 @@ const RegisterProduct = () => {
         labelText={"Product Is Featured?"}
         inputType={"text"}
       />
-     
-      
       <Button variant={"form"} text={"Create product"} type={"submit"} />
     </>
   );

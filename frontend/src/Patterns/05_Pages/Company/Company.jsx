@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import CardContainer from "Patterns/03_Organisms/Card Container/CardContainer";
-import ProductCard from "Patterns/03_Organisms/Product Card/ProductCard";
+import CompanyProductCard from "Patterns/03_Organisms/Company Product Card/CompanyProductCard";
 import styles from "./Company.module.scss";
 import Header from "Patterns/03_Organisms/Header/Header";
 import Section from "Patterns/03_Organisms/Section/Section";
@@ -43,7 +43,6 @@ const Company = () => {
         .map((result) => result.value);
 
       setImages(results);
-      console.log(images);
     });
   }, [products]);
 
@@ -71,15 +70,16 @@ const Company = () => {
             <CardContainer
               heading={
                 company.name
-                  ? `Trending drops in ${capitalize(company.name)}`
+                  ? `${capitalize(company.name)}'s Trending Drops`
                   : "Trending drops"
               }
             >
               {products &&
                 products.map((product) => (
-                  <ProductCard
+                  <CompanyProductCard
                     key={product.id}
                     id={product.id}
+                    companyId={companyId}
                     image={
                       images.find((image) => image.product_id === product.id)
                         ?.image
