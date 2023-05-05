@@ -16,22 +16,23 @@ const CompanyProductCard = ({ id, companyId, image, heading, price }) => {
   const [subscribed, setSubscribed] = useState(false);
 
   const handleClick = async (event) => {
-    const user = await axios.get("http://localhost:8000/users/me/", {
-      headers: {
-        Authorization: "Bearer " + Cookies.get("token"),
-      },
-    });
+    const userId = await axios
+      .get("http://localhost:8000/users/me/", {
+        headers: {
+          Authorization: "Bearer " + Cookies.get("token"),
+        },
+      })
+      .then((response) => response.data.id);
 
-    console.log(user);
-    console.log(user.id);
+    const data = {
+      user_id: userId,
+      company_id: companyId,
+    };
+
     if (!subscribed) {
-      axios.post(
-        `http://localhost:8000/company/subscribe?=user_id=${"userId"}&company_id=${companyId}`
-      );
+      axios.post(`http://localhost:8000/company/subscribe`, data);
     } else {
-      axios.post(
-        `http://localhost:8000/company/subscribe?=user_id=${"userId"}&company_id=${companyId}`
-      );
+      axios.post(`http://localhost:8000/company/unsubscribe`, data);
     }
 
     setSubscribed(!subscribed);
@@ -59,7 +60,7 @@ const CompanyProductCard = ({ id, companyId, image, heading, price }) => {
 
 CompanyProductCard.propTypes = {
   id: PropTypes.number,
-  companyId: PropTypes.number,
+  companyId: PropTypes.string,
   image: PropTypes.string,
   heading: PropTypes.string,
   quantity: PropTypes.number,

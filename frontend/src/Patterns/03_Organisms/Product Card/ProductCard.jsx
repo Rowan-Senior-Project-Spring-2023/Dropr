@@ -9,11 +9,10 @@ import Cookies from "js-cookie";
 import axios from "axios";
 
 const ProductCard = ({ user_id, id, image, heading, price }) => {
-  const [subscribed, setSubscribed] = useState(false);
-
+  const [bought, setBought] = useState(false);
 
   const handleClick = (event) => {
-    setSubscribed(!subscribed);
+    setBought(!bought);
 
     axios
       .get("http://127.0.0.1:8000/users/me", {
@@ -22,25 +21,20 @@ const ProductCard = ({ user_id, id, image, heading, price }) => {
         },
       })
       .then((response) => {
-        user_id = response.data.id
-        console.log(user_id);
+        user_id = response.data.id;
       })
       .catch((error) => {
         alert(error);
       });
-    
+
     const data = {
       user_id: id,
       product_id: id,
-      quantity: 1
+      quantity: 1,
     };
 
     axios
-      .post("http://127.0.0.1:8000/products/buy", data, {
-        headers: {
-          //'Content-Type': 'multipart/form-data; boundary= ${bodyFormData._boundary}'
-        },
-      })
+      .post("http://127.0.0.1:8000/products/buy", data)
       .then((response) => {
         console.log(response);
       })
@@ -48,7 +42,6 @@ const ProductCard = ({ user_id, id, image, heading, price }) => {
         alert(error);
       });
   };
-  
 
   return (
     <article className={styles.productCard}>
@@ -64,7 +57,7 @@ const ProductCard = ({ user_id, id, image, heading, price }) => {
         variant={"card"}
         price={price || 0}
         onClick={handleClick}
-        buttonText={subscribed ? "Unsubscribe" : "Subscribe"}
+        buttonText={"Buy"}
       />
     </article>
   );

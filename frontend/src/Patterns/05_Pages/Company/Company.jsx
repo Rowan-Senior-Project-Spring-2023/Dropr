@@ -79,7 +79,7 @@ const Company = () => {
                   <CompanyProductCard
                     key={product.id}
                     id={product.id}
-                    companyId={company.id}
+                    companyId={companyId}
                     image={
                       images.find((image) => image.product_id === product.id)
                         ?.image
