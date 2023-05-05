@@ -3,8 +3,9 @@ import Heading from "Patterns/01_Atoms/Heading/Heading";
 import Paragraph from "Patterns/01_Atoms/Paragraph/Paragraph";
 import Link from "Patterns/01_Atoms/Link/Link";
 import styles from "./Header.module.scss";
+import Button from "Patterns/01_Atoms/Button/Button";
 
-const Header = ({ variant, heading, description, link, children }) => {
+const Header = ({ variant, heading, description, link, onClick, children }) => {
   if (variant === "card") {
     return (
       <header className={styles.card}>
@@ -20,6 +21,7 @@ const Header = ({ variant, heading, description, link, children }) => {
           <Heading variant={"company"} text={heading} />
           <Paragraph text={description} />
           <Link href={link} />
+          <Button variant={"arrow"} text={"Subscribe"} onClick={onClick} />
         </header>
       </div>
     );
@@ -33,6 +35,7 @@ Header.propTypes = {
   heading: PropTypes.string,
   description: PropTypes.string,
   link: PropTypes.string,
+  handleClick: PropTypes.func,
   children: PropTypes.arrayOf(PropTypes.element),
 };
 
