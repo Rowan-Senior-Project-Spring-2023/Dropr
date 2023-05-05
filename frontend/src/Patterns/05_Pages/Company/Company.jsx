@@ -2,22 +2,48 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import CardContainer from "Patterns/03_Organisms/Card Container/CardContainer";
-import CompanyProductCard from "Patterns/03_Organisms/Company Product Card/CompanyProductCard";
 import styles from "./Company.module.scss";
 import Header from "Patterns/03_Organisms/Header/Header";
 import Section from "Patterns/03_Organisms/Section/Section";
+import Navbar from "Patterns/03_Organisms/Navbar/Navbar";
+import ProductCard from "Patterns/03_Organisms/Product Card/ProductCard";
+import Cookies from "js-cookie";
 
 // Definitely would like to refactor this since we're repeating code from <App />
 // this will be good enough for now
 // Perhaps we can render <Company /> inside a main <App /> component & route...
 
 const Company = () => {
+  const [subscribed, setSubscribed] = useState(false);
   const [company, setCompany] = useState();
   const [products, setProducts] = useState([]);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [routeInfo, setRouteInfo] = useState(undefined);
   const { companyId } = useParams();
+
+  const handleClick = async (event) => {
+    const userId = await axios
+      .get("http://localhost:8000/users/me/", {
+        headers: {
+          Authorization: "Bearer " + Cookies.get("token"),
+        },
+      })
+      .then((response) => response.data.id);
+
+    const data = {
+      user_id: userId,
+      company_id: parseInt(companyId),
+    };
+
+    if (!subscribed) {
+      axios.post("http://localhost:8000/company/subscribe", data);
+    } else {
+      axios.post("http://localhost:8000/company/unsubscribe", data);
+    }
+
+    setSubscribed(!subscribed);
+  };
 
   useEffect(() => {
     axios
@@ -55,6 +81,15 @@ const Company = () => {
   if (!loading) {
     return (
       <>
+        <Navbar
+          links={[
+            { name: "Landing", to: "/" },
+            { name: "Home", to: "/home" },
+            { name: "Product Registration", to: "/register-product" },
+            { name: "Sign up", to: "/signup" },
+            { name: "Log in", to: "/login" },
+          ]}
+        />
         {/* This is the only thing we're changing, rest can be refactored into some <App /> component */}
         <Section>
           <Header
@@ -62,6 +97,7 @@ const Company = () => {
             heading={company.name}
             description={company.description}
             link={company.company_link}
+            onClick={handleClick}
           />
         </Section>
         {/* ==================== */}
@@ -76,7 +112,7 @@ const Company = () => {
             >
               {products &&
                 products.map((product) => (
-                  <CompanyProductCard
+                  <ProductCard
                     key={product.id}
                     id={product.id}
                     companyId={companyId}

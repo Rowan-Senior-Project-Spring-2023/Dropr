@@ -12,6 +12,7 @@ const Landing = () => {
         links={[
           { name: "Landing", to: "/" },
           { name: "Home", to: "/home" },
+          { name: "Product Registration", to: "/register-product" },
           { name: "Sign up", to: "/signup" },
           { name: "Log in", to: "/login" },
         ]}
@@ -46,7 +47,9 @@ const Landing = () => {
       </Section>
       <Banner
         variant="no-description"
-        heading={"Dropr supports all types of companies with all kinds of products!"}
+        heading={
+          "Dropr supports all types of companies with all kinds of products!"
+        }
         description={
           "Dropr supports all types of companies with all kinds of products!"
         }
@@ -57,9 +60,7 @@ const Landing = () => {
         <SectionImage src={mainSectionImage} alt={"Picture of Vegalia."} />
         <SectionText
           heading={"Dropr"}
-          description={
-            "Join Now!"
-          }
+          description={"Join Now!"}
           link={{ name: "Company Signup", to: "/comapny-signup" }}
         />
       </Section>
