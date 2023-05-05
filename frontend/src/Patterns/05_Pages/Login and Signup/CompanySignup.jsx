@@ -39,21 +39,16 @@ const CompanySignup = () => {
     };
 
     axios
-      .post("http://127.0.0.1:8000/companies/create", data, {
-        headers: {
-          //'Content-Type': 'multipart/form-data; boundary= ${bodyFormData._boundary}'
-        },
-      })
+      .post("http://127.0.0.1:8000/companies/create", data)
       .then((response) => {
-        console.log(response);
-        navigate("/home");
+        navigate("/register-product");
       })
       .catch((error) => {
         alert(error);
       });
   };
   return (
-    <div className={styles.pageNoOverflow}>
+    <div className={styles.page}>
       <main className={styles.actionArea}>
         <header>
           <Heading

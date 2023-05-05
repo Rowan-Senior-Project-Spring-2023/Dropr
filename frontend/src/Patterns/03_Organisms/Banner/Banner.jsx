@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import BannerText from "Patterns/02_Molecules/Banner Text/BannerText";
 import styles from "./Banner.module.scss";
 
-const Banner = ({ variant, heading, description, cta, color = "white" }) => {
+const Banner = ({ variant, heading, description, link, color = "white" }) => {
   const [className, setClassName] = useState("");
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const Banner = ({ variant, heading, description, cta, color = "white" }) => {
         variant={variant}
         heading={heading}
         description={description}
-        cta={cta}
+        link={link}
       />
     </section>
   );
@@ -27,7 +27,7 @@ Banner.propTypes = {
   variant: PropTypes.string,
   heading: PropTypes.string.isRequired,
   description: PropTypes.string,
-  cta: PropTypes.string.isRequired,
+  cta: PropTypes.object.isRequired,
   color: PropTypes.string,
 };
 

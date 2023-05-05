@@ -12,8 +12,10 @@ const ProductSearch = () => {
       { id: "1", name: "footwear" },
       { id: "2", name: "shirts" },
       { id: "3", name: "pants" },
-      { id: "4", name: "hats" },
-      { id: "5", name: "jackets" },
+      { id: "4", name: "jewerly" },
+      { id: "5", name: "tech" },
+      { id: "6", name: "headwear" },
+      { id: "7", name: "other" },
     ]);
   }, []);
 

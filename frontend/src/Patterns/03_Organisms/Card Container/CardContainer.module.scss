@@ -14,8 +14,8 @@
 
   .cardContainer {
     display: grid;
-    gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     max-width: widths.$card-container-max-width;
+    gap: 1rem;
   }
 }

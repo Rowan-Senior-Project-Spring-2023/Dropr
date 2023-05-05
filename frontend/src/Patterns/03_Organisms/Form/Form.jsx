@@ -76,7 +76,7 @@ const CompanyForm = () => {
 
       <FormField
         name={"companyDescription"}
-        labelText={"Compay Description"}
+        labelText={"Company Description"}
         inputText={""}
         inputType={"longtext"}
       />
@@ -88,13 +88,13 @@ const CompanyForm = () => {
       />
       <FormField
         name={"Link"}
-        labelText={"Company link"}
+        labelText={"Company Link"}
         inputText={""}
-        inputType={"link"}
+        inputType={"Link"}
       />
       <FormField
         name={"companyImage"}
-        labelText={"Company Image"}
+        labelText={"Company Image URL"}
         inputType="text"
       />
       <Button variant={"form"} text={"Register"} type={"submit"} />
@@ -112,6 +112,16 @@ const RegisterProduct = () => {
   return (
     <>
       <FormField
+        name={"companyName"}
+        labelText={"Company Name"}
+        inputType={"text"}
+      />
+      <FormField
+        name={"companyPassword"}
+        labelText={"Company Password"}
+        inputType="password"
+      />
+      <FormField
         name={"productName"}
         labelText={"Product Name"}
         inputType={"text"}
@@ -124,6 +134,11 @@ const RegisterProduct = () => {
       <FormField
         name={"productPrice"}
         labelText={"Product Price"}
+        inputType={"text"}
+      />
+      <FormField
+        name={"productQuantity"}
+        labelText={"Quantity"}
         inputType={"text"}
       />
       <FormField

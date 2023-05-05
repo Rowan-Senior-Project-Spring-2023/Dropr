@@ -6,6 +6,7 @@ import CardContainer from "Patterns/03_Organisms/Card Container/CardContainer";
 import ProductCard from "Patterns/03_Organisms/Product Card/ProductCard";
 import styles from "./App.module.scss";
 import Section from "Patterns/03_Organisms/Section/Section";
+import Navbar from "Patterns/03_Organisms/Navbar/Navbar";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -58,12 +59,6 @@ const App = () => {
   }, [products]);
 
   useEffect(() => {
-    if (images === 0) return;
-
-    console.log(images);
-  }, [images]);
-
-  useEffect(() => {
     if (images.length === 0) return;
 
     setLoading(false);
@@ -71,6 +66,15 @@ const App = () => {
 
   return (
     <>
+      <Navbar
+        links={[
+          { name: "Landing", to: "/" },
+          { name: "Home", to: "/home" },
+          { name: "Product Registration", to: "/register-product" },
+          { name: "Sign up", to: "/signup" },
+          { name: "Log in", to: "/login" },
+        ]}
+      />
       <Section>
         <ProductSearch />
       </Section>
@@ -94,6 +98,7 @@ const App = () => {
                   }
                   heading={product.name}
                   price={product.price}
+                  companyId={product.company_id}
                 />
               ))}
           </CardContainer>
